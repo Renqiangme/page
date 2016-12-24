@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-24T07:59:47.597Z</updated>
+  <updated>2016-12-24T08:43:17.484Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,14 +17,15 @@
   
   <entry>
     <title>Github的SSH和HTTPS记住账号密码方法</title>
-    <link href="http://yoursite.com/2016/12/24/Github%E7%9A%84SSH%E5%92%8CHTTPS%E8%AE%B0%E4%BD%8F%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E6%96%B9%E6%B3%95/"/>
-    <id>http://yoursite.com/2016/12/24/Github的SSH和HTTPS记住账号密码方法/</id>
-    <published>2016-12-24T07:58:08.000Z</published>
-    <updated>2016-12-24T07:59:47.597Z</updated>
+    <link href="http://yoursite.com/2015/12/24/Github%E7%9A%84SSH%E5%92%8CHTTPS%E8%AE%B0%E4%BD%8F%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2015/12/24/Github的SSH和HTTPS记住账号密码方法/</id>
+    <published>2015-12-24T07:58:08.000Z</published>
+    <updated>2016-12-24T08:43:17.484Z</updated>
     
     <content type="html"><![CDATA[<p>其实关于这两种认证方式也是适用于Gitlab等相关git.<br>很多时候，我们在打算克隆一个仓库到本地的时候，有两种方式可以选择，即：SSH和HTTPS.<br>克隆还好，但是需要推送的时候，也许会遇到权限，需要账号密码啊。</p>
 <p><strong>通过HTTPS方式克隆的代码到本地</strong><br>如果遇到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">error: The requested URL returned error: 403 Forbidden while accessing</div></pre></td></tr></table></figure></p>
 <p>这是权限问题，可以修改.git/config文件追加用户名和密码，也可以直接敲下面命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote set-url origin https://youruser:password@github.com/user/repo.git</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p><strong>其实更常用的是SSH的方式来推送代码：</strong></p>
 <p><strong>首先需要生成 SSH Keys，需要用到 ssh-keygen 命令。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &quot;xxx@qq.com&quot; -f ~/.ssh/git-github</div></pre></td></tr></table></figure></p>
 <p>简单介绍下参数含义：</p>
@@ -43,7 +44,8 @@
     <summary type="html">
     
       &lt;p&gt;其实关于这两种认证方式也是适用于Gitlab等相关git.&lt;br&gt;很多时候，我们在打算克隆一个仓库到本地的时候，有两种方式可以选择，即：SSH和HTTPS.&lt;br&gt;克隆还好，但是需要推送的时候，也许会遇到权限，需要账号密码啊。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;通过HTTPS方
+&lt;p&gt;&lt;strong&gt;通过HTTPS方式克隆的代码到本地&lt;/strong&gt;&lt;br&gt;如果遇到：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;error: The requested URL returned error: 403 Forbidden while accessing&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这是权限问题，可以修改.git/config文件追加用户名和密码，也可以直接敲下面命令：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git remote set-url origin https://youruser:password@github.com/user/repo.git&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
     
     </summary>
     
