@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-24T15:46:02.105Z</updated>
+  <updated>2016-12-24T15:54:29.300Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>3.x版本的auth认证方式为2.x版本的认证方式</title>
+    <link href="http://yoursite.com/2016/10/01/3-x%E7%89%88%E6%9C%AC%E7%9A%84auth%E8%AE%A4%E8%AF%81%E6%96%B9%E5%BC%8F%E4%B8%BA2-x%E7%89%88%E6%9C%AC%E7%9A%84%E8%AE%A4%E8%AF%81%E6%96%B9%E5%BC%8F/"/>
+    <id>http://yoursite.com/2016/10/01/3-x版本的auth认证方式为2-x版本的认证方式/</id>
+    <published>2016-10-01T05:02:30.000Z</published>
+    <updated>2016-12-24T15:54:29.300Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在用openresty的做一些任务，其中在使用mongo的Lua库的时候，因为mongodb开启了auth，需要账号密码才能连接。</p>
+<p>mongodb 2.xx的认证方式，使用的是md5加密,认证耗时更短，如果使用3.xx认证处耗时很严重在lua中。</p>
+<p>怎么改呢？</p>
+<p>mongo改验证方式：<br>1、停mongodb,<br>2、以不验证模式启动<br>3、删除原有用户名密码<br>4、<br>use admin;<br>db.system.version.insert({“_id”:”authSchema”,”currentVersion”:3})<br>5、新增用户名密码！<br>6、停mongodb<br>7、以验证方式启动mongdb</p>
+<p>如果insert不行就update</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在用openresty的做一些任务，其中在使用mongo的Lua库的时候，因为mongodb开启了auth，需要账号密码才能连接。&lt;/p&gt;
+&lt;p&gt;mongodb 2.xx的认证方式，使用的是md5加密,认证耗时更短，如果使用3.xx认证处耗时很严重在lua中。&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="MongoDB" scheme="http://yoursite.com/tags/MongoDB/"/>
+    
+  </entry>
   
   <entry>
     <title>内部微信授权code解决多个域名的脚本</title>
