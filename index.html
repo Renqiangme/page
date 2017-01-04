@@ -248,6 +248,143 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/04/Composer与-autoload自动加载冲突问题/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="GobYang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/57cb8bc088674.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="GobYang">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="GobYang" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/04/Composer与-autoload自动加载冲突问题/" itemprop="url">
+                  Composer与__autoload自动加载冲突问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-04T16:53:08+08:00">
+                2016-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/04/Composer与-autoload自动加载冲突问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/04/Composer与-autoload自动加载冲突问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> 最近改一些旧的项目遇到的一个有意思的问题。<br>一个项目从入口文件进来，定义了自动加载函数__autoload()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function __autoload($className)&#123;</div><div class="line">	$class = $className . &apos;.class.php&apos;;</div><div class="line">	require_once(CLASS_DIR.$class);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后这个旧的项目在程序某个操作类下面引入了composer来自动加载。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">require BASIC_PATH.&apos;vendor/autoload.php&apos;;</div><div class="line">print_r(spl_autoload_functions());</div><div class="line">class Testtest&#123;</div><div class="line">	public function __construct($upload_type,$act_id,$img_name=&apos;&apos;)&#123;</div><div class="line">        print_r(spl_autoload_functions());</div><div class="line">        echo &apos;&lt;br/&gt;&lt;br/&gt;&apos;;</div><div class="line">        $client = new MongoDB\Client($GLOBALS[&apos;config&apos;][&apos;mongodb_loho&apos;]);</div><div class="line">        var_dump($client);</div><div class="line">        echo &apos;&lt;br/&gt;&lt;br/&gt;&apos;;</div><div class="line">        $upload = new Upload();</div><div class="line">        var_dump($upload);</div><div class="line">        echo &apos;&lt;br/&gt;&lt;br/&gt;&apos;;</div><div class="line">        $client2 = new MongoDB\Client($GLOBALS[&apos;config&apos;][&apos;mongodb_loho&apos;]);</div><div class="line">        var_dump($client2);</div><div class="line">        echo &apos;&lt;br/&gt;&lt;br/&gt;&apos;;</div><div class="line">        $upload2 = new Upload();</div><div class="line">        var_dump($upload2);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>打印结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">Array</div><div class="line">(</div><div class="line">    [0] =&gt; Array</div><div class="line">        (</div><div class="line">            [0] =&gt; Composer\Autoload\ClassLoader Object</div><div class="line">                (</div><div class="line">                    [prefixLengthsPsr4:Composer\Autoload\ClassLoader:private] =&gt; Array</div><div class="line">                        (</div><div class="line">                            [M] =&gt; Array</div><div class="line">                                (</div><div class="line">                                    [MongoDB\] =&gt; 8</div><div class="line">                                )</div><div class="line"></div><div class="line">                        )</div><div class="line"></div><div class="line">                    [prefixDirsPsr4:Composer\Autoload\ClassLoader:private] =&gt; Array</div><div class="line">                        (</div><div class="line">                            [MongoDB\] =&gt; Array</div><div class="line">                                (</div><div class="line">                                    [0] =&gt; E:\UPUPW_NP5.5_64\htdocs\tupian\vendor/mongodb/mongodb/src</div><div class="line">                                )</div><div class="line"></div><div class="line">                        )</div><div class="line"></div><div class="line">                    [fallbackDirsPsr4:Composer\Autoload\ClassLoader:private] =&gt; Array</div><div class="line">                        (</div><div class="line">                        )</div><div class="line"></div><div class="line">                    [prefixesPsr0:Composer\Autoload\ClassLoader:private] =&gt; Array</div><div class="line">                        (</div><div class="line">                        )</div><div class="line"></div><div class="line">                    [fallbackDirsPsr0:Composer\Autoload\ClassLoader:private] =&gt; Array</div><div class="line">                        (</div><div class="line">                        )</div><div class="line"></div><div class="line">                    [useIncludePath:Composer\Autoload\ClassLoader:private] =&gt; </div><div class="line">                    [classMap:Composer\Autoload\ClassLoader:private] =&gt; Array</div><div class="line">                        (</div><div class="line">                        )</div><div class="line"></div><div class="line">                    [classMapAuthoritative:Composer\Autoload\ClassLoader:private] =&gt; </div><div class="line">                    [missingClasses:Composer\Autoload\ClassLoader:private] =&gt; Array</div><div class="line">                        (</div><div class="line">                        )</div><div class="line"></div><div class="line">                )</div><div class="line"></div><div class="line">            [1] =&gt; loadClass</div><div class="line">        )</div><div class="line"></div><div class="line">)</div><div class="line">Array</div><div class="line">(</div><div class="line">    [0] =&gt; __autoload</div><div class="line">)</div><div class="line">&lt;br/&gt;&lt;br/&gt;MongoDB\Client.class.php</div></pre></td></tr></table></figure></p>
+<p>我们会发现，上面的代码，进行到构造函数里面的时候，打印出返回所有已注册的__autoload()函数的时候，只有入口文件定义的，这是为什么呢?按理说使用了require包含的类库文件作用是全局的，手册上面有：<br>When a file is included, the code it contains inherits the variable scope of the line on which the include occurs. Any variables available at that line in the calling file will be available within the called file, from that point forward. However, all functions and classes defined in the included file have the global scope!<br>使用get_included_files()函数打印出来的时候也是看得到的。<br>然后在在网上搜索了下，这篇文章恰好能够解释：<a href="http://www.jb51.net/article/31279.htm" title="http://www.jb51.net/article/31279.htm" target="_blank" rel="external">http://www.jb51.net/article/31279.htm</a></p>
+<p>把require BASIC_PATH.’vendor/autoload.php’;放在外面，使用spl_autoload_functions函数打印的时候，发现并没有把composer的加入到类里面，估计是scope的问题，程序执行到这里，发现已经定义了全局的自动加载函数__autoload，就执行执行这个自动加载的函数，然后找不到直接抛出一个严重错误，中断执行，但是在构造函数开头添加一句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spl_autoload_register(&apos;__autoload&apos;);</div></pre></td></tr></table></figure></p>
+<p>把定义的全局构造函数加入到全局变量autoload_functions的hash table中，就既可以自动找到composer引入的类，又可以自动找到全局的autoload定义的类。从而实现自动加载。</p>
+<p>加入把文件开头包含composer的入口文件移动到构造函数里面，就会发现全局的自动加载的函数的类找不到了，因为：<br>__autoload 方法在 spl_autoload_register 后会失效，因为 autoload_func 函数指针已指向 spl_autoload 方法。</p>
+<p>解决办法也是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spl_autoload_register( &apos;__autoload&apos; );</div></pre></td></tr></table></figure></p>
+<p>把__autoload 方法加入 autoload_functions list </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/10/PHP遍历某个目录下面的文件并使用多进程记录到数据库的几种方法比较/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1515,7 +1652,7 @@ D：永久开启分区ACL权限
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1526,7 +1663,7 @@ D：永久开启分区ACL权限
           
             <div class="site-state-item site-state-tags">
               <a href="/tags/index">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1586,7 +1723,7 @@ D：永久开启分区ACL权限
         <div class="copyright" >
   
   &copy;  2014 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
