@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-04T08:57:28.529Z</updated>
+  <updated>2017-01-04T09:30:53.046Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Openresty中获取和设置cookie</title>
+    <link href="http://yoursite.com/2016/12/24/Openresty%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%92%8C%E8%AE%BE%E7%BD%AEcookie/"/>
+    <id>http://yoursite.com/2016/12/24/Openresty中获取和设置cookie/</id>
+    <published>2016-12-24T14:27:52.000Z</published>
+    <updated>2017-01-04T09:30:53.046Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1：获取cookie"><a href="#1：获取cookie" class="headerlink" title="1：获取cookie"></a>1：获取cookie</h3><p>local cookie_xx_value = ngx.var.cookie_xx</p>
+<h3 id="2：设置cookie"><a href="#2：设置cookie" class="headerlink" title="2：设置cookie"></a>2：设置cookie</h3><p>因为cookie的过期时间格是林尼治时间需要注意转下。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> expires = <span class="number">3600</span> * <span class="number">24</span>  <span class="comment">-- cookie expires = 1 day</span></div><div class="line">ngx.header[<span class="string">"Set-Cookie"</span>] = <span class="string">"hello=world; Path=/; Expires="</span> .. ngx.cookie_time(ngx.time() + expires)</div></pre></td></tr></table></figure>
+<p>如果想同时设置多个cookie，可以传一个table</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> expires = <span class="number">3600</span> * <span class="number">24</span>  <span class="comment">-- cookie expires = 1 day</span></div><div class="line"><span class="keyword">local</span> cookie_table = &#123;</div><div class="line"><span class="string">"hello=world; Path=/;Domain=/; Expires="</span> .. ngx.cookie_time(ngx.time() + expires),</div><div class="line"><span class="string">"hello2=world2; Path=/;Domain=/; Expires="</span> .. ngx.cookie_time(ngx.time() + expires),</div><div class="line"><span class="string">"hello3=world3; Path=/;Domain=/; Expires="</span> .. ngx.cookie_time(ngx.time() + expires)</div><div class="line">&#125;</div><div class="line">ngx.header[<span class="string">"Set-Cookie"</span>] = cookie_table</div></pre></td></tr></table></figure>
+<p>更多cookie相关可以参考wikipedia:<a href="https://en.wikipedia.org/wiki/HTTP_cookie" title="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank" rel="external">https://en.wikipedia.org/wiki/HTTP_cookie</a></p>
+<p>也可以直接使用github上面分享的lua的cookie封装好的库。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;1：获取cookie&quot;&gt;&lt;a href=&quot;#1：获取cookie&quot; class=&quot;headerlink&quot; title=&quot;1：获取cookie&quot;&gt;&lt;/a&gt;1：获取cookie&lt;/h3&gt;&lt;p&gt;local cookie_xx_value = ngx.var.cookie
+    
+    </summary>
+    
+    
+      <category term="Openresty" scheme="http://yoursite.com/tags/Openresty/"/>
+    
+      <category term="Cookie" scheme="http://yoursite.com/tags/Cookie/"/>
+    
+  </entry>
   
   <entry>
     <title>Composer与__autoload自动加载冲突问题</title>
