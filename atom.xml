@@ -45,6 +45,66 @@
   </entry>
   
   <entry>
+    <title>Openresty中使用lua的mongodb库，使用连接池节省连接认证时间</title>
+    <link href="http://yoursite.com/2016/11/20/Openresty%E4%B8%AD%E4%BD%BF%E7%94%A8lua%E7%9A%84mongodb%E5%BA%93%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%BF%9E%E6%8E%A5%E6%B1%A0%E8%8A%82%E7%9C%81%E8%BF%9E%E6%8E%A5%E8%AE%A4%E8%AF%81%E6%97%B6%E9%97%B4/"/>
+    <id>http://yoursite.com/2016/11/20/Openresty中使用lua的mongodb库，使用连接池节省连接认证时间/</id>
+    <published>2016-11-20T01:36:37.000Z</published>
+    <updated>2017-01-20T02:40:34.616Z</updated>
+    
+    <content type="html"><![CDATA[<p>因为服务器的mongodb开启了auth认证的，所以每次连接都要验证密码，测试了下GitHub上面的几个lua的mongodb库，无论是官方的<a href="https://github.com/mongodb-labs/mongorover" title="mongorover" target="_blank" rel="external">mongorover</a>，还是纯的lua库：<a href="https://github.com/LuaDist2/lua-resty-mongol3" title="lua-resty-mongol3" target="_blank" rel="external">lua-resty-mongol3</a>，一个简单的insert操作都比php耗费的时间更长，如果业务用lua来做的优势就没有那么明显了，单纯的不认证的insert操作lua的优势很是明显的，所以要么取消认证，要么就是可以结合openresty的连接池。而且发现使用连接池后，纯的lua mongodb库竟然比mongorover更快。</p>
+<p>下面是动态判断该连接是否是连接池里面的一些判断，把连接与认证封装在一起,减少不必要认证次数。同时修改了仓库的源码，以支持支持自定义连接池，这样可以让不同 用户名、密码、数据库 的连接分开，不相互干扰。</p>
+<p>新建一个lua文件，只做连接操作。<br>    local mongo = require “resty.mongol”<br>    local _M = {}</p>
+<pre><code>--把连接与认证封装在一起,减少不必要认证次数
+local function connect(config)
+    local db = mongo:new()
+    if not db then
+        return nil,nil, &quot;db not initialized&quot;
+    end
+    if config.host == nil or config.host == &apos;&apos; or config.port == nil or config.port == &apos;&apos; or config.database == nil or config.database == &apos;&apos; then
+        return nil,nil, &quot;host,port,database can&apos;t empty&quot;
+    end
+    local user = config.user
+    if(user == nil or user == &apos;&apos;) then
+    user = &apos;&apos;
+    end
+    --支持自定义连接池，这样可以让不同 用户名、密码、数据库 的连接分开，不相互干扰，mongol库本身是没有实现的，所以修改了源码
+    local pool = user .. &quot;:&quot; .. config.database .. &quot;:&quot; .. config.host .. &quot;:&quot; .. config.port
+    local ok, err = db:connect(config.host, config.port, {pool = pool}) 
+    if not ok then
+    return nil,nil,err
+    end
+    --选择数据库
+    local select_db = db:new_db_handle(config.database)
+    --获取连接池里面的已经auth过连接的数量
+    local times,err =db:get_reused_times()
+    if((times == 0 or times == nil) and #user &gt; 0) then
+     ok,err = select_db:auth_scram_sha1(config.user,config.password)
+    if not ok then
+        return nil,nil,err
+         end
+    end
+    return db,select_db,nil
+end
+
+return _M
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;因为服务器的mongodb开启了auth认证的，所以每次连接都要验证密码，测试了下GitHub上面的几个lua的mongodb库，无论是官方的&lt;a href=&quot;https://github.com/mongodb-labs/mongorover&quot; title=&quot;mongor
+    
+    </summary>
+    
+    
+      <category term="MongoDB" scheme="http://yoursite.com/tags/MongoDB/"/>
+    
+      <category term="Openresty" scheme="http://yoursite.com/tags/Openresty/"/>
+    
+      <category term="Lua" scheme="http://yoursite.com/tags/Lua/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Composer与__autoload自动加载冲突问题</title>
     <link href="http://yoursite.com/2016/11/04/Composer%E4%B8%8E-autoload%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/"/>
     <id>http://yoursite.com/2016/11/04/Composer与-autoload自动加载冲突问题/</id>
