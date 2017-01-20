@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="PHP,微信公众号," />
+  <meta name="keywords" content="-PHP -Redis -Openresty -zlib," />
 
 
 
@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="内部调用微信授权脚本－解决一个域名想授权多个域名获取微信授权code123456789101112131415161718192021222324252627282930&amp;lt;?php$access_key = &amp;apos;123qwe&amp;apos;;$innder_key = $_GET[&amp;apos;inner_key&amp;apos;];//内部调用if (isset($inner_key) &amp;am">
+<meta name="description" content="其实商城项目的网页端，观察京东，淘宝他们有很多活动页面或者商品详情页，推广力度很多，流量也就比较多，通常一个页面很大很大，整个网页内容也很多，单纯考虑从webserver到走进php,java连接数据库等等读取数据拼装，再渲染视图输出到浏览器，整个过程下来，并发不大的情况还好，一大起来的就会性能大大的降低。
+对于中小型项目，解决的方案肯定没有淘宝京东的方案多。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内部微信授权code解决多个域名的脚本">
-<meta property="og:url" content="http://yoursite.com/2016/03/25/内部微信授权code解决多个域名的脚本/index.html">
+<meta property="og:title" content="网页加载优化-PHP压缩网页进Redis,Openresty端直接输出">
+<meta property="og:url" content="http://yoursite.com/2016/12/25/网页加载优化-PHP压缩网页进Redis-Openresty端直接输出/index.html">
 <meta property="og:site_name" content="GobYang">
-<meta property="og:description" content="内部调用微信授权脚本－解决一个域名想授权多个域名获取微信授权code123456789101112131415161718192021222324252627282930&amp;lt;?php$access_key = &amp;apos;123qwe&amp;apos;;$innder_key = $_GET[&amp;apos;inner_key&amp;apos;];//内部调用if (isset($inner_key) &amp;am">
-<meta property="og:updated_time" content="2016-12-24T15:46:02.105Z">
+<meta property="og:description" content="其实商城项目的网页端，观察京东，淘宝他们有很多活动页面或者商品详情页，推广力度很多，流量也就比较多，通常一个页面很大很大，整个网页内容也很多，单纯考虑从webserver到走进php,java连接数据库等等读取数据拼装，再渲染视图输出到浏览器，整个过程下来，并发不大的情况还好，一大起来的就会性能大大的降低。
+对于中小型项目，解决的方案肯定没有淘宝京东的方案多。">
+<meta property="og:updated_time" content="2017-01-20T03:58:22.529Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内部微信授权code解决多个域名的脚本">
-<meta name="twitter:description" content="内部调用微信授权脚本－解决一个域名想授权多个域名获取微信授权code123456789101112131415161718192021222324252627282930&amp;lt;?php$access_key = &amp;apos;123qwe&amp;apos;;$innder_key = $_GET[&amp;apos;inner_key&amp;apos;];//内部调用if (isset($inner_key) &amp;am">
+<meta name="twitter:title" content="网页加载优化-PHP压缩网页进Redis,Openresty端直接输出">
+<meta name="twitter:description" content="其实商城项目的网页端，观察京东，淘宝他们有很多活动页面或者商品详情页，推广力度很多，流量也就比较多，通常一个页面很大很大，整个网页内容也很多，单纯考虑从webserver到走进php,java连接数据库等等读取数据拼装，再渲染视图输出到浏览器，整个过程下来，并发不大的情况还好，一大起来的就会性能大大的降低。
+对于中小型项目，解决的方案肯定没有淘宝京东的方案多。">
 
 
 
@@ -121,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/03/25/内部微信授权code解决多个域名的脚本/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/25/网页加载优化-PHP压缩网页进Redis-Openresty端直接输出/"/>
 
 
 
 
 
-  <title> 内部微信授权code解决多个域名的脚本 | GobYang </title>
+  <title> 网页加载优化-PHP压缩网页进Redis,Openresty端直接输出 | GobYang </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -250,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/25/内部微信授权code解决多个域名的脚本/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/25/网页加载优化-PHP压缩网页进Redis-Openresty端直接输出/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="GobYang">
@@ -274,7 +277,7 @@
             
             
               
-                内部微信授权code解决多个域名的脚本
+                网页加载优化-PHP压缩网页进Redis,Openresty端直接输出
               
             
           </h1>
@@ -289,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-25T23:42:04+08:00">
-                2016-03-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-25T22:07:30+08:00">
+                2016-12-25
               </time>
             
 
@@ -308,8 +311,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/03/25/内部微信授权code解决多个域名的脚本/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/25/内部微信授权code解决多个域名的脚本/" itemprop="commentCount"></span>
+                <a href="/2016/12/25/网页加载优化-PHP压缩网页进Redis-Openresty端直接输出/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/25/网页加载优化-PHP压缩网页进Redis-Openresty端直接输出/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -335,7 +338,20 @@
       
 
       
-        <h5 id="内部调用微信授权脚本－解决一个域名想授权多个域名获取微信授权code"><a href="#内部调用微信授权脚本－解决一个域名想授权多个域名获取微信授权code" class="headerlink" title="内部调用微信授权脚本－解决一个域名想授权多个域名获取微信授权code"></a>内部调用微信授权脚本－解决一个域名想授权多个域名获取微信授权code</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">$access_key = &apos;123qwe&apos;;</div><div class="line">$innder_key = $_GET[&apos;inner_key&apos;];</div><div class="line">//内部调用</div><div class="line">if (isset($inner_key) &amp;&amp; !empty($inner_key)) &#123;</div><div class="line">    if ($inner_key != sha1($access_key)) &#123;</div><div class="line">        exit(&apos;access error!&apos;);</div><div class="line">    &#125;</div><div class="line">    $current_url = &apos;http://www.xxx.com/code.php&apos;;</div><div class="line">    $redirect_uri = $current_url.&apos;?url=&apos;.urlencode($_GET[&apos;redirect_url&apos;]);</div><div class="line">    $oauth_url = getOauthRedirect($redirect_uri);</div><div class="line">    header(&apos;Location:&apos;.$oauth_url);</div><div class="line">    return;</div><div class="line">&#125;</div><div class="line">//微信授权回调</div><div class="line">if(isset($_GET[&apos;code&apos;]))&#123;</div><div class="line">    $url = urldecode($_GET[&apos;url&apos;]);</div><div class="line">    $new_url = $url.&apos;&amp;code=&apos;.$_GET[&apos;code&apos;];</div><div class="line">    header(&apos;Location:&apos;.$new_url);</div><div class="line">    return;</div><div class="line">&#125;</div><div class="line">/**</div><div class="line"> * oauth 授权跳转接口</div><div class="line"> * @param string $callback 回调URI</div><div class="line"> * @return string 返回 用户同意授权，获取code的URL 外部调用直接header重定向这个链接</div><div class="line"> */</div><div class="line">function getOauthRedirect($callback, $state = &apos;&apos;, $scope = &apos;snsapi_base&apos;) &#123;</div><div class="line">    $appid = &apos;xxxx&apos;;//微信公众号服务号的appid</div><div class="line">    return &apos;https://open.weixin.qq.com/connect/oauth2/authorize?appid=&apos; . $appid . &apos;&amp;redirect_uri=&apos; . urlencode($callback) . &apos;&amp;response_type=code&amp;scope=&apos; . $scope . &apos;&amp;state=&apos; . $state . &apos;#wechat_redirect&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>其实商城项目的网页端，观察京东，淘宝他们有很多活动页面或者商品详情页，推广力度很多，流量也就比较多，通常一个页面很大很大，整个网页内容也很多，单纯考虑从webserver到走进php,java连接数据库等等读取数据拼装，再渲染视图输出到浏览器，整个过程下来，并发不大的情况还好，一大起来的就会性能大大的降低。</p>
+<p>对于中小型项目，解决的方案肯定没有淘宝京东的方案多。<br><a id="more"></a><br>于是就要想解决优化的方案，像商品详情页有商品相关的静态数据，同时掺杂着一些评论，购买数量等等的动态数据，其实可以把整个网页动静分离，动态数据走接口，静态数据直接gzip压缩存进缓存，通过Openresty在nginx层面通过lua直接读取就输出,然后浏览器自动解压gzip。由于页面数据是压缩了的可以节省网络IO,大大提升页面的加载速度。但是像一些活动页面，动态数据可能没有那么多,改动商品相关的价格库存…等等改动那么频繁，其实可以直接扔进CDN,动态数据也走接口。</p>
+<p>下面来看下PHP的几个GZIP压缩相关的函数，都是基于ZLIB库。</p>
+<p>gzcompress gzdeflate gzencode函数的区别在于它们压缩的数据格式不同：</p>
+<p>gzcompress使用的是ZLIB格式；</p>
+<p>gzdeflate使用的是纯粹的DEFLATE格式；</p>
+<p>gzencode使用的是GZIP格式；</p>
+<p>但是有一点是相同的，它们压缩数据时都使用了DEFLATE压缩算法（理论上ZLIB和GZIP格式可以使用其他的压缩算法，但是目前实践中只使用DEFLATE算法），ZLIB和GZIP只不过是在DEFLATE的基础之上加了一些头部和尾部而已。</p>
+<p>顺便提一下，HTTP协议中的Content-Encoding: deflate使用的是ZLIB格式而不是纯DEFLATE格式。</p>
+<p>通过测试发现，gzencode和gzdeflate浏览器可以自动解压出来，前提是：http的请求头里面有accept-encoding:gzip, deflate，说明方案是可行的，但是对于一些浏览器可能不支持自动解压，所以需要判断下请求头，如果不支持，就需要lua解压之后再输出。</p>
+<p>既然使用Openresty就在社区搜索了下。<br>lua的zlib库有两个：<br>–<a href="https://github.com/brimworks/lua-zlib" title="lua-zlib" target="_blank" rel="external">lua-zlib</a><br>–通过LuaJIT的FFI库来包装ZLIB模块</p>
+<p>选择的是：lua-zlib</p>
+<p>lua输出判断函数：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">echoPage</span><span class="params">(index_page)</span></span></div><div class="line">	<span class="comment">--如果index_page=nil 就继续让nginx执行下一阶段，走进php让php自己处理</span></div><div class="line">	<span class="keyword">if</span> <span class="keyword">not</span> index_page <span class="keyword">then</span></div><div class="line">		ngx.exit(ngx.OK)</div><div class="line">	<span class="keyword">end</span></div><div class="line">	</div><div class="line">	<span class="keyword">local</span> accept_encoding_table = ngx.req.get_headers()</div><div class="line">	<span class="keyword">local</span> accept_encoding = accept_encoding_table[<span class="string">"accept-encoding"</span>]</div><div class="line">	<span class="keyword">local</span> need_uncompress = <span class="number">0</span></div><div class="line">	<span class="keyword">if</span> accept_encoding ~= <span class="keyword">nil</span> <span class="keyword">and</span> #accept_encoding&gt;<span class="number">0</span> <span class="keyword">then</span></div><div class="line">		<span class="keyword">local</span> begin,stop = ngx.re.find(accept_encoding,<span class="string">'gzip'</span>)</div><div class="line">		<span class="keyword">if</span> begin ~= <span class="keyword">nil</span>  <span class="keyword">then</span></div><div class="line">			need_uncompress = <span class="number">0</span></div><div class="line">		<span class="keyword">else</span></div><div class="line">			need_uncompress = <span class="number">1</span></div><div class="line">		<span class="keyword">end</span></div><div class="line">	<span class="keyword">else</span></div><div class="line">		need_uncompress = <span class="number">1</span></div><div class="line">	<span class="keyword">end</span></div><div class="line">	<span class="keyword">if</span> need_uncompress == <span class="number">1</span> <span class="keyword">then</span></div><div class="line">		<span class="keyword">local</span> zlib = <span class="built_in">require</span> <span class="string">"zlib"</span></div><div class="line">		<span class="keyword">local</span> stream = zlib.inflate()</div><div class="line">		<span class="keyword">local</span> inflated,stream_eof,bytes_in,bytes_out = stream(res)</div><div class="line">		ngx.say(inflated)</div><div class="line">	<span class="keyword">else</span></div><div class="line">		ngx.header[<span class="string">"Content-Encoding"</span>] = <span class="string">"gzip"</span><span class="comment">--避免Nginx再去压缩，需要发送一个响应头，告诉Nginx是一个gzip压缩的</span></div><div class="line">		ngx.send_headers()</div><div class="line">		ngx.say(res)</div><div class="line">	<span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>注释：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ngx.exit(ngx.OK)<span class="comment">--因为openresty有执行阶段这一个说法，是告诉openresty执行下一阶段</span></div><div class="line">ngx.exit(<span class="number">200</span>)<span class="comment">--意思是直接返回200，不再向下执行。也可以是其他的http状态码。</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -359,9 +375,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/PHP/" rel="tag"># PHP</a>
-          
-            <a href="/tags/微信公众号/" rel="tag"># 微信公众号</a>
+            <a href="/tags/PHP-Redis-Openresty-zlib/" rel="tag"># -PHP -Redis -Openresty -zlib</a>
           
         </div>
       
@@ -370,8 +384,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/24/Github的SSH和HTTPS记住账号密码方法/" rel="next" title="Github的SSH和HTTPS记住账号密码方法">
-                <i class="fa fa-chevron-left"></i> Github的SSH和HTTPS记住账号密码方法
+              <a href="/2016/12/24/Openresty中获取和设置cookie/" rel="next" title="Openresty中获取和设置cookie">
+                <i class="fa fa-chevron-left"></i> Openresty中获取和设置cookie
               </a>
             
           </div>
@@ -379,10 +393,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/01/mongodb3.x版本的auth认证方式为2.x版本的认证方式/" rel="prev" title="修改mongodb3.x版本的auth认证方式为2.x版本的认证方式">
-                修改mongodb3.x版本的auth认证方式为2.x版本的认证方式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -414,8 +424,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/25/内部微信授权code解决多个域名的脚本/"
-           data-title="内部微信授权code解决多个域名的脚本" data-url="http://yoursite.com/2016/03/25/内部微信授权code解决多个域名的脚本/">
+      <div class="ds-thread" data-thread-key="2016/12/25/网页加载优化-PHP压缩网页进Redis-Openresty端直接输出/"
+           data-title="网页加载优化-PHP压缩网页进Redis,Openresty端直接输出" data-url="http://yoursite.com/2016/12/25/网页加载优化-PHP压缩网页进Redis-Openresty端直接输出/">
       </div>
     
   </div>
@@ -439,17 +449,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/57cb8bc088674.png"
@@ -518,22 +519,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#内部调用微信授权脚本－解决一个域名想授权多个域名获取微信授权code"><span class="nav-number">1.</span> <span class="nav-text">内部调用微信授权脚本－解决一个域名想授权多个域名获取微信授权code</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>

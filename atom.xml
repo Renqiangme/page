@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-20T02:44:53.868Z</updated>
+  <updated>2017-01-20T03:58:22.529Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网页加载优化-PHP压缩网页进Redis,Openresty端直接输出</title>
+    <link href="http://yoursite.com/2016/12/25/%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96-PHP%E5%8E%8B%E7%BC%A9%E7%BD%91%E9%A1%B5%E8%BF%9BRedis-Openresty%E7%AB%AF%E7%9B%B4%E6%8E%A5%E8%BE%93%E5%87%BA/"/>
+    <id>http://yoursite.com/2016/12/25/网页加载优化-PHP压缩网页进Redis-Openresty端直接输出/</id>
+    <published>2016-12-25T14:07:30.000Z</published>
+    <updated>2017-01-20T03:58:22.529Z</updated>
+    
+    <content type="html"><![CDATA[<p>其实商城项目的网页端，观察京东，淘宝他们有很多活动页面或者商品详情页，推广力度很多，流量也就比较多，通常一个页面很大很大，整个网页内容也很多，单纯考虑从webserver到走进php,java连接数据库等等读取数据拼装，再渲染视图输出到浏览器，整个过程下来，并发不大的情况还好，一大起来的就会性能大大的降低。</p>
+<p>对于中小型项目，解决的方案肯定没有淘宝京东的方案多。<br><a id="more"></a><br>于是就要想解决优化的方案，像商品详情页有商品相关的静态数据，同时掺杂着一些评论，购买数量等等的动态数据，其实可以把整个网页动静分离，动态数据走接口，静态数据直接gzip压缩存进缓存，通过Openresty在nginx层面通过lua直接读取就输出,然后浏览器自动解压gzip。由于页面数据是压缩了的可以节省网络IO,大大提升页面的加载速度。但是像一些活动页面，动态数据可能没有那么多,改动商品相关的价格库存…等等改动那么频繁，其实可以直接扔进CDN,动态数据也走接口。</p>
+<p>下面来看下PHP的几个GZIP压缩相关的函数，都是基于ZLIB库。</p>
+<p>gzcompress gzdeflate gzencode函数的区别在于它们压缩的数据格式不同：</p>
+<p>gzcompress使用的是ZLIB格式；</p>
+<p>gzdeflate使用的是纯粹的DEFLATE格式；</p>
+<p>gzencode使用的是GZIP格式；</p>
+<p>但是有一点是相同的，它们压缩数据时都使用了DEFLATE压缩算法（理论上ZLIB和GZIP格式可以使用其他的压缩算法，但是目前实践中只使用DEFLATE算法），ZLIB和GZIP只不过是在DEFLATE的基础之上加了一些头部和尾部而已。</p>
+<p>顺便提一下，HTTP协议中的Content-Encoding: deflate使用的是ZLIB格式而不是纯DEFLATE格式。</p>
+<p>通过测试发现，gzencode和gzdeflate浏览器可以自动解压出来，前提是：http的请求头里面有accept-encoding:gzip, deflate，说明方案是可行的，但是对于一些浏览器可能不支持自动解压，所以需要判断下请求头，如果不支持，就需要lua解压之后再输出。</p>
+<p>既然使用Openresty就在社区搜索了下。<br>lua的zlib库有两个：<br>–<a href="https://github.com/brimworks/lua-zlib" title="lua-zlib" target="_blank" rel="external">lua-zlib</a><br>–通过LuaJIT的FFI库来包装ZLIB模块</p>
+<p>选择的是：lua-zlib</p>
+<p>lua输出判断函数：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">echoPage</span><span class="params">(index_page)</span></span></div><div class="line">	<span class="comment">--如果index_page=nil 就继续让nginx执行下一阶段，走进php让php自己处理</span></div><div class="line">	<span class="keyword">if</span> <span class="keyword">not</span> index_page <span class="keyword">then</span></div><div class="line">		ngx.exit(ngx.OK)</div><div class="line">	<span class="keyword">end</span></div><div class="line">	</div><div class="line">	<span class="keyword">local</span> accept_encoding_table = ngx.req.get_headers()</div><div class="line">	<span class="keyword">local</span> accept_encoding = accept_encoding_table[<span class="string">"accept-encoding"</span>]</div><div class="line">	<span class="keyword">local</span> need_uncompress = <span class="number">0</span></div><div class="line">	<span class="keyword">if</span> accept_encoding ~= <span class="keyword">nil</span> <span class="keyword">and</span> #accept_encoding&gt;<span class="number">0</span> <span class="keyword">then</span></div><div class="line">		<span class="keyword">local</span> begin,stop = ngx.re.find(accept_encoding,<span class="string">'gzip'</span>)</div><div class="line">		<span class="keyword">if</span> begin ~= <span class="keyword">nil</span>  <span class="keyword">then</span></div><div class="line">			need_uncompress = <span class="number">0</span></div><div class="line">		<span class="keyword">else</span></div><div class="line">			need_uncompress = <span class="number">1</span></div><div class="line">		<span class="keyword">end</span></div><div class="line">	<span class="keyword">else</span></div><div class="line">		need_uncompress = <span class="number">1</span></div><div class="line">	<span class="keyword">end</span></div><div class="line">	<span class="keyword">if</span> need_uncompress == <span class="number">1</span> <span class="keyword">then</span></div><div class="line">		<span class="keyword">local</span> zlib = <span class="built_in">require</span> <span class="string">"zlib"</span></div><div class="line">		<span class="keyword">local</span> stream = zlib.inflate()</div><div class="line">		<span class="keyword">local</span> inflated,stream_eof,bytes_in,bytes_out = stream(res)</div><div class="line">		ngx.say(inflated)</div><div class="line">	<span class="keyword">else</span></div><div class="line">		ngx.header[<span class="string">"Content-Encoding"</span>] = <span class="string">"gzip"</span><span class="comment">--避免Nginx再去压缩，需要发送一个响应头，告诉Nginx是一个gzip压缩的</span></div><div class="line">		ngx.send_headers()</div><div class="line">		ngx.say(res)</div><div class="line">	<span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>注释：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ngx.exit(ngx.OK)<span class="comment">--因为openresty有执行阶段这一个说法，是告诉openresty执行下一阶段</span></div><div class="line">ngx.exit(<span class="number">200</span>)<span class="comment">--意思是直接返回200，不再向下执行。也可以是其他的http状态码。</span></div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;其实商城项目的网页端，观察京东，淘宝他们有很多活动页面或者商品详情页，推广力度很多，流量也就比较多，通常一个页面很大很大，整个网页内容也很多，单纯考虑从webserver到走进php,java连接数据库等等读取数据拼装，再渲染视图输出到浏览器，整个过程下来，并发不大的情况还好，一大起来的就会性能大大的降低。&lt;/p&gt;
+&lt;p&gt;对于中小型项目，解决的方案肯定没有淘宝京东的方案多。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="-PHP -Redis -Openresty -zlib" scheme="http://yoursite.com/tags/PHP-Redis-Openresty-zlib/"/>
+    
+  </entry>
   
   <entry>
     <title>Openresty中获取和设置cookie</title>
