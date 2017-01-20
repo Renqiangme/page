@@ -84,22 +84,16 @@
 
 
 
-<meta name="description" content="1：获取cookielocal cookie_xx_value = ngx.var.cookie_xx
-2：设置cookie因为cookie的过期时间格是林尼治时间需要注意转下。
-12local expires = 3600 * 24  -- cookie expires = 1 dayngx.header[&quot;Set-Cookie&quot;] = &quot;hello=world; Path=/; Expires">
+<meta name="description" content="1：获取cookielocal cookie_xx_value = ngx.var.cookie_xx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Openresty中获取和设置cookie">
 <meta property="og:url" content="http://yoursite.com/2016/12/24/Openresty中获取和设置cookie/index.html">
 <meta property="og:site_name" content="GobYang">
-<meta property="og:description" content="1：获取cookielocal cookie_xx_value = ngx.var.cookie_xx
-2：设置cookie因为cookie的过期时间格是林尼治时间需要注意转下。
-12local expires = 3600 * 24  -- cookie expires = 1 dayngx.header[&quot;Set-Cookie&quot;] = &quot;hello=world; Path=/; Expires">
-<meta property="og:updated_time" content="2017-01-04T09:30:53.046Z">
+<meta property="og:description" content="1：获取cookielocal cookie_xx_value = ngx.var.cookie_xx">
+<meta property="og:updated_time" content="2017-01-20T02:44:53.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Openresty中获取和设置cookie">
-<meta name="twitter:description" content="1：获取cookielocal cookie_xx_value = ngx.var.cookie_xx
-2：设置cookie因为cookie的过期时间格是林尼治时间需要注意转下。
-12local expires = 3600 * 24  -- cookie expires = 1 dayngx.header[&quot;Set-Cookie&quot;] = &quot;hello=world; Path=/; Expires">
+<meta name="twitter:description" content="1：获取cookielocal cookie_xx_value = ngx.var.cookie_xx">
 
 
 
@@ -341,7 +335,7 @@
       
 
       
-        <h3 id="1：获取cookie"><a href="#1：获取cookie" class="headerlink" title="1：获取cookie"></a>1：获取cookie</h3><p>local cookie_xx_value = ngx.var.cookie_xx</p>
+        <h3 id="1：获取cookie"><a href="#1：获取cookie" class="headerlink" title="1：获取cookie"></a>1：获取cookie</h3><p>local cookie_xx_value = ngx.var.cookie_xx<br><a id="more"></a></p>
 <h3 id="2：设置cookie"><a href="#2：设置cookie" class="headerlink" title="2：设置cookie"></a>2：设置cookie</h3><p>因为cookie的过期时间格是林尼治时间需要注意转下。</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> expires = <span class="number">3600</span> * <span class="number">24</span>  <span class="comment">-- cookie expires = 1 day</span></div><div class="line">ngx.header[<span class="string">"Set-Cookie"</span>] = <span class="string">"hello=world; Path=/; Expires="</span> .. ngx.cookie_time(ngx.time() + expires)</div></pre></td></tr></table></figure>
 <p>如果想同时设置多个cookie，可以传一个table</p>

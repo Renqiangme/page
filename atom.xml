@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-04T09:30:53.046Z</updated>
+  <updated>2017-01-20T02:44:53.868Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://yoursite.com/2016/12/24/Openresty%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%92%8C%E8%AE%BE%E7%BD%AEcookie/"/>
     <id>http://yoursite.com/2016/12/24/Openresty中获取和设置cookie/</id>
     <published>2016-12-24T14:27:52.000Z</published>
-    <updated>2017-01-04T09:30:53.046Z</updated>
+    <updated>2017-01-20T02:44:53.868Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="1：获取cookie"><a href="#1：获取cookie" class="headerlink" title="1：获取cookie"></a>1：获取cookie</h3><p>local cookie_xx_value = ngx.var.cookie_xx</p>
+    <content type="html"><![CDATA[<h3 id="1：获取cookie"><a href="#1：获取cookie" class="headerlink" title="1：获取cookie"></a>1：获取cookie</h3><p>local cookie_xx_value = ngx.var.cookie_xx<br><a id="more"></a></p>
 <h3 id="2：设置cookie"><a href="#2：设置cookie" class="headerlink" title="2：设置cookie"></a>2：设置cookie</h3><p>因为cookie的过期时间格是林尼治时间需要注意转下。</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> expires = <span class="number">3600</span> * <span class="number">24</span>  <span class="comment">-- cookie expires = 1 day</span></div><div class="line">ngx.header[<span class="string">"Set-Cookie"</span>] = <span class="string">"hello=world; Path=/; Expires="</span> .. ngx.cookie_time(ngx.time() + expires)</div></pre></td></tr></table></figure>
 <p>如果想同时设置多个cookie，可以传一个table</p>
@@ -33,7 +33,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;1：获取cookie&quot;&gt;&lt;a href=&quot;#1：获取cookie&quot; class=&quot;headerlink&quot; title=&quot;1：获取cookie&quot;&gt;&lt;/a&gt;1：获取cookie&lt;/h3&gt;&lt;p&gt;local cookie_xx_value = ngx.var.cookie
+      &lt;h3 id=&quot;1：获取cookie&quot;&gt;&lt;a href=&quot;#1：获取cookie&quot; class=&quot;headerlink&quot; title=&quot;1：获取cookie&quot;&gt;&lt;/a&gt;1：获取cookie&lt;/h3&gt;&lt;p&gt;local cookie_xx_value = ngx.var.cookie_xx&lt;br&gt;
     
     </summary>
     
