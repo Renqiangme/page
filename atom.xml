@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-20T03:58:22.529Z</updated>
+  <updated>2017-01-20T04:00:41.182Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/12/25/%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96-PHP%E5%8E%8B%E7%BC%A9%E7%BD%91%E9%A1%B5%E8%BF%9BRedis-Openresty%E7%AB%AF%E7%9B%B4%E6%8E%A5%E8%BE%93%E5%87%BA/"/>
     <id>http://yoursite.com/2016/12/25/网页加载优化-PHP压缩网页进Redis-Openresty端直接输出/</id>
     <published>2016-12-25T14:07:30.000Z</published>
-    <updated>2017-01-20T03:58:22.529Z</updated>
+    <updated>2017-01-20T04:00:41.182Z</updated>
     
     <content type="html"><![CDATA[<p>其实商城项目的网页端，观察京东，淘宝他们有很多活动页面或者商品详情页，推广力度很多，流量也就比较多，通常一个页面很大很大，整个网页内容也很多，单纯考虑从webserver到走进php,java连接数据库等等读取数据拼装，再渲染视图输出到浏览器，整个过程下来，并发不大的情况还好，一大起来的就会性能大大的降低。</p>
 <p>对于中小型项目，解决的方案肯定没有淘宝京东的方案多。<br><a id="more"></a><br>于是就要想解决优化的方案，像商品详情页有商品相关的静态数据，同时掺杂着一些评论，购买数量等等的动态数据，其实可以把整个网页动静分离，动态数据走接口，静态数据直接gzip压缩存进缓存，通过Openresty在nginx层面通过lua直接读取就输出,然后浏览器自动解压gzip。由于页面数据是压缩了的可以节省网络IO,大大提升页面的加载速度。但是像一些活动页面，动态数据可能没有那么多,改动商品相关的价格库存…等等改动那么频繁，其实可以直接扔进CDN,动态数据也走接口。</p>
@@ -46,7 +46,13 @@
     </summary>
     
     
-      <category term="-PHP -Redis -Openresty -zlib" scheme="http://yoursite.com/tags/PHP-Redis-Openresty-zlib/"/>
+      <category term="PHP" scheme="http://yoursite.com/tags/PHP/"/>
+    
+      <category term="Openresty" scheme="http://yoursite.com/tags/Openresty/"/>
+    
+      <category term="Redis" scheme="http://yoursite.com/tags/Redis/"/>
+    
+      <category term="zlib" scheme="http://yoursite.com/tags/zlib/"/>
     
   </entry>
   
