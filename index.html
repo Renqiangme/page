@@ -337,18 +337,14 @@
 
       
         
-          
-            <p>最先一开始用pip安装，但是总是在运行的时有源码安装效果更好的提示，所以索性源码安装，整个编译过程还真的是蛮久的。</p>
-<p>源码安装<strong>TensorFlow</strong>需要先安装<strong>Bazel</strong>这个google推出的自动化构建工具。</p>
-<p>1：安装Bazel之前先安装JDK</p>
-<p>2：下载源码zip包<br><a href="https://github.com/bazelbuild/bazel/releases/" title="https://github.com/bazelbuild/bazel/releases/" target="_blank" rel="external">https://github.com/bazelbuild/bazel/releases/</a></p>
-<p>3：然后直接执行./compile.sh等待出现安装成功后<br>4：把bazel导入到环境变量。<br>:vim /etc/profile<br>加入export PATH=/home/yangrenqiang/bazel/output:$PATH<br>source /etc/profile</p>
-<p>5：测试bazel是否安装成功<br>bazel help</p>
-<p>6：在github上面下载tensorflow的源码<br>7：执行./configure<br>8：<br>bazel build –config=opt //tensorflow/tools/pip_package:build_pip_package<br>9：<br>bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg<br>10:<br>sudo pip install /tmp/tensorflow_pkg/tensorflow-1.0.1-py2-none-any.whl</p>
-<p>具体参考：<br><a href="https://www.tensorflow.org/install/install_sources" title="https://www.tensorflow.org/install/install_sources" target="_blank" rel="external">https://www.tensorflow.org/install/install_sources</a></p>
-<p>关于TensorFlow的中文文档：<a href="http://docs.pythontab.com/tensorflow/" title="http://docs.pythontab.com/tensorflow/" target="_blank" rel="external">http://docs.pythontab.com/tensorflow/</a></p>
-
-          
+          <p>最先一开始用pip安装，但是总是在运行的时有源码安装效果更好的提示，所以索性源码安装，整个编译过程还真的是蛮久的。</p>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/18/在Centos上面源码安装TensorFlow/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
