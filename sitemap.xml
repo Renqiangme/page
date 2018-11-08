@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://renqiangme.github.io/about/index.html</loc>
+    
+    <lastmod>2018-11-08T08:01:16.100Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://renqiangme.github.io/2018/01/21/Log4j2%E6%97%A5%E5%BF%97-%3EKafka-%3ELogstash-%3EElasticsearch%E5%B9%B6%E9%82%AE%E4%BB%B6%E6%8A%A5%E8%AD%A6/</loc>
     
     <lastmod>2018-11-08T05:04:23.362Z</lastmod>
@@ -173,13 +180,6 @@
     <loc>https://renqiangme.github.io/tags/index.html</loc>
     
     <lastmod>2018-11-07T06:45:54.134Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://renqiangme.github.io/about/index.html</loc>
-    
-    <lastmod>2018-11-07T06:43:09.428Z</lastmod>
     
   </url>
   
