@@ -17,22 +17,25 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>部署管理swoole服务 | Renqiang&#39;s Notes</title>
-  <meta name="description" content="使用systemd管理swoole服务Systemd 是 Linux 系统工具，用来启动守护进程。
+  <title>部署管理Swoole服务 | Renqiang&#39;s Notes</title>
+  <meta name="description" content="使用systemd管理Swoole服务
+Systemd 是 Linux 系统工具，用来启动守护进程。
 Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面。包括：systemctl，systemd-analyze，hostnamectl，localectl，timedatectl，loginctl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="部署管理swoole服务">
-<meta property="og:url" content="https://renqiangme.github.io/2017/07/12/部署管理swoole服务/index.html">
+<meta property="og:title" content="部署管理Swoole服务">
+<meta property="og:url" content="https://renqiangme.github.io/2017/07/12/部署管理Swoole服务/index.html">
 <meta property="og:site_name" content="Renqiang">
-<meta property="og:description" content="使用systemd管理swoole服务Systemd 是 Linux 系统工具，用来启动守护进程。
+<meta property="og:description" content="使用systemd管理Swoole服务
+Systemd 是 Linux 系统工具，用来启动守护进程。
 Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面。包括：systemctl，systemd-analyze，hostnamectl，localectl，timedatectl，loginctl">
-<meta property="og:updated_time" content="2018-11-08T02:17:20.344Z">
+<meta property="og:updated_time" content="2018-11-22T02:05:20.831Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="部署管理swoole服务">
-<meta name="twitter:description" content="使用systemd管理swoole服务Systemd 是 Linux 系统工具，用来启动守护进程。
+<meta name="twitter:title" content="部署管理Swoole服务">
+<meta name="twitter:description" content="使用systemd管理Swoole服务
+Systemd 是 Linux 系统工具，用来启动守护进程。
 Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面。包括：systemctl，systemd-analyze，hostnamectl，localectl，timedatectl，loginctl">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://renqiangme.github.io/2017/07/12/部署管理swoole服务/index.html">
+  <link rel="canonical" href="https://renqiangme.github.io/2017/07/12/部署管理Swoole服务/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Renqiang" type="application/atom+xml">
   
@@ -172,7 +175,7 @@ Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Redis/">Redis</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/NodeJS/">NodeJS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Openresty/">Openresty</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Redis/">Redis</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/NodeJS/">NodeJS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Openresty/">Openresty</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -182,7 +185,7 @@ Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Centos/">Centos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Composer/">Composer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elastic-Stack/">Elastic Stack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kafka/">Kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LogStash/">LogStash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/">Lua</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openresty/">Openresty</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Supervisor/">Supervisor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swoole/">Swoole</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Systemd/">Systemd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Websocket/">Websocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ffmpeg/">ffmpeg</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zlib/">zlib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信公众号/">微信公众号</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Centos/">Centos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Composer/">Composer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elastic-Stack/">Elastic Stack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kafka/">Kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LogStash/">LogStash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/">Lua</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openresty/">Openresty</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Supervisor/">Supervisor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swoole/">Swoole</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Systemd/">Systemd</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Websocket/">Websocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ffmpeg/">ffmpeg</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zlib/">zlib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信公众号/">微信公众号</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -192,7 +195,7 @@ Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/AI/" style="font-size: 13px;">AI</a> <a href="/tags/Centos/" style="font-size: 13px;">Centos</a> <a href="/tags/Composer/" style="font-size: 13px;">Composer</a> <a href="/tags/Cookie/" style="font-size: 13px;">Cookie</a> <a href="/tags/Elastic-Stack/" style="font-size: 13px;">Elastic Stack</a> <a href="/tags/ElasticSearch/" style="font-size: 13px;">ElasticSearch</a> <a href="/tags/Git/" style="font-size: 13.25px;">Git</a> <a href="/tags/GitHub/" style="font-size: 13px;">GitHub</a> <a href="/tags/JAVA/" style="font-size: 13px;">JAVA</a> <a href="/tags/Javascript/" style="font-size: 13px;">Javascript</a> <a href="/tags/Kafka/" style="font-size: 13px;">Kafka</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/LogStash/" style="font-size: 13px;">LogStash</a> <a href="/tags/Lua/" style="font-size: 13px;">Lua</a> <a href="/tags/MongoDB/" style="font-size: 13.25px;">MongoDB</a> <a href="/tags/Nginx/" style="font-size: 13px;">Nginx</a> <a href="/tags/NodeJS/" style="font-size: 13px;">NodeJS</a> <a href="/tags/Openresty/" style="font-size: 13.5px;">Openresty</a> <a href="/tags/PHP/" style="font-size: 13.75px;">PHP</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/Redis/" style="font-size: 13.25px;">Redis</a> <a href="/tags/SSH/" style="font-size: 13.25px;">SSH</a> <a href="/tags/Supervisor/" style="font-size: 13px;">Supervisor</a> <a href="/tags/Swoole/" style="font-size: 13px;">Swoole</a> <a href="/tags/Systemd/" style="font-size: 13px;">Systemd</a> <a href="/tags/TensorFlow/" style="font-size: 13px;">TensorFlow</a> <a href="/tags/Ubuntu/" style="font-size: 13.25px;">Ubuntu</a> <a href="/tags/Vim/" style="font-size: 13px;">Vim</a> <a href="/tags/Websocket/" style="font-size: 13px;">Websocket</a> <a href="/tags/ffmpeg/" style="font-size: 13px;">ffmpeg</a> <a href="/tags/zlib/" style="font-size: 13px;">zlib</a> <a href="/tags/微信公众号/" style="font-size: 13px;">微信公众号</a>
+      <a href="/tags/AI/" style="font-size: 13px;">AI</a> <a href="/tags/Centos/" style="font-size: 13px;">Centos</a> <a href="/tags/Composer/" style="font-size: 13px;">Composer</a> <a href="/tags/Cookie/" style="font-size: 13px;">Cookie</a> <a href="/tags/Elastic-Stack/" style="font-size: 13px;">Elastic Stack</a> <a href="/tags/ElasticSearch/" style="font-size: 13px;">ElasticSearch</a> <a href="/tags/Git/" style="font-size: 13.25px;">Git</a> <a href="/tags/GitHub/" style="font-size: 13px;">GitHub</a> <a href="/tags/JAVA/" style="font-size: 13.25px;">JAVA</a> <a href="/tags/Javascript/" style="font-size: 13px;">Javascript</a> <a href="/tags/Kafka/" style="font-size: 13px;">Kafka</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/LogStash/" style="font-size: 13px;">LogStash</a> <a href="/tags/Lua/" style="font-size: 13px;">Lua</a> <a href="/tags/MongoDB/" style="font-size: 13.5px;">MongoDB</a> <a href="/tags/Nginx/" style="font-size: 13px;">Nginx</a> <a href="/tags/NodeJS/" style="font-size: 13px;">NodeJS</a> <a href="/tags/Openresty/" style="font-size: 13.5px;">Openresty</a> <a href="/tags/PHP/" style="font-size: 13.75px;">PHP</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/Redis/" style="font-size: 13.25px;">Redis</a> <a href="/tags/SSH/" style="font-size: 13.25px;">SSH</a> <a href="/tags/SpringBoot/" style="font-size: 13px;">SpringBoot</a> <a href="/tags/Supervisor/" style="font-size: 13px;">Supervisor</a> <a href="/tags/Swoole/" style="font-size: 13px;">Swoole</a> <a href="/tags/Systemd/" style="font-size: 13.25px;">Systemd</a> <a href="/tags/TensorFlow/" style="font-size: 13px;">TensorFlow</a> <a href="/tags/Ubuntu/" style="font-size: 13.25px;">Ubuntu</a> <a href="/tags/Vim/" style="font-size: 13px;">Vim</a> <a href="/tags/Websocket/" style="font-size: 13px;">Websocket</a> <a href="/tags/ffmpeg/" style="font-size: 13px;">ffmpeg</a> <a href="/tags/zlib/" style="font-size: 13px;">zlib</a> <a href="/tags/微信公众号/" style="font-size: 13px;">微信公众号</a>
     </div>
   </div>
 
@@ -201,7 +204,7 @@ Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -213,6 +216,36 @@ Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/MongoDB/">MongoDB</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/05/01/给MongoDB新增一个readWriteAnyDatabase的角色账户/" class="title">给MongoDB新增一个readWriteAnyDatabase的角色账户</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-05-01T09:18:01.000Z" itemprop="datePublished">2018-05-01</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/JAVA/">JAVA</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/04/17/使用System部署SpringBoot应用/" class="title">使用Systemd部署管理SpringBoot应用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-04-17T05:28:12.000Z" itemprop="datePublished">2018-04-17</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -258,36 +291,6 @@ Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方
             </div>
           </li>
           
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/Linux/">Linux</a>
-              </p>
-              <p class="item-title">
-                <a href="/2017/08/18/Ubuntu设置固定的ip/" class="title">Ubuntu设置固定的ip</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2017-08-18T05:28:18.000Z" itemprop="datePublished">2017-08-18</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/PHP/">PHP</a>
-              </p>
-              <p class="item-title">
-                <a href="/2017/07/12/部署管理swoole服务/" class="title">部署管理swoole服务</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2017-07-12T03:20:38.000Z" itemprop="datePublished">2017-07-12</time>
-              </p>
-            </div>
-          </li>
-          
       </ul>
     </div>
   </div>
@@ -301,14 +304,14 @@ Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-部署管理swoole服务" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-部署管理Swoole服务" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      部署管理swoole服务
+      部署管理Swoole服务
     </h1>
   
 
@@ -316,7 +319,7 @@ Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2017/07/12/部署管理swoole服务/" class="article-date">
+	<a href="/2017/07/12/部署管理Swoole服务/" class="article-date">
 	  <time datetime="2017-07-12T03:20:38.000Z" itemprop="datePublished">2017-07-12</time>
 	</a>
 </span>
@@ -342,13 +345,14 @@ Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/07/12/部署管理swoole服务/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/07/12/部署管理Swoole服务/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="使用systemd管理swoole服务"><a href="#使用systemd管理swoole服务" class="headerlink" title="使用systemd管理swoole服务"></a>使用systemd管理swoole服务</h3><p>Systemd 是 Linux 系统工具，用来启动守护进程。</p>
+        <h3 id="使用systemd管理swoole服务"><a class="markdownIt-Anchor" href="#使用systemd管理swoole服务"></a> 使用systemd管理Swoole服务</h3>
+<p>Systemd 是 Linux 系统工具，用来启动守护进程。</p>
 <p>Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面。包括：systemctl，systemd-analyze，hostnamectl，localectl，timedatectl，loginctl</p>
 <a id="more"></a>
 <p>更多参考<a href="http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html/" target="_blank" rel="external">：Systemd介绍</a></p>
@@ -362,27 +366,37 @@ Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方
 <p>kill -USR2 pid 重启task进程</p>
 <p>kill -15 管理进程id 关掉所有的manager相关进程</p>
 <p>关于swoole重启的文档:<a href="https://wiki.swoole.com/wiki/page/p-server/reload.html" target="_blank" rel="external">链接</a></p>
-<h3 id="使用Supervisor管理swoole服务"><a href="#使用Supervisor管理swoole服务" class="headerlink" title="使用Supervisor管理swoole服务"></a>使用Supervisor管理swoole服务</h3><p>Supervisor是一个客户/服务器系统，它可以在类Unix系统中管理控制大量进程。Supervisor使用python开发，有多年历史，目前很多生产环境下的服务器都在使用Supervisor,部署python程序经常这个。</p>
+<h3 id="使用supervisor管理swoole服务"><a class="markdownIt-Anchor" href="#使用supervisor管理swoole服务"></a> 使用Supervisor管理swoole服务</h3>
+<p>Supervisor是一个客户/服务器系统，它可以在类Unix系统中管理控制大量进程。Supervisor使用python开发，有多年历史，目前很多生产环境下的服务器都在使用Supervisor,部署python程序经常这个。</p>
 <p>Supervisor的服务器端称为supervisord，主要负责在启动自身时启动管理的子进程，响应客户端的命令，重启崩溃或退出的子进程，记录子进程stdout和stderr输出，生成和处理子进程生命周期中的事件。可以在一个配置文件中配置相关参数，包括Supervisord自身的状态，其管理的各个子进程的相关属性。配置文件一般位于/etc/supervisord.conf。</p>
 <p>Supervisor的客户端称为supervisorctl，它提供了一个类shell的接口（即命令行）来使用supervisord服务端提供的功能。通过supervisorctl，用户可以连接到supervisord服务器进程，获得服务器进程控制的子进程的状态，启动和停止子进程，获得正在运行的进程列表。客户端通过Unix域套接字或者TCP套接字与服务端进行通信，服务器端具有身份凭证认证机制，可以有效提升安全性。当客户端和服务器位于同一台机器上时，客户端与服务器共用同一个配置文件/etc/supervisord.conf，通过不同标签来区分两者的配置。</p>
 <p>Supervisor也提供了一个web页面来查看和管理进程状态，这个功能非常酷.</p>
-<h4 id="安装Supervisor"><a href="#安装Supervisor" class="headerlink" title="安装Supervisor"></a>安装Supervisor</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 我们可以通过pypi安装</div><div class="line">pip install supervisor</div><div class="line"># 或者从pypi上下载源码，然后安装</div><div class="line">python setup.py install</div><div class="line"># 安装完之后，使用下列命令来生成配置文件</div><div class="line">echo_supervisord_conf &gt; /etc/supervisord.conf</div></pre></td></tr></table></figure>
+<h4 id="安装supervisor"><a class="markdownIt-Anchor" href="#安装supervisor"></a> 安装Supervisor</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 我们可以通过pypi安装</div><div class="line">pip install supervisor</div><div class="line"># 或者从pypi上下载源码，然后安装</div><div class="line">python setup.py install</div><div class="line"># 安装完之后，使用下列命令来生成配置文件</div><div class="line">echo_supervisord_conf &gt; /etc/supervisord.conf</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># mkdir /etc/supervisord.d  用户存放被监控进程的配置文件</div></pre></td></tr></table></figure>
-<p>修改/etc/supervisord.conf配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">在文件结尾[include]节点处把</div><div class="line">;files = relative/directory/*.ini改为files =/etc/supervisord.d/*.conf</div><div class="line"></div><div class="line">同时还需要去掉[include]前面的;</div></pre></td></tr></table></figure></p>
+<p>修改/etc/supervisord.conf配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">在文件结尾[include]节点处把</div><div class="line">;files = relative/directory/*.ini改为files =/etc/supervisord.d/*.conf</div><div class="line"></div><div class="line">同时还需要去掉[include]前面的;</div></pre></td></tr></table></figure>
 <p>保存并退出。</p>
-<h4 id="把supervisor加入开机自启动服务"><a href="#把supervisor加入开机自启动服务" class="headerlink" title="把supervisor加入开机自启动服务"></a>把supervisor加入开机自启动服务</h4><p>到systemd系统下新建一个service配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /lib/systemd/system/supervisor.service</div></pre></td></tr></table></figure></p>
+<h4 id="把supervisor加入开机自启动服务"><a class="markdownIt-Anchor" href="#把supervisor加入开机自启动服务"></a> 把supervisor加入开机自启动服务</h4>
+<p>到systemd系统下新建一个service配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /lib/systemd/system/supervisor.service</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[Unit]</div><div class="line">Description=supervisor</div><div class="line">After=network.target</div><div class="line"></div><div class="line">[Service]</div><div class="line">Type=forking</div><div class="line">ExecStart=/usr/bin/supervisord -c /etc/supervisord.conf</div><div class="line">ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown</div><div class="line">ExecReload=/usr/bin/supervisorctl $OPTIONS reload</div><div class="line">KillMode=process</div><div class="line">Restart=on-failure</div><div class="line">RestartSec=42s</div><div class="line"></div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target graphical.target</div></pre></td></tr></table></figure>
-<p>上述文件编写后，执行如下命令即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl enable supervisor.service</div></pre></td></tr></table></figure></p>
-<p>加入开机自启动服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl daemon-reload</div></pre></td></tr></table></figure></p>
+<p>上述文件编写后，执行如下命令即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl enable supervisor.service</div></pre></td></tr></table></figure>
+<p>加入开机自启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl daemon-reload</div></pre></td></tr></table></figure>
 <p>重新载入systemd，扫描新的或有变动的单元。</p>
 <p>实际上supervisor已经加入了systemctl管理了，后续起停supervisor服务都可以通过systemctl来控制了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">systemctl start supervisor.service 启动服务</div><div class="line"></div><div class="line">systemctl stop supervisor.service 停止服务</div><div class="line"></div><div class="line">systemctl restart supervisor.service 重新启动服务</div><div class="line"></div><div class="line">systemctl reload supervisor.service 重载配置文件</div><div class="line"></div><div class="line">systemctl status supervisor.service 查看服务状态</div></pre></td></tr></table></figure>
-<h4 id="在-etc-supervisord-d-增加一个程序的demo配置参数："><a href="#在-etc-supervisord-d-增加一个程序的demo配置参数：" class="headerlink" title="在/etc/supervisord.d 增加一个程序的demo配置参数："></a>在/etc/supervisord.d 增加一个程序的demo配置参数：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">[program:cat]                ;程序名</div><div class="line">command=/bin/cat            ;命令绝对路径，可以包含参数</div><div class="line">process_name=%(program_name)s    ;进程名</div><div class="line">numprocs=1                  ;supervisor启动多少个该程序，如果大于1，那么进程名必须包括%(process_num)s</div><div class="line">directory=/tmp              ;该进程的启动时的工作目录</div><div class="line">umask=022                   ;掩码</div><div class="line">priority=999                ;优先级</div><div class="line">autostart=true              ;该程序是否在supervisor启动时启动</div><div class="line">autorestart=true            ;如果为false，那么该程序的相关进程永远不会自动重启。如果为unexpected，该程序的相关进程仅会在退出码为exitcodes中的值时重启;如果为true时</div><div class="line">startsecs=10                 ;最大启动时间</div><div class="line">startretries=3               ;最大启动重试次数。超过这个次数后，该进程会标记为FATAL状态</div><div class="line">exitcodes=0,2                ;退出码，关联autorestart=unexpected</div><div class="line"></div><div class="line">stopsignal=TERM                     ;关闭该程序相关进程所发送的信号量。可以为TERM, HUP, INT, QUIT, KILL, USR1, or USR2</div><div class="line">stopwaitsecs=10              ;supervisord父进程等待该程序的相关子进程返回SIGCLILD信号量的时间，超时后则发送SIGKILL</div><div class="line">user=chrism                  ;启动该程序进程的用户</div><div class="line">redirect_stderr=false        ;如果为true，则将该程序的进程错误输出到supervisor主日志文件中</div><div class="line">stdout_logfile=/tmp          ;标准输出</div><div class="line">stdout_logfile_maxbytes=1MB  ;日志轮滚</div><div class="line">stdout_logfile_backups=10    ;日志轮滚</div><div class="line">stdout_capture_maxbytes=1MB    </div><div class="line">stderr_logfile=/a/path        </div><div class="line">stderr_logfile_maxbytes=1MB</div><div class="line">stderr_logfile_backups=10</div><div class="line">stderr_capture_maxbytes=1MB</div><div class="line">environment=A=&quot;1&quot;,B=&quot;2&quot;        ;！环境变量信息</div><div class="line">serverurl=AUTO                 ;传送给该子进程的环境变量SUPERVISOR_SERVER_URL ，AUTO则自动提供一个Supervisord的URL。用于该进程可以和内部HTTP Server进行通信，简化进程管理。</div></pre></td></tr></table></figure>
-<p>从swoole的文档我们得知：<br>Swoole提供了柔性终止/重启的机制，管理员只需要向SwooleServer发送特定的信号，Server的worker进程可以安全的结束。</p>
+<h4 id="在etcsupervisordd-增加一个程序的demo配置参数"><a class="markdownIt-Anchor" href="#在etcsupervisordd-增加一个程序的demo配置参数"></a> 在/etc/supervisord.d 增加一个程序的demo配置参数：</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">[program:cat]                ;程序名</div><div class="line">command=/bin/cat            ;命令绝对路径，可以包含参数</div><div class="line">process_name=%(program_name)s    ;进程名</div><div class="line">numprocs=1                  ;supervisor启动多少个该程序，如果大于1，那么进程名必须包括%(process_num)s</div><div class="line">directory=/tmp              ;该进程的启动时的工作目录</div><div class="line">umask=022                   ;掩码</div><div class="line">priority=999                ;优先级</div><div class="line">autostart=true              ;该程序是否在supervisor启动时启动</div><div class="line">autorestart=true            ;如果为false，那么该程序的相关进程永远不会自动重启。如果为unexpected，该程序的相关进程仅会在退出码为exitcodes中的值时重启;如果为true时</div><div class="line">startsecs=10                 ;最大启动时间</div><div class="line">startretries=3               ;最大启动重试次数。超过这个次数后，该进程会标记为FATAL状态</div><div class="line">exitcodes=0,2                ;退出码，关联autorestart=unexpected</div><div class="line"></div><div class="line">stopsignal=TERM                     ;关闭该程序相关进程所发送的信号量。可以为TERM, HUP, INT, QUIT, KILL, USR1, or USR2</div><div class="line">stopwaitsecs=10              ;supervisord父进程等待该程序的相关子进程返回SIGCLILD信号量的时间，超时后则发送SIGKILL</div><div class="line">user=chrism                  ;启动该程序进程的用户</div><div class="line">redirect_stderr=false        ;如果为true，则将该程序的进程错误输出到supervisor主日志文件中</div><div class="line">stdout_logfile=/tmp          ;标准输出</div><div class="line">stdout_logfile_maxbytes=1MB  ;日志轮滚</div><div class="line">stdout_logfile_backups=10    ;日志轮滚</div><div class="line">stdout_capture_maxbytes=1MB    </div><div class="line">stderr_logfile=/a/path        </div><div class="line">stderr_logfile_maxbytes=1MB</div><div class="line">stderr_logfile_backups=10</div><div class="line">stderr_capture_maxbytes=1MB</div><div class="line">environment=A=&quot;1&quot;,B=&quot;2&quot;        ;！环境变量信息</div><div class="line">serverurl=AUTO                 ;传送给该子进程的环境变量SUPERVISOR_SERVER_URL ，AUTO则自动提供一个Supervisord的URL。用于该进程可以和内部HTTP Server进行通信，简化进程管理。</div></pre></td></tr></table></figure>
+<p>从swoole的文档我们得知：<br>
+Swoole提供了柔性终止/重启的机制，管理员只需要向SwooleServer发送特定的信号，Server的worker进程可以安全的结束。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">SIGTERM: 向主进程/管理进程发送此信号服务器将安全终止</div><div class="line">在PHP代码中可以调用$serv-&gt;shutdown()完成此操作</div><div class="line"></div><div class="line">SIGUSR1: 向主进程/管理进程发送SIGUSR1信号，将平稳地restart所有worker进程</div><div class="line">在PHP代码中可以调用$serv-&gt;reload()完成此操作</div><div class="line">swoole的reload有保护机制，当一次reload正在进行时，收到新的重启信号会丢弃</div><div class="line">如果设置了user/group，Worker进程可能没有权限向master进程发送信息，这种情况下必须使用root账户，在shell中执行kill指令进行重启</div><div class="line">reload指令对addProcess添加的用户进程无效</div><div class="line"></div><div class="line">#重启所有worker进程</div><div class="line">kill -USR1 主进程PID</div><div class="line"></div><div class="line">#仅重启task进程</div><div class="line">kill -USR2 主进程PID</div></pre></td></tr></table></figure>
-<p>supervisor的程序restart的原理是实际上是发信号，所以我们需要给swoole的程序stop信号配置为：stopsignal=TERM </p>
+<p>supervisor的程序restart的原理是实际上是发信号，所以我们需要给swoole的程序stop信号配置为：stopsignal=TERM</p>
 <p>同时还需要把swoole的守护进程化设置为daemonize =&gt; 0，不然会报spawned error</p>
-<h4 id="supervisorctl控制program"><a href="#supervisorctl控制program" class="headerlink" title="supervisorctl控制program"></a>supervisorctl控制program</h4><p>现在supervisor的server端我们已经交给systemd去管理，现在我们可以通过supervisorctl去控制配置添加的program</p>
+<h4 id="supervisorctl控制program"><a class="markdownIt-Anchor" href="#supervisorctl控制program"></a> supervisorctl控制program</h4>
+<p>现在supervisor的server端我们已经交给systemd去管理，现在我们可以通过supervisorctl去控制配置添加的program</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">supervisorctl -c supervisor.conf status                    察看supervisor的状态</div><div class="line"></div><div class="line">supervisorctl -c supervisor.conf reload                    重新载入 配置文件</div><div class="line"></div><div class="line">supervisorctl -c supervisor.conf start [all]|[appname]     启动指定/所有supervisor管理的程序进程</div><div class="line"></div><div class="line">supervisorctl -c supervisor.conf stop [all]|[appname]      关闭指定/所有 supervisor管理的程序进程</div></pre></td></tr></table></figure>
 
       
@@ -393,7 +407,7 @@ Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://renqiangme.github.io/2017/07/12/部署管理swoole服务/" title="部署管理swoole服务" target="_blank" rel="external">https://renqiangme.github.io/2017/07/12/部署管理swoole服务/</a>
+      <a href="https://renqiangme.github.io/2017/07/12/部署管理Swoole服务/" title="部署管理Swoole服务" target="_blank" rel="external">https://renqiangme.github.io/2017/07/12/部署管理Swoole服务/</a>
     </li>
     
     <li class="post-copyright-license">
