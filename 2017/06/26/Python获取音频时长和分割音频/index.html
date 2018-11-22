@@ -204,7 +204,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -357,35 +357,31 @@
 <a id="more"></a>
 <p>大概命令如下:</p>
 <pre><code>ffprobe -v quiet -print_format json -show_format -show_streams 1.wav
-</code></pre>
-<p>python中可以这样子调用：</p>
-<pre><code>    import subprocess as sp
-	
-    try:
-    	command = ['ffprobe', '-v', 'quiet', '-print_format', 'json', '-show_format','-show_streams', item[&quot;file_path&quot;]]
-    	wav_info = sp.check_output(command, stderr=sp.STDOUT)
-    	print(wav_info)
-    except sp.CalledProcessError as e:
-    	print('get audio info by ffprobe error %s' % e.output)
-</code></pre>
-<p>分割音频就需要用到<code>ffmpeg</code>了，大概命令如下：</p>
+</code></pre><p>python中可以这样子调用：</p>
+<pre><code>import subprocess as sp
+
+try:
+    command = [&apos;ffprobe&apos;, &apos;-v&apos;, &apos;quiet&apos;, &apos;-print_format&apos;, &apos;json&apos;, &apos;-show_format&apos;,&apos;-show_streams&apos;, item[&quot;file_path&quot;]]
+    wav_info = sp.check_output(command, stderr=sp.STDOUT)
+    print(wav_info)
+except sp.CalledProcessError as e:
+    print(&apos;get audio info by ffprobe error %s&apos; % e.output)
+</code></pre><p>分割音频就需要用到<code>ffmpeg</code>了，大概命令如下：</p>
 <pre><code>ffmpeg -i 1.wav -ss 00:00:03 -t 00:00:12 -acodec copy tmp.wav
 源音频：source_mp3
 开始位置：-ss
 结束位置：-t
 原始编码：-acodec
-</code></pre>
-<p>需要注意的是：input的音频格式必须和output的音频格式一致，不然要报格式错误！</p>
+</code></pre><p>需要注意的是：input的音频格式必须和output的音频格式一致，不然要报格式错误！</p>
 <p>python中可以这样子调用：</p>
-<pre><code>    try:
-    	cut_command = ['ffmpeg', '-y', '-i', origin_wav, '-ss', start_time, '-t',end_time, '-acodec', 'copy', cut_wav]
-    	wav_cut_result = sp.check_call(cut_command)
-    	if wav_cut_result == 0:
-    		#todo success
-    except sp.CalledProcessError as e:
-    	print('cut audio info error %s' % e.output)
-</code></pre>
-<p>音频格式转换:</p>
+<pre><code>try:
+    cut_command = [&apos;ffmpeg&apos;, &apos;-y&apos;, &apos;-i&apos;, origin_wav, &apos;-ss&apos;, start_time, &apos;-t&apos;,end_time, &apos;-acodec&apos;, &apos;copy&apos;, cut_wav]
+    wav_cut_result = sp.check_call(cut_command)
+    if wav_cut_result == 0:
+        #todo success
+except sp.CalledProcessError as e:
+    print(&apos;cut audio info error %s&apos; % e.output)
+</code></pre><p>音频格式转换:</p>
 <pre><code>单声道&amp;采样率16000
 ffmpeg -f s16le -ar 16000 -ac 1 -i xx.pcm xx.wav
 
@@ -394,8 +390,7 @@ s16le：无压缩
 -ar：采样率
 -ac：声道
 -i：输入文件
-</code></pre>
-<p>更多命令相关参数：<code>ffmpeg --help</code></p>
+</code></pre><p>更多命令相关参数：<code>ffmpeg --help</code></p>
 
       
     </div>

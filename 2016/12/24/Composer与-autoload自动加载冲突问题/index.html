@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Composer与__autoload自动加载冲突问题 | Renqiang&#39;s Notes</title>
+  <meta name="description" content="最近改一些旧的项目遇到的一个有意思的问题。一个项目从入口文件进来，定义了自动加载函数__autoload()1234function __autoload($className)&amp;#123;	$class = $className . &amp;apos;.class.php&amp;apos;;	require_once(CLASS_DIR.$class);&amp;#125;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Composer与__autoload自动加载冲突问题">
+<meta property="og:url" content="https://renqiangme.github.io/2016/12/24/Composer与-autoload自动加载冲突问题/index.html">
+<meta property="og:site_name" content="Renqiang">
+<meta property="og:description" content="最近改一些旧的项目遇到的一个有意思的问题。一个项目从入口文件进来，定义了自动加载函数__autoload()1234function __autoload($className)&amp;#123;	$class = $className . &amp;apos;.class.php&amp;apos;;	require_once(CLASS_DIR.$class);&amp;#125;">
+<meta property="og:updated_time" content="2018-11-22T02:29:00.707Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Composer与__autoload自动加载冲突问题">
+<meta name="twitter:description" content="最近改一些旧的项目遇到的一个有意思的问题。一个项目从入口文件进来，定义了自动加载函数__autoload()1234function __autoload($className)&amp;#123;	$class = $className . &amp;apos;.class.php&amp;apos;;	require_once(CLASS_DIR.$class);&amp;#125;">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://renqiangme.github.io/2016/12/24/Composer与-autoload自动加载冲突问题/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Renqiang" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/fav.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/Renqiangme" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.gif" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Renqiang</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">互联网码码工</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Renqiangme" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Redis/">Redis</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/NodeJS/">NodeJS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Openresty/">Openresty</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Centos/">Centos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Composer/">Composer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elastic-Stack/">Elastic Stack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kafka/">Kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LogStash/">LogStash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/">Lua</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openresty/">Openresty</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Supervisor/">Supervisor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swoole/">Swoole</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Systemd/">Systemd</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Websocket/">Websocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ffmpeg/">ffmpeg</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zlib/">zlib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信公众号/">微信公众号</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/AI/" style="font-size: 13px;">AI</a> <a href="/tags/Centos/" style="font-size: 13px;">Centos</a> <a href="/tags/Composer/" style="font-size: 13px;">Composer</a> <a href="/tags/Cookie/" style="font-size: 13px;">Cookie</a> <a href="/tags/Elastic-Stack/" style="font-size: 13px;">Elastic Stack</a> <a href="/tags/ElasticSearch/" style="font-size: 13px;">ElasticSearch</a> <a href="/tags/Git/" style="font-size: 13.25px;">Git</a> <a href="/tags/GitHub/" style="font-size: 13px;">GitHub</a> <a href="/tags/JAVA/" style="font-size: 13.25px;">JAVA</a> <a href="/tags/Javascript/" style="font-size: 13px;">Javascript</a> <a href="/tags/Kafka/" style="font-size: 13px;">Kafka</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/LogStash/" style="font-size: 13px;">LogStash</a> <a href="/tags/Lua/" style="font-size: 13px;">Lua</a> <a href="/tags/MongoDB/" style="font-size: 13.5px;">MongoDB</a> <a href="/tags/Nginx/" style="font-size: 13px;">Nginx</a> <a href="/tags/NodeJS/" style="font-size: 13px;">NodeJS</a> <a href="/tags/Openresty/" style="font-size: 13.5px;">Openresty</a> <a href="/tags/PHP/" style="font-size: 13.75px;">PHP</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/Redis/" style="font-size: 13.25px;">Redis</a> <a href="/tags/SSH/" style="font-size: 13.25px;">SSH</a> <a href="/tags/SpringBoot/" style="font-size: 13px;">SpringBoot</a> <a href="/tags/Supervisor/" style="font-size: 13px;">Supervisor</a> <a href="/tags/Swoole/" style="font-size: 13px;">Swoole</a> <a href="/tags/Systemd/" style="font-size: 13.25px;">Systemd</a> <a href="/tags/TensorFlow/" style="font-size: 13px;">TensorFlow</a> <a href="/tags/Ubuntu/" style="font-size: 13.25px;">Ubuntu</a> <a href="/tags/Vim/" style="font-size: 13px;">Vim</a> <a href="/tags/Websocket/" style="font-size: 13px;">Websocket</a> <a href="/tags/ffmpeg/" style="font-size: 13px;">ffmpeg</a> <a href="/tags/zlib/" style="font-size: 13px;">zlib</a> <a href="/tags/微信公众号/" style="font-size: 13px;">微信公众号</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/MongoDB/">MongoDB</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/05/01/给MongoDB新增一个readWriteAnyDatabase的角色账户/" class="title">给MongoDB新增一个readWriteAnyDatabase的角色账户</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-05-01T09:18:01.000Z" itemprop="datePublished">2018-05-01</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/JAVA/">JAVA</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/04/17/使用System部署SpringBoot应用/" class="title">使用Systemd部署管理SpringBoot应用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-04-17T05:28:12.000Z" itemprop="datePublished">2018-04-17</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/JAVA/">JAVA</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/01/21/Log4j2日志->Kafka->Logstash->Elasticsearch并邮件报警/" class="title">Log4j2日志-&gt;Kafka-&gt;LogStash-&gt;ElasticSearch并邮件报警</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-01-21T11:08:28.000Z" itemprop="datePublished">2018-01-21</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Git/">Git</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/01/12/Git的一些操作记录/" class="title">Git的一些操作记录</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-01-12T01:30:28.000Z" itemprop="datePublished">2018-01-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Linux/">Linux</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/01/02/Ubuntu安装Elastic Stack/" class="title">Ubuntu安装Elastic Stack</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-01-02T08:18:08.000Z" itemprop="datePublished">2018-01-02</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Composer与-autoload自动加载冲突问题" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Composer与__autoload自动加载冲突问题
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2016/12/24/Composer与-autoload自动加载冲突问题/" class="article-date">
+	  <time datetime="2016-12-24T08:53:08.000Z" itemprop="datePublished">2016-12-24</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Composer/">Composer</a>, <a class="article-tag-link" href="/tags/PHP/">PHP</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/12/24/Composer与-autoload自动加载冲突问题/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p> 最近改一些旧的项目遇到的一个有意思的问题。<br>一个项目从入口文件进来，定义了自动加载函数__autoload()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function __autoload($className)&#123;</div><div class="line">	$class = $className . &apos;.class.php&apos;;</div><div class="line">	require_once(CLASS_DIR.$class);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>然后这个旧的项目在程序某个操作类下面引入了composer来自动加载。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">require BASIC_PATH.&apos;vendor/autoload.php&apos;;</div><div class="line">print_r(spl_autoload_functions());</div><div class="line">class Testtest&#123;</div><div class="line">	public function __construct($upload_type,$act_id,$img_name=&apos;&apos;)&#123;</div><div class="line">        print_r(spl_autoload_functions());</div><div class="line">        echo &apos;&lt;br/&gt;&lt;br/&gt;&apos;;</div><div class="line">        $client = new MongoDB\Client($GLOBALS[&apos;config&apos;][&apos;mongodb_loho&apos;]);</div><div class="line">        var_dump($client);</div><div class="line">        echo &apos;&lt;br/&gt;&lt;br/&gt;&apos;;</div><div class="line">        $upload = new Upload();</div><div class="line">        var_dump($upload);</div><div class="line">        echo &apos;&lt;br/&gt;&lt;br/&gt;&apos;;</div><div class="line">        $client2 = new MongoDB\Client($GLOBALS[&apos;config&apos;][&apos;mongodb_loho&apos;]);</div><div class="line">        var_dump($client2);</div><div class="line">        echo &apos;&lt;br/&gt;&lt;br/&gt;&apos;;</div><div class="line">        $upload2 = new Upload();</div><div class="line">        var_dump($upload2);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>打印结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">Array</div><div class="line">(</div><div class="line">    [0] =&gt; Array</div><div class="line">        (</div><div class="line">            [0] =&gt; Composer\Autoload\ClassLoader Object</div><div class="line">                (</div><div class="line">                    [prefixLengthsPsr4:Composer\Autoload\ClassLoader:private] =&gt; Array</div><div class="line">                        (</div><div class="line">                            [M] =&gt; Array</div><div class="line">                                (</div><div class="line">                                    [MongoDB\] =&gt; 8</div><div class="line">                                )</div><div class="line"></div><div class="line">                        )</div><div class="line"></div><div class="line">                    [prefixDirsPsr4:Composer\Autoload\ClassLoader:private] =&gt; Array</div><div class="line">                        (</div><div class="line">                            [MongoDB\] =&gt; Array</div><div class="line">                                (</div><div class="line">                                    [0] =&gt; E:\UPUPW_NP5.5_64\htdocs\tupian\vendor/mongodb/mongodb/src</div><div class="line">                                )</div><div class="line"></div><div class="line">                        )</div><div class="line"></div><div class="line">                    [fallbackDirsPsr4:Composer\Autoload\ClassLoader:private] =&gt; Array</div><div class="line">                        (</div><div class="line">                        )</div><div class="line"></div><div class="line">                    [prefixesPsr0:Composer\Autoload\ClassLoader:private] =&gt; Array</div><div class="line">                        (</div><div class="line">                        )</div><div class="line"></div><div class="line">                    [fallbackDirsPsr0:Composer\Autoload\ClassLoader:private] =&gt; Array</div><div class="line">                        (</div><div class="line">                        )</div><div class="line"></div><div class="line">                    [useIncludePath:Composer\Autoload\ClassLoader:private] =&gt; </div><div class="line">                    [classMap:Composer\Autoload\ClassLoader:private] =&gt; Array</div><div class="line">                        (</div><div class="line">                        )</div><div class="line"></div><div class="line">                    [classMapAuthoritative:Composer\Autoload\ClassLoader:private] =&gt; </div><div class="line">                    [missingClasses:Composer\Autoload\ClassLoader:private] =&gt; Array</div><div class="line">                        (</div><div class="line">                        )</div><div class="line"></div><div class="line">                )</div><div class="line"></div><div class="line">            [1] =&gt; loadClass</div><div class="line">        )</div><div class="line"></div><div class="line">)</div><div class="line">Array</div><div class="line">(</div><div class="line">    [0] =&gt; __autoload</div><div class="line">)</div><div class="line">&lt;br/&gt;&lt;br/&gt;MongoDB\Client.class.php</div></pre></td></tr></table></figure></p>
+<p>我们会发现，上面的代码，进行到构造函数里面的时候，打印出返回所有已注册的__autoload()函数的时候，只有入口文件定义的，这是为什么呢?按理说使用了require包含的类库文件作用是全局的，手册上面有：<br>When a file is included, the code it contains inherits the variable scope of the line on which the include occurs. Any variables available at that line in the calling file will be available within the called file, from that point forward. However, all functions and classes defined in the included file have the global scope!<br>使用get_included_files()函数打印出来的时候也是看得到的。<br>然后在在网上搜索了下，这篇文章恰好能够解释：<a href="http://www.jb51.net/article/31279.htm" title="http://www.jb51.net/article/31279.htm" target="_blank" rel="external">http://www.jb51.net/article/31279.htm</a></p>
+<p>把require BASIC_PATH.’vendor/autoload.php’;放在外面，使用spl_autoload_functions函数打印的时候，发现并没有把composer的加入到类里面，估计是scope的问题，程序执行到这里，发现已经定义了全局的自动加载函数__autoload，就执行执行这个自动加载的函数，然后找不到直接抛出一个严重错误，中断执行，但是在构造函数开头添加一句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spl_autoload_register(&apos;__autoload&apos;);</div></pre></td></tr></table></figure></p>
+<p>把定义的全局构造函数加入到全局变量autoload_functions的hash table中，就既可以自动找到composer引入的类，又可以自动找到全局的autoload定义的类。从而实现自动加载。</p>
+<p>加入把文件开头包含composer的入口文件移动到构造函数里面，就会发现全局的自动加载的函数的类找不到了，因为：<br>__autoload 方法在 spl_autoload_register 后会失效，因为 autoload_func 函数指针已指向 spl_autoload 方法。</p>
+<p>解决办法也是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spl_autoload_register( &apos;__autoload&apos; );</div></pre></td></tr></table></figure></p>
+<p>把__autoload 方法加入 autoload_functions list </p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://renqiangme.github.io/2016/12/24/Composer与-autoload自动加载冲突问题/" title="Composer与__autoload自动加载冲突问题" target="_blank" rel="external">https://renqiangme.github.io/2016/12/24/Composer与-autoload自动加载冲突问题/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Renqiangme" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.gif" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Renqiangme" target="_blank"><span class="text-dark">Renqiang</span><small class="ml-1x">互联网码码工</small></a></h3>
+        <div>积土而为山，积水而为海。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2016/12/24/Linux学习笔记之常用命令之目录处理命令/" title="Linux学习笔记之常用命令之目录处理命令"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2016/12/24/PHP遍历某个目录下面的文件并使用多进程记录到数据库的几种方法比较/" title="PHP遍历某个目录下面的文件并使用多进程记录到数据库的几种方法比较"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Renqiangme" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2018 Renqiang
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: true,
+    notify: true,
+    appId: 'JdmvLC4ONPVt6t8UNXPCTl7y-gzGzoHsz',
+    appKey: 'swRTMhfCwynkJnA9iNcJofBA',
+    placeholder: 'Just go go',
+    avatar: 'retro',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

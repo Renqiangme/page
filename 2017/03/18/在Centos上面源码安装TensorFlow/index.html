@@ -198,7 +198,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -349,25 +349,11 @@
 <a id="more"></a>
 <p>源码安装<strong>TensorFlow</strong>需要先安装<strong>Bazel</strong>这个google推出的自动化构建工具。</p>
 <p>1：安装Bazel之前先安装JDK</p>
-<p>2：下载源码zip包<br>
-<a href="https://github.com/bazelbuild/bazel/releases/" title="https://github.com/bazelbuild/bazel/releases/" target="_blank" rel="external">https://github.com/bazelbuild/bazel/releases/</a></p>
-<p>3：然后直接执行./compile.sh等待出现安装成功后<br>
-4：把bazel导入到环境变量。<br>
-:vim /etc/profile<br>
-加入export PATH=/home/yangrenqiang/bazel/output:$PATH<br>
-source /etc/profile</p>
-<p>5：测试bazel是否安装成功<br>
-bazel help</p>
-<p>6：在github上面下载tensorflow的源码<br>
-7：执行./configure<br>
-8：<br>
-bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package<br>
-9：<br>
-bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg<br>
-10:<br>
-sudo pip install /tmp/tensorflow_pkg/tensorflow-1.0.1-py2-none-any.whl</p>
-<p>具体参考：<br>
-<a href="https://www.tensorflow.org/install/install_sources" title="https://www.tensorflow.org/install/install_sources" target="_blank" rel="external">https://www.tensorflow.org/install/install_sources</a></p>
+<p>2：下载源码zip包<br><a href="https://github.com/bazelbuild/bazel/releases/" title="https://github.com/bazelbuild/bazel/releases/" target="_blank" rel="external">https://github.com/bazelbuild/bazel/releases/</a></p>
+<p>3：然后直接执行./compile.sh等待出现安装成功后<br>4：把bazel导入到环境变量。<br>:vim /etc/profile<br>加入export PATH=/home/yangrenqiang/bazel/output:$PATH<br>source /etc/profile</p>
+<p>5：测试bazel是否安装成功<br>bazel help</p>
+<p>6：在github上面下载tensorflow的源码<br>7：执行./configure<br>8：<br>bazel build –config=opt //tensorflow/tools/pip_package:build_pip_package<br>9：<br>bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg<br>10:<br>sudo pip install /tmp/tensorflow_pkg/tensorflow-1.0.1-py2-none-any.whl</p>
+<p>具体参考：<br><a href="https://www.tensorflow.org/install/install_sources" title="https://www.tensorflow.org/install/install_sources" target="_blank" rel="external">https://www.tensorflow.org/install/install_sources</a></p>
 <p>关于TensorFlow的中文文档：<a href="http://docs.pythontab.com/tensorflow/" title="http://docs.pythontab.com/tensorflow/" target="_blank" rel="external">http://docs.pythontab.com/tensorflow/</a></p>
 
       
