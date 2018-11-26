@@ -17,15 +17,22 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>标签: GitHub | Renqiang&#39;s Notes</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Renqiang">
-<meta property="og:url" content="https://renqiangme.github.io/tags/GitHub/index.html">
+  <title>Linux设置Swap交换分区 | Renqiang&#39;s Notes</title>
+  <meta name="description" content="有时，服务器上面程序跑多了，受限于内存不够，会出现程序被kill掉或者起不来的情况。
+这个时候我们可以设置下Swap（交换分区）。Swap（交换分区），类似于 Windows 的虚拟内存，就是当内存不足的时候，把一部分硬盘空间虚拟成内存使用,从而解决内存容量不足的情况。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux设置Swap交换分区">
+<meta property="og:url" content="https://renqiangme.github.io/2018/08/21/Linux设置Swap交换分区/index.html">
 <meta property="og:site_name" content="Renqiang">
+<meta property="og:description" content="有时，服务器上面程序跑多了，受限于内存不够，会出现程序被kill掉或者起不来的情况。
+这个时候我们可以设置下Swap（交换分区）。Swap（交换分区），类似于 Windows 的虚拟内存，就是当内存不足的时候，把一部分硬盘空间虚拟成内存使用,从而解决内存容量不足的情况。">
+<meta property="og:updated_time" content="2018-11-26T07:34:12.409Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Renqiang">
+<meta name="twitter:title" content="Linux设置Swap交换分区">
+<meta name="twitter:description" content="有时，服务器上面程序跑多了，受限于内存不够，会出现程序被kill掉或者起不来的情况。
+这个时候我们可以设置下Swap（交换分区）。Swap（交换分区），类似于 Windows 的虚拟内存，就是当内存不足的时候，把一部分硬盘空间虚拟成内存使用,从而解决内存容量不足的情况。">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://renqiangme.github.io/tags/GitHub/index.html">
+  <link rel="canonical" href="https://renqiangme.github.io/2018/08/21/Linux设置Swap交换分区/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Renqiang" type="application/atom+xml">
   
@@ -291,118 +298,158 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="content article article-tags post-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">标签: GitHub</h1>
-      <p class="text-muted hidden-xs">共 1 篇文章</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/tags">All</a></li>
-          
-          <li><a href="/tags/Git/">Git</a></li>
-          
-          <li><a href="/tags/GitHub/">GitHub</a></li>
-          
-          <li><a href="/tags/Javascript/">Javascript</a></li>
-          
-          <li><a href="/tags/Linux/">Linux</a></li>
-          
-          <li><a href="/tags/PHP/">PHP</a></li>
-          
-          <li><a href="/tags/Composer/">Composer</a></li>
-          
-          <li><a href="/tags/Vim/">Vim</a></li>
-          
-          <li><a href="/tags/Openresty/">Openresty</a></li>
-          
-          <li><a href="/tags/Cookie/">Cookie</a></li>
-          
-          <li><a href="/tags/MongoDB/">MongoDB</a></li>
-          
-          <li><a href="/tags/微信公众号/">微信公众号</a></li>
-          
-          <li><a href="/tags/Redis/">Redis</a></li>
-          
-          <li><a href="/tags/zlib/">zlib</a></li>
-          
-          <li><a href="/tags/Lua/">Lua</a></li>
-          
-          <li><a href="/tags/Nginx/">Nginx</a></li>
-          
-          <li><a href="/tags/NodeJS/">NodeJS</a></li>
-          
-          <li><a href="/tags/Websocket/">Websocket</a></li>
-          
-          <li><a href="/tags/SSH/">SSH</a></li>
-          
-          <li><a href="/tags/TensorFlow/">TensorFlow</a></li>
-          
-          <li><a href="/tags/Centos/">Centos</a></li>
-          
-          <li><a href="/tags/AI/">AI</a></li>
-          
-          <li><a href="/tags/Python/">Python</a></li>
-          
-          <li><a href="/tags/ffmpeg/">ffmpeg</a></li>
-          
-          <li><a href="/tags/Swoole/">Swoole</a></li>
-          
-          <li><a href="/tags/Systemd/">Systemd</a></li>
-          
-          <li><a href="/tags/Supervisor/">Supervisor</a></li>
-          
-          <li><a href="/tags/Ubuntu/">Ubuntu</a></li>
-          
-          <li><a href="/tags/Elastic-Stack/">Elastic Stack</a></li>
-          
-          <li><a href="/tags/JAVA/">JAVA</a></li>
-          
-          <li><a href="/tags/SpringBoot/">SpringBoot</a></li>
-          
-          <li><a href="/tags/Kafka/">Kafka</a></li>
-          
-          <li><a href="/tags/LogStash/">LogStash</a></li>
-          
-          <li><a href="/tags/ElasticSearch/">ElasticSearch</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="row">
-        
-<div class="col-md-6">
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Linux设置Swap交换分区" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
-<article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="panel-body">
-     <div class="article-meta">
-       <time datetime="2016-12-24T07:58:08.000Z" itemprop="datePublished">2016-12-24</time>
-     </div>
-     <h3 class="article-title" itemprop="name">
-       <a class="article-link" href="/2016/12/24/Github的SSH和HTTPS记住账号密码方法/">Github的SSH和HTTPS记住账号密码方法</a>
-     </h3>
-   </div>
-   
-   <div class="panel-footer">
-     
-      <a href="/tags/Git/" class="label label-default mb">Git</a>
-     
-      <a href="/tags/GitHub/" class="label label-default mb">GitHub</a>
-     
-     
-   </div>
-   
-</article>
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux设置Swap交换分区
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/08/21/Linux设置Swap交换分区/" class="article-date">
+	  <time datetime="2018-08-21T05:12:51.000Z" itemprop="datePublished">2018-08-21</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Linux/">Linux</a>
+  </span>
 
 
-</div>
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
 
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/08/21/Linux设置Swap交换分区/#comments" class="article-comment-link">评论</a></span>
+        
       </div>
     </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>有时，服务器上面程序跑多了，受限于内存不够，会出现程序被kill掉或者起不来的情况。</p>
+<p>这个时候我们可以设置下Swap（交换分区）。Swap（交换分区），类似于 Windows 的虚拟内存，就是当内存不足的时候，把一部分硬盘空间虚拟成内存使用,从而解决内存容量不足的情况。</p>
+<a id="more"></a>
+<h5 id="1-检查-Swap-空间"><a href="#1-检查-Swap-空间" class="headerlink" title="1.检查 Swap 空间"></a>1.检查 Swap 空间</h5><p>在设置 Swap 文件之前，有必要先检查一下系统里有没有既存的 Swap 文件。</p>
+<p>运行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swapon -s</div></pre></td></tr></table></figure></p>
+<p>如果返回的信息概要是空的，则表示 Swap 文件不存在。</p>
+<p>然后我们还需要检查下需要把Swap（交换分区）设置的那个目录所在的磁盘是否还有剩余空间，可以使用：<code>df -lh</code></p>
+<h5 id="2-创建-Swap-文件"><a href="#2-创建-Swap-文件" class="headerlink" title="2.创建 Swap 文件"></a>2.创建 Swap 文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dd if=/dev/zero of=/tmp/swapfile bs=1024 count=1024k</div></pre></td></tr></table></figure>
+<p>这样就建立一个/tmp/swapfile的分区文件，大小为1G。</p>
+<p>参数解读：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if=文件名：输入文件名，缺省为标准输入。即指定源文件。&lt; if=input file &gt;</div><div class="line">of=文件名：输出文件名，缺省为标准输出。即指定目的文件。&lt; of=output file &gt;</div><div class="line">bs=bytes：同时设置读入/输出的块大小为bytes个字节</div><div class="line">count=blocks：仅拷贝blocks个块，块大小等于bs指定的字节数。</div></pre></td></tr></table></figure></p>
+<h5 id="3-格式化并激活-Swap-文件"><a href="#3-格式化并激活-Swap-文件" class="headerlink" title="3.格式化并激活 Swap 文件"></a>3.格式化并激活 Swap 文件</h5><p>创建好 Swap 文件，还需要格式化后才能使用。运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkswap /tmp/swapfile</div></pre></td></tr></table></figure>
+<p>激活 Swap ，运行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swapon /tmp/swapfile</div></pre></td></tr></table></figure></p>
+<p>如果以上在空间足够的情况下，应该就成功了，可以运行命令：<code>swapon -s</code> 或者 <code>free -m</code> 检查下。</p>
+<p>如果要机器重启的时候自动挂载 Swap ，那么还需要修改 fstab 配置。</p>
+<p>用 vim 打开 /etc/fstab 文件，在其最后添加如下一行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/tmp/swapfile           swap                    swap    defaults        0 0</div></pre></td></tr></table></figure></p>
+<p>赋予 Swap 文件适当的权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chown root:root /tmp/swapfile </div><div class="line">chmod 600 /tmp/swapfile</div></pre></td></tr></table></figure></p>
+<h5 id="4-修改swappiness"><a href="#4-修改swappiness" class="headerlink" title="4.修改swappiness"></a>4.修改swappiness</h5><p>同时，我们还可以修改 Linux Swap 空间的 swappiness ，调整对硬盘的缓存。</p>
+<p>Linux会使用硬盘的一部分做为 Swap 分区，用来进行进程调度–进程是正在运行的程序–把当前不用的进程调成等待（standby），甚至睡眠（sleep），一旦要用，再调成活动（active），睡眠的进程就会在 Swap 分区，把内存空出来让给活动的进程。</p>
+<p>如果内存够大，应当告诉 Linux 不必太多的使用 Swap 分区，可以通过修改 swappiness 的参数来设置。swappiness=0 的时候表示最大限度使用物理内存，然后才是 Swap 空间，swappiness＝100 的时候表示积极的使用 Swap 分区，并且把内存上的数据及时的搬运到 Swap 空间里面。</p>
+<p>一般swappiness 的默认值是60。</p>
+<p>通过以下命令可以查看swappiness的值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /proc/sys/vm/swappiness</div></pre></td></tr></table></figure></p>
+<p>使用 sysctl 临时性的修改,重启系统会恢复成系统默认，命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl vm.swappiness=10</div></pre></td></tr></table></figure></p>
+<p>永久设置，还需要<code>vi /etc/sysctl.conf</code>,在这个文档的最后加上这样一行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vm.swappiness=10 #可以是其他值，:wq保存后Swap分区在系统重启后都会生效了</div></pre></td></tr></table></figure></p>
+<h5 id="其他，删除某swap分区"><a href="#其他，删除某swap分区" class="headerlink" title="其他，删除某swap分区"></a>其他，删除某swap分区</h5><p>a.先停止正在使用swap分区：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swapoff  /tmp/swapfile</div></pre></td></tr></table></figure></p>
+<p>b. 删除swap分区文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf   /tmp/swapfile</div></pre></td></tr></table></figure></p>
+<p>c.删除掉我们之前在fstab文件里追加的开机自动挂载配置内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/tmp/swapfile   swap  swap  defaults  0  0</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://renqiangme.github.io/2018/08/21/Linux设置Swap交换分区/" title="Linux设置Swap交换分区" target="_blank" rel="external">https://renqiangme.github.io/2018/08/21/Linux设置Swap交换分区/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Renqiangme" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.gif" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Renqiangme" target="_blank"><span class="text-dark">Renqiang</span><small class="ml-1x">互联网码码工</small></a></h3>
+        <div>积土而为山，积水而为海。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
   </article>
-   
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2018/05/01/给MongoDB新增一个readWriteAnyDatabase的角色账户/" title="给MongoDB新增一个readWriteAnyDatabase的角色账户"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -453,6 +500,39 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: true,
+    notify: true,
+    appId: 'JdmvLC4ONPVt6t8UNXPCTl7y-gzGzoHsz',
+    appKey: 'swRTMhfCwynkJnA9iNcJofBA',
+    placeholder: 'Just go go',
+    avatar: 'retro',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
 
 
 
