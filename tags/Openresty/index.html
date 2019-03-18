@@ -190,12 +190,9 @@
         <li class="archive-list-item">
           <h2><a href="/2016/12/24/OpenResty中获取和设置cookie/">OpenResty中获取和设置cookie</a></h2>
           <p>
-                1：获取cookie 
- local cookie_xx_value = ngx.var.cookie_xx 
-  
-    2：设置cookie 
- 因为cookie的过期时间格是林尼治时间需要注意转下。 
-      1  2       local  expires =  3600  ...
+               1：获取cookie  local cookie_xx_value = ngx.var.cookie_xx    
+   2：设置cookie  因为cookie的过期时间格是林尼治时间需要注意转下。 
+      1  2       local  expires =  3600  *  2...
           </p>
           <ul class="tag-list clearfix">
             

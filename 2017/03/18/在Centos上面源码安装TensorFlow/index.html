@@ -140,33 +140,19 @@
 <a id="more"></a>
 <p>源码安装<strong>TensorFlow</strong>需要先安装<strong>Bazel</strong>这个google推出的自动化构建工具。</p>
 <p>1：安装Bazel之前先安装JDK</p>
-<p>2：下载源码zip包<br>
-<a href="https://github.com/bazelbuild/bazel/releases/" title="https://github.com/bazelbuild/bazel/releases/" target="_blank" rel="external">https://github.com/bazelbuild/bazel/releases/</a></p>
-<p>3：然后直接执行./compile.sh等待出现安装成功后<br>
-4：把bazel导入到环境变量。<br>
-:vim /etc/profile<br>
-加入export PATH=/home/yangrenqiang/bazel/output:$PATH<br>
-source /etc/profile</p>
-<p>5：测试bazel是否安装成功<br>
-bazel help</p>
-<p>6：在github上面下载tensorflow的源码<br>
-7：执行./configure<br>
-8：<br>
-bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package<br>
-9：<br>
-bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg<br>
-10:<br>
-sudo pip install /tmp/tensorflow_pkg/tensorflow-1.0.1-py2-none-any.whl</p>
-<p>具体参考：<br>
-<a href="https://www.tensorflow.org/install/install_sources" title="https://www.tensorflow.org/install/install_sources" target="_blank" rel="external">https://www.tensorflow.org/install/install_sources</a></p>
+<p>2：下载源码zip包<br><a href="https://github.com/bazelbuild/bazel/releases/" title="https://github.com/bazelbuild/bazel/releases/" target="_blank" rel="external">https://github.com/bazelbuild/bazel/releases/</a></p>
+<p>3：然后直接执行./compile.sh等待出现安装成功后<br>4：把bazel导入到环境变量。<br>:vim /etc/profile<br>加入export PATH=/home/yangrenqiang/bazel/output:$PATH<br>source /etc/profile</p>
+<p>5：测试bazel是否安装成功<br>bazel help</p>
+<p>6：在github上面下载tensorflow的源码<br>7：执行./configure<br>8：<br>bazel build –config=opt //tensorflow/tools/pip_package:build_pip_package<br>9：<br>bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg<br>10:<br>sudo pip install /tmp/tensorflow_pkg/tensorflow-1.0.1-py2-none-any.whl</p>
+<p>具体参考：<br><a href="https://www.tensorflow.org/install/install_sources" title="https://www.tensorflow.org/install/install_sources" target="_blank" rel="external">https://www.tensorflow.org/install/install_sources</a></p>
 <p>关于TensorFlow的中文文档：<a href="http://docs.pythontab.com/tensorflow/" title="http://docs.pythontab.com/tensorflow/" target="_blank" rel="external">http://docs.pythontab.com/tensorflow/</a></p>
 
   </article>
 </div>
 
 
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div class='container' id="gitalk-container"></div>
 <script>
     var gitalk = new Gitalk({

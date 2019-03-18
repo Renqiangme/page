@@ -136,11 +136,8 @@
 
   <article class="post-content">
     <h1>OpenResty中获取和设置cookie</h1>
-    <h3 id="1获取cookie"><a class="markdownIt-Anchor" href="#1获取cookie"></a> 1：获取cookie</h3>
-<p>local cookie_xx_value = ngx.var.cookie_xx</p>
-<a id="more"></a>
-<h3 id="2设置cookie"><a class="markdownIt-Anchor" href="#2设置cookie"></a> 2：设置cookie</h3>
-<p>因为cookie的过期时间格是林尼治时间需要注意转下。</p>
+    <h3 id="1：获取cookie"><a href="#1：获取cookie" class="headerlink" title="1：获取cookie"></a>1：获取cookie</h3><p>local cookie_xx_value = ngx.var.cookie_xx<br><a id="more"></a></p>
+<h3 id="2：设置cookie"><a href="#2：设置cookie" class="headerlink" title="2：设置cookie"></a>2：设置cookie</h3><p>因为cookie的过期时间格是林尼治时间需要注意转下。</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> expires = <span class="number">3600</span> * <span class="number">24</span>  <span class="comment">-- cookie expires = 1 day</span></div><div class="line">ngx.header[<span class="string">"Set-Cookie"</span>] = <span class="string">"hello=world; Path=/; Expires="</span> .. ngx.cookie_time(ngx.time() + expires)</div></pre></td></tr></table></figure>
 <p>如果想同时设置多个cookie，可以传一个table</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> expires = <span class="number">3600</span> * <span class="number">24</span>  <span class="comment">-- cookie expires = 1 day</span></div><div class="line"><span class="keyword">local</span> cookie_table = &#123;</div><div class="line"><span class="string">"hello=world; Path=/;Domain=/; Expires="</span> .. ngx.cookie_time(ngx.time() + expires),</div><div class="line"><span class="string">"hello2=world2; Path=/;Domain=/; Expires="</span> .. ngx.cookie_time(ngx.time() + expires),</div><div class="line"><span class="string">"hello3=world3; Path=/;Domain=/; Expires="</span> .. ngx.cookie_time(ngx.time() + expires)</div><div class="line">&#125;</div><div class="line">ngx.header[<span class="string">"Set-Cookie"</span>] = cookie_table</div></pre></td></tr></table></figure>
@@ -151,8 +148,8 @@
 </div>
 
 
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div class='container' id="gitalk-container"></div>
 <script>
     var gitalk = new Gitalk({

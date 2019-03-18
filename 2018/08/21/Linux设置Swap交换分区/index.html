@@ -139,53 +139,37 @@
     <p>有时，服务器上面程序跑多了，受限于内存不够，会出现程序被kill掉或者起不来的情况。</p>
 <p>这个时候我们可以设置下Swap（交换分区）。Swap（交换分区），类似于 Windows 的虚拟内存，就是当内存不足的时候，把一部分硬盘空间虚拟成内存使用,从而解决内存容量不足的情况。</p>
 <a id="more"></a>
-<h5 id="1检查-swap-空间"><a class="markdownIt-Anchor" href="#1检查-swap-空间"></a> 1.检查 Swap 空间</h5>
-<p>在设置 Swap 文件之前，有必要先检查一下系统里有没有既存的 Swap 文件。</p>
-<p>运行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swapon -s</div></pre></td></tr></table></figure>
+<h5 id="1-检查-Swap-空间"><a href="#1-检查-Swap-空间" class="headerlink" title="1.检查 Swap 空间"></a>1.检查 Swap 空间</h5><p>在设置 Swap 文件之前，有必要先检查一下系统里有没有既存的 Swap 文件。</p>
+<p>运行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swapon -s</div></pre></td></tr></table></figure></p>
 <p>如果返回的信息概要是空的，则表示 Swap 文件不存在。</p>
 <p>然后我们还需要检查下需要把Swap（交换分区）设置的那个目录所在的磁盘是否还有剩余空间，可以使用：<code>df -lh</code></p>
-<h5 id="2创建-swap-文件"><a class="markdownIt-Anchor" href="#2创建-swap-文件"></a> 2.创建 Swap 文件</h5>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dd if=/dev/zero of=/tmp/swapfile bs=1024 count=1024k</div></pre></td></tr></table></figure>
+<h5 id="2-创建-Swap-文件"><a href="#2-创建-Swap-文件" class="headerlink" title="2.创建 Swap 文件"></a>2.创建 Swap 文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dd if=/dev/zero of=/tmp/swapfile bs=1024 count=1024k</div></pre></td></tr></table></figure>
 <p>这样就建立一个/tmp/swapfile的分区文件，大小为1G。</p>
-<p>参数解读：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if=文件名：输入文件名，缺省为标准输入。即指定源文件。&lt; if=input file &gt;</div><div class="line">of=文件名：输出文件名，缺省为标准输出。即指定目的文件。&lt; of=output file &gt;</div><div class="line">bs=bytes：同时设置读入/输出的块大小为bytes个字节</div><div class="line">count=blocks：仅拷贝blocks个块，块大小等于bs指定的字节数。</div></pre></td></tr></table></figure>
-<h5 id="3格式化并激活-swap-文件"><a class="markdownIt-Anchor" href="#3格式化并激活-swap-文件"></a> 3.格式化并激活 Swap 文件</h5>
-<p>创建好 Swap 文件，还需要格式化后才能使用。运行命令：</p>
+<p>参数解读：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if=文件名：输入文件名，缺省为标准输入。即指定源文件。&lt; if=input file &gt;</div><div class="line">of=文件名：输出文件名，缺省为标准输出。即指定目的文件。&lt; of=output file &gt;</div><div class="line">bs=bytes：同时设置读入/输出的块大小为bytes个字节</div><div class="line">count=blocks：仅拷贝blocks个块，块大小等于bs指定的字节数。</div></pre></td></tr></table></figure></p>
+<h5 id="3-格式化并激活-Swap-文件"><a href="#3-格式化并激活-Swap-文件" class="headerlink" title="3.格式化并激活 Swap 文件"></a>3.格式化并激活 Swap 文件</h5><p>创建好 Swap 文件，还需要格式化后才能使用。运行命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkswap /tmp/swapfile</div></pre></td></tr></table></figure>
-<p>激活 Swap ，运行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swapon /tmp/swapfile</div></pre></td></tr></table></figure>
+<p>激活 Swap ，运行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swapon /tmp/swapfile</div></pre></td></tr></table></figure></p>
 <p>如果以上在空间足够的情况下，应该就成功了，可以运行命令：<code>swapon -s</code> 或者 <code>free -m</code> 检查下。</p>
 <p>如果要机器重启的时候自动挂载 Swap ，那么还需要修改 fstab 配置。</p>
-<p>用 vim 打开 /etc/fstab 文件，在其最后添加如下一行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/tmp/swapfile           swap                    swap    defaults        0 0</div></pre></td></tr></table></figure>
-<p>赋予 Swap 文件适当的权限：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chown root:root /tmp/swapfile </div><div class="line">chmod 600 /tmp/swapfile</div></pre></td></tr></table></figure>
-<h5 id="4修改swappiness"><a class="markdownIt-Anchor" href="#4修改swappiness"></a> 4.修改swappiness</h5>
-<p>同时，我们还可以修改 Linux Swap 空间的 swappiness ，调整对硬盘的缓存。</p>
+<p>用 vim 打开 /etc/fstab 文件，在其最后添加如下一行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/tmp/swapfile           swap                    swap    defaults        0 0</div></pre></td></tr></table></figure></p>
+<p>赋予 Swap 文件适当的权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chown root:root /tmp/swapfile </div><div class="line">chmod 600 /tmp/swapfile</div></pre></td></tr></table></figure></p>
+<h5 id="4-修改swappiness"><a href="#4-修改swappiness" class="headerlink" title="4.修改swappiness"></a>4.修改swappiness</h5><p>同时，我们还可以修改 Linux Swap 空间的 swappiness ，调整对硬盘的缓存。</p>
 <p>Linux会使用硬盘的一部分做为 Swap 分区，用来进行进程调度–进程是正在运行的程序–把当前不用的进程调成等待（standby），甚至睡眠（sleep），一旦要用，再调成活动（active），睡眠的进程就会在 Swap 分区，把内存空出来让给活动的进程。</p>
 <p>如果内存够大，应当告诉 Linux 不必太多的使用 Swap 分区，可以通过修改 swappiness 的参数来设置。swappiness=0 的时候表示最大限度使用物理内存，然后才是 Swap 空间，swappiness＝100 的时候表示积极的使用 Swap 分区，并且把内存上的数据及时的搬运到 Swap 空间里面。</p>
 <p>一般swappiness 的默认值是60。</p>
-<p>通过以下命令可以查看swappiness的值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /proc/sys/vm/swappiness</div></pre></td></tr></table></figure>
-<p>使用 sysctl 临时性的修改,重启系统会恢复成系统默认，命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl vm.swappiness=10</div></pre></td></tr></table></figure>
-<p>永久设置，还需要<code>vi /etc/sysctl.conf</code>,在这个文档的最后加上这样一行:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vm.swappiness=10 #可以是其他值，:wq保存后Swap分区在系统重启后都会生效了</div></pre></td></tr></table></figure>
-<h5 id="其他删除某swap分区"><a class="markdownIt-Anchor" href="#其他删除某swap分区"></a> 其他，删除某swap分区</h5>
-<p>a.先停止正在使用swap分区：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swapoff  /tmp/swapfile</div></pre></td></tr></table></figure>
-<p>b. 删除swap分区文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf   /tmp/swapfile</div></pre></td></tr></table></figure>
-<p>c.删除掉我们之前在fstab文件里追加的开机自动挂载配置内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/tmp/swapfile   swap  swap  defaults  0  0</div></pre></td></tr></table></figure>
+<p>通过以下命令可以查看swappiness的值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /proc/sys/vm/swappiness</div></pre></td></tr></table></figure></p>
+<p>使用 sysctl 临时性的修改,重启系统会恢复成系统默认，命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl vm.swappiness=10</div></pre></td></tr></table></figure></p>
+<p>永久设置，还需要<code>vi /etc/sysctl.conf</code>,在这个文档的最后加上这样一行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vm.swappiness=10 #可以是其他值，:wq保存后Swap分区在系统重启后都会生效了</div></pre></td></tr></table></figure></p>
+<h5 id="其他，删除某swap分区"><a href="#其他，删除某swap分区" class="headerlink" title="其他，删除某swap分区"></a>其他，删除某swap分区</h5><p>a.先停止正在使用swap分区：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swapoff  /tmp/swapfile</div></pre></td></tr></table></figure></p>
+<p>b. 删除swap分区文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf   /tmp/swapfile</div></pre></td></tr></table></figure></p>
+<p>c.删除掉我们之前在fstab文件里追加的开机自动挂载配置内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/tmp/swapfile   swap  swap  defaults  0  0</div></pre></td></tr></table></figure></p>
 
   </article>
 </div>
 
 
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div class='container' id="gitalk-container"></div>
 <script>
     var gitalk = new Gitalk({
