@@ -172,25 +172,29 @@ r读 w写 x执行
 </code></pre><hr>
 <p><code>mkdir</code></p>
 <p>英文原意：make directories<br>命令所在路径：/bin/mkdir<br>执行权限：所有用户<br>语法：mkdir-p[目录名]<br>功能描述：创建根目录 -p递归创建</p>
-<pre><code>范例：mkdir -p /tmp/Japan/boduo
-      mkdir /tmp/Japan/longze/tmp/Japan/canjing 这个会报错 应该如果不-p递归 你在一个本来不存在的目录里面再去创建目录 肯定是不行的
-</code></pre><hr>
+<p>范例：</p>
+<p>mkdir -p /tmp/Japan/boduo</p>
+<p>mkdir /tmp/Japan/longze/tmp/Japan/canjing 这个会报错 应该如果不-p递归 你在一个本来不存在的目录里面再去创建目录 肯定是不行的</p>
+<hr>
 <p><code>cd</code></p>
 <p>英文原意：change directory;<br>命令所在路径：shell内置命令；<br>执行权限：所有用户；<br>语法：cd[目录]；<br>功能描述：切换目录</p>
-<pre><code>范例：cd /tem/Japan/boduo切换到指定目录
-     cd .. 回到上一级目录
-</code></pre><hr>
+<p>范例：</p>
+<p>cd /tem/Japan/boduo切换到指定目录</p>
+<p>cd .. 回到上一级目录</p>
+<hr>
 <p><code>rmdir</code></p>
 <p>英文原意：remove empty directories<br>命令所在路径：/bin/rmdir<br>执行权限：所有用户<br>语法：rmdir[目录名]<br>功能描述：删除空目录</p>
-<pre><code>如果不为空得用rm -r xxx
-范例：rmdir /tmp/Japan/boduo
-</code></pre><hr>
+<p>如果不为空得用rm -r xxx</p>
+<p>范例：rmdir /tmp/Japan/boduo</p>
+<hr>
 <p><code>cp</code></p>
 <p>英文原意：copy ; 命令所在路径：/bin/cp ；执行权限：所有用户;<br>语法：cp -rp [原文件或目录][目标目录]<br>         -r  复制目录<br>         -p 保留文件属性<br>功能描述：复制文件或目录(可以同时复制多个文件或目录 只要指定目标位置)</p>
-<pre><code>例子：mv -r /tmp/Japan /root/riben 把tmp目录下面的Japan复制到root目录下面并且更改名字为riben
-</code></pre><hr>
+<p>例子：mv -r /tmp/Japan /root/riben 把tmp目录下面的Japan复制到root目录下面并且更改名字为riben</p>
+<hr>
 <p><code>mv</code></p>
-<p>英文原意：move<br>命令所在路径:/bin/mv<br>执行权限：所有用户；<br>语法：mv[原文件或目录][目标目录]<br>功能描述:剪切文件或改名<br>    例子：mv /tmp/Japan /root/riben 把tmp目录下面的Japan剪切到root目录下面并且更改名字为riben<br>    改名:<br>    cd /root<br>    mv Japan riben 如果在当前目录下面mv不就是在改名么！ </p>
+<p>英文原意：move<br>命令所在路径:/bin/mv<br>执行权限：所有用户；<br>语法：mv[原文件或目录][目标目录]<br>功能描述:剪切文件或改名</p>
+<p>例子：mv /tmp/Japan /root/riben 把tmp目录下面的Japan剪切到root目录下面并且更改名字为riben</p>
+<p>改名:<br>cd /root<br>mv Japan riben 如果在当前目录下面mv不就是在改名么！ </p>
 <hr>
 <p><code>rm</code><br>英文原意：remove<br>命令所在路径:/bin/rm<br>执行权限：所有用户<br>语法：rm -rf[文件或目录]<br>         -r 删除目录<br>         -f 强制执行<br>功能描述:删除文件<br>    rm grub.config</p>
 <hr>
@@ -308,8 +312,14 @@ H: 根据i节点查找
 <p><code>locate</code><br>命令所在路径：/usr/bin/locate<br>执行权限：所有用户<br>语法：locate 文件名<br>功能描述：在文件资料库中查找文件<br>    范例：locate inittab</p>
 <pre><code>-i 选项不区分大小写
 
-注意1：locate搜索速度很快 相当于window那个everything那个软件。原因是：用locate locate 会得到很多行信息，系统会定期把信息存放到mlocate.db文件里，不像find会在某个分区某个文件去查找，只需要搜索mlocate.db这个文件就行了。
-但是有一个问题，新建的文件实际上是没有被收录到这个文件里的，所以用locate去查找的时候，是查找不了的。解决办法：执行下update命令 回去更新这个文件资料库，再去查找就会找到了。
+注意1：
+
+locate搜索速度很快 相当于window那个everything那个软件。
+原因是：用locate locate 会得到很多行信息，系统会定期把信息存放到mlocate.db文件里，
+不像find会在某个分区某个文件去查找，只需要搜索mlocate.db这个文件就行了。
+但是有一个问题，新建的文件实际上是没有被收录到这个文件里的，所以用locate去查找的时候，是查找不了的。
+解决办法：执行下update命令 回去更新这个文件资料库，再去查找就会找到了。
+
 注意2：locate是无法找到临时目录下面的文件的 比如/tmp
 </code></pre><hr>
 <p><code>which</code><br>命令所在路径：/usr/bin/which<br>执行权限：所有用户<br>语法：which命令<br>功能描述：搜索命令所在目录及别名信息<br>    范例：which ls</p>
