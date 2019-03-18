@@ -148,13 +148,13 @@
   <ul class="clearfix">
     <li class="">
       <a href="/">Overview</a></li>
-    <li class="selected">
+    <li class="">
       <a href="/archives">Posts <span class="counter">27</span></a>
     </li>
     <li class="">
       <a href="/categories">Categories <span
                 class="counter">11</span></a></li>
-    <li class="">
+    <li class="selected">
       <a href="/tags">Tags <span class="counter">32</span></a></li>
   </ul>
 </nav>
@@ -163,29 +163,52 @@
       <ul class="archive-list">
         
         <li class="archive-list-item">
-          <h2><a href="/2018/04/17/使用System部署SpringBoot应用/">使用Systemd部署管理SpringBoot应用</a></h2>
+          <h2><a href="/2016/12/25/网页加载优化-PHP压缩网页进Redis-OpenResty端直接输出/">网页加载优化-PHP压缩网页进Redis,OpenResty端直接输出</a></h2>
           <p>
-             如果不使用 Docker 和 Kubernets 部署管理 SpringBoot 应用，可以选择 Systemd 。 
- 因为SpringBoot自带Tomcat之类的Web应用服务器，可以直接 java -jar xxx.jar 的方式启动起来。 
- 如果我们直接使用 nohup java -j...
+             其实商城项目的网页端，观察京东，淘宝他们有很多活动页面或者商品详情页，推广力度很多，流量也就比较多，通常一个页面很大很大，整个网页内容也很多，单纯考虑从webserver到走进php,java连接数据库等等读取数据拼装，再渲染视图输出到浏览器，整个过程下来，并发不大的情况还好，一大起来的就会性能大...
           </p>
           <ul class="tag-list clearfix">
             
-            <li class="tag-list-item"><a href="/tags/JAVA/">JAVA</a></li>
+            <li class="tag-list-item"><a href="/tags/PHP/">PHP</a></li>
             
-            <li class="tag-list-item"><a href="/tags/SpringBoot/">SpringBoot</a></li>
+            <li class="tag-list-item"><a href="/tags/OpenResty/">OpenResty</a></li>
             
-            <li class="tag-list-item"><a href="/tags/Systemd/">Systemd</a></li>
+            <li class="tag-list-item"><a href="/tags/Redis/">Redis</a></li>
             
           </ul>
           <div class="post-info">
             <span>
               
-              <a class="category-link" href="/categories/JAVA/"><i class="fa fa-folder-open"></i> JAVA</a>
+              <a class="category-link" href="/categories/OpenResty/"><i class="fa fa-folder-open"></i> OpenResty</a>
               
             </span>
             <span><i class="fa fa-tag"></i> 3 </span>
-            <span>Published {{moment(1523942892000).fromNow()}}</span>
+            <span>Published {{moment(1482674850000).fromNow()}}</span>
+          </div>
+        </li>
+        
+        <li class="archive-list-item">
+          <h2><a href="/2016/12/24/OpenResty中获取和设置cookie/">OpenResty中获取和设置cookie</a></h2>
+          <p>
+               1：获取cookie  local cookie_xx_value = ngx.var.cookie_xx    
+   2：设置cookie  因为cookie的过期时间格是林尼治时间需要注意转下。 
+      1  2       local  expires =  3600  *  2...
+          </p>
+          <ul class="tag-list clearfix">
+            
+            <li class="tag-list-item"><a href="/tags/OpenResty/">OpenResty</a></li>
+            
+            <li class="tag-list-item"><a href="/tags/Cookie/">Cookie</a></li>
+            
+          </ul>
+          <div class="post-info">
+            <span>
+              
+              <a class="category-link" href="/categories/OpenResty/"><i class="fa fa-folder-open"></i> OpenResty</a>
+              
+            </span>
+            <span><i class="fa fa-tag"></i> 2 </span>
+            <span>Published {{moment(1482589672000).fromNow()}}</span>
           </div>
         </li>
         
