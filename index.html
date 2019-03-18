@@ -1,1520 +1,562 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html lang="zh-CN">
+
+
 <head>
-  <meta charset="utf-8">
-  
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no,email=no,adress=no">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000000" />
-  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
-  <meta http-equiv="window-target" content="_top" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    Renqiang
+  </title>
+  <meta name="description" content="积土而为山，积水而为海。">
   
+  <meta name="author" content="Renqiang">
+
+  <meta http-equiv="Cache-Control" content="no-transform"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href="/images/logo.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
-  <title>Renqiang&#39;s Notes</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Renqiang">
-<meta property="og:url" content="https://renqiangme.github.io/index.html">
-<meta property="og:site_name" content="Renqiang">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Renqiang">
-  <!-- Canonical links -->
-  <link rel="canonical" href="https://renqiangme.github.io/index.html">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-136432390-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
   
-    <link rel="alternate" href="/atom.xml" title="Renqiang" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/fav.png" type="image/x-icon">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-  
-  
-  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 </head>
 
+<body id="replica-app">
 
-<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="slimContent">
-    <div class="navbar-header">
-      
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/Renqiangme" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.gif" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">Renqiang</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">互联网码码工</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><img src="/images/logo.png" title="Home" alt="Home" /></a>
+
+      <ul class="navbar-nav float-left">
+        <li class="desktop-only"><a href="/">Home</a></li>
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li><a href="/about">About</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <div class="navbar-search float-right desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
       </div>
-      
-      <div class="search" id="search-form-wrap">
+    </div>
+  </div>
+</nav>
 
-    <form class="search-form sidebar-form">
-        <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="搜索" />
-            <span class="input-group-btn">
-                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
-            </span>
-        </div>
-    </form>
-    <div class="ins-search">
-  <div class="ins-search-mask"></div>
-  <div class="ins-search-container">
-    <div class="ins-input-wrapper">
-      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
-      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+<div class="main-container">
+  
+
+<div class="container-lg">
+  
+
+<div class="blog-intro">
+  <div class="blog-intro-user">
+    <img class="avatar" src="/images/avatar.jpeg">
+    <div class="user-name">
+      <div class="blog-title">Renqiang</div>
+      <div class="blog-author">Renqiang</div>
+        <ul class="user-detail mobile-only">
+    
+    <li>
+      <i class="fa fa-map-marker"></i>
+      Shenzhen,China
+    </li>
+    
+    <li>
+      <i class="fa fa-envelope-o"></i>
+      <a href="mailto:renqiangme@qq.com">renqiangme@qq.com</a>
+    </li>
+    
+    <li>
+      <i class="fa fa-link"></i>
+      <a href="https://renqiangme.github.io">https://renqiangme.github.io</a>
+    </li>
+  </ul>
     </div>
-    <div class="ins-section-wrapper">
-      <div class="ins-section-container"></div>
+    <div class="blog-description">
+      积土而为山，积水而为海。
     </div>
+  </div>
+
+  <ul class="user-detail desktop-only">
+    
+    <li>
+      <i class="fa fa-map-marker"></i>
+      Shenzhen,China
+    </li>
+    
+    <li>
+      <i class="fa fa-envelope-o"></i>
+      <a href="mailto:renqiangme@qq.com">renqiangme@qq.com</a>
+    </li>
+    
+    <li>
+      <i class="fa fa-link"></i>
+      <a href="https://renqiangme.github.io">https://renqiangme.github.io</a>
+    </li>
+  </ul>
+
+  <div class="social-media desktop-only">
+    <h4>Social Media</h4>
+    <ul>
+      
+      <li class="social-media-item"><a href="https://github.com/Renqiangme" target="_blank"><i class="fa fa-github"></i></a></li>
+      
+      <li class="social-media-item"><a href="https://www.weibo.com/1636008183" target="_blank"><i class="fa fa-weibo"></i></a></li>
+      
+    </ul>
   </div>
 </div>
 
 
-</div>
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
+  <div class="blog-detail">
+    
+<nav class="blog-detail-nav desktop-only">
+  <ul class="clearfix">
+    <li class="selected">
+      <a href="/">Overview</a></li>
+    <li class="">
+      <a href="/archives">Posts <span class="counter">27</span></a>
+    </li>
+    <li class="">
+      <a href="/categories">Categories <span
+                class="counter">11</span></a></li>
+    <li class="">
+      <a href="/tags">Tags <span class="counter">32</span></a></li>
+  </ul>
+</nav>
+
+    <div class="body-secondary">
+      <p class="right-title">Recent post</p>
+      <ul class="recent-post clearfix">
         
-        
-        <li class="menu-item menu-item-home">
-          <a href="/.">
-            
-            <i class="icon icon-home-fill"></i>
-            
-            <span class="menu-title">首页</span>
-          </a>
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2018/08/21/Linux设置Swap交换分区/">Linux设置Swap交换分区</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+               有时，服务器上面程序跑多了，受限于内存不够，会出现程序被kill掉或者起不来的情况。 
+ 这个时候
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <a class="category-link" href="/categories/Linux/"><i class="fa fa-folder-open"></i> Linux</a>
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 2 </span>
+            </p>
+          </div>
         </li>
         
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            
-            <i class="icon icon-archives-fill"></i>
-            
-            <span class="menu-title">归档</span>
-          </a>
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2018/05/01/给MongoDB新增一个readWriteAnyDatabase的角色账户/">给MongoDB新增一个readWriteAnyDatabase的角色账户</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+               安装好MongoDB时，通常开了一个最高管理权限的root账户来方便我们管理数据库，实际开发中并一
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <a class="category-link" href="/categories/MongoDB/"><i class="fa fa-folder-open"></i> MongoDB</a>
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 1 </span>
+            </p>
+          </div>
         </li>
         
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2018/04/17/使用System部署SpringBoot应用/">使用Systemd部署管理SpringBoot应用</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+               如果不使用 Docker 和 Kubernets 部署管理 SpringBoot 应用，可以选择 
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <a class="category-link" href="/categories/JAVA/"><i class="fa fa-folder-open"></i> JAVA</a>
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 3 </span>
+            </p>
+          </div>
         </li>
         
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            
-            <i class="icon icon-tags"></i>
-            
-            <span class="menu-title">标签</span>
-          </a>
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2018/01/21/Log4j2日志-&gt;Kafka-&gt;Logstash-&gt;Elasticsearch并邮件报警/">Log4j2日志-&gt;Kafka-&gt;LogStash-&gt;ElasticSearch并邮件报警</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+               SpringBoot项目中需要把日志记录到 ：ElasticSearch  并使用  ：Kiban
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <a class="category-link" href="/categories/JAVA/"><i class="fa fa-folder-open"></i> JAVA</a>
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 4 </span>
+            </p>
+          </div>
         </li>
         
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2018/01/12/Git的一些操作记录/">Git的一些操作记录</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+                 Git撤销某个commit       1  2  3  4  5  6  7  8     
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <a class="category-link" href="/categories/Git/"><i class="fa fa-folder-open"></i> Git</a>
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 1 </span>
+            </p>
+          </div>
+        </li>
         
-        <li class="menu-item menu-item-about">
-          <a href="/about">
-            
-            <i class="icon icon-cup-fill"></i>
-            
-            <span class="menu-title">关于</span>
-          </a>
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2018/01/02/Ubuntu安装Elastic Stack/">Ubuntu安装Elastic Stack</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+                 1.首先安装python-software-properties  该程序将安装add-apt
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <a class="category-link" href="/categories/Linux/"><i class="fa fa-folder-open"></i> Linux</a>
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 3 </span>
+            </p>
+          </div>
         </li>
         
       </ul>
-      
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/Renqiangme" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
-    </nav>
-  </div>
-</header>
-
-  
-    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    
-      
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Redis/">Redis</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/NodeJS/">NodeJS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Openresty/">Openresty</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget-body">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Centos/">Centos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Composer/">Composer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elastic-Stack/">Elastic Stack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kafka/">Kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LogStash/">LogStash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/">Lua</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openresty/">Openresty</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Supervisor/">Supervisor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swoole/">Swoole</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Systemd/">Systemd</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Websocket/">Websocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ffmpeg/">ffmpeg</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zlib/">zlib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信公众号/">微信公众号</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget-body tagcloud">
-      <a href="/tags/AI/" style="font-size: 13px;">AI</a> <a href="/tags/Centos/" style="font-size: 13px;">Centos</a> <a href="/tags/Composer/" style="font-size: 13px;">Composer</a> <a href="/tags/Cookie/" style="font-size: 13px;">Cookie</a> <a href="/tags/Elastic-Stack/" style="font-size: 13px;">Elastic Stack</a> <a href="/tags/ElasticSearch/" style="font-size: 13px;">ElasticSearch</a> <a href="/tags/Git/" style="font-size: 13.25px;">Git</a> <a href="/tags/GitHub/" style="font-size: 13px;">GitHub</a> <a href="/tags/JAVA/" style="font-size: 13.25px;">JAVA</a> <a href="/tags/Javascript/" style="font-size: 13px;">Javascript</a> <a href="/tags/Kafka/" style="font-size: 13px;">Kafka</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/LogStash/" style="font-size: 13px;">LogStash</a> <a href="/tags/Lua/" style="font-size: 13px;">Lua</a> <a href="/tags/MongoDB/" style="font-size: 13.5px;">MongoDB</a> <a href="/tags/Nginx/" style="font-size: 13px;">Nginx</a> <a href="/tags/NodeJS/" style="font-size: 13px;">NodeJS</a> <a href="/tags/Openresty/" style="font-size: 13.5px;">Openresty</a> <a href="/tags/PHP/" style="font-size: 13.75px;">PHP</a> <a href="/tags/Python/" style="font-size: 13px;">Python</a> <a href="/tags/Redis/" style="font-size: 13.25px;">Redis</a> <a href="/tags/SSH/" style="font-size: 13.25px;">SSH</a> <a href="/tags/SpringBoot/" style="font-size: 13px;">SpringBoot</a> <a href="/tags/Supervisor/" style="font-size: 13px;">Supervisor</a> <a href="/tags/Swoole/" style="font-size: 13px;">Swoole</a> <a href="/tags/Systemd/" style="font-size: 13.25px;">Systemd</a> <a href="/tags/TensorFlow/" style="font-size: 13px;">TensorFlow</a> <a href="/tags/Ubuntu/" style="font-size: 13.25px;">Ubuntu</a> <a href="/tags/Vim/" style="font-size: 13px;">Vim</a> <a href="/tags/Websocket/" style="font-size: 13px;">Websocket</a> <a href="/tags/ffmpeg/" style="font-size: 13px;">ffmpeg</a> <a href="/tags/zlib/" style="font-size: 13px;">zlib</a> <a href="/tags/微信公众号/" style="font-size: 13px;">微信公众号</a>
-    </div>
-  </div>
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">13</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget-body">
-      <ul class="recent-post-list list-unstyled no-thumbnail">
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/Linux/">Linux</a>
-              </p>
-              <p class="item-title">
-                <a href="/2018/08/21/Linux设置Swap交换分区/" class="title">Linux设置Swap交换分区</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2018-08-21T05:12:51.000Z" itemprop="datePublished">2018-08-21</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/MongoDB/">MongoDB</a>
-              </p>
-              <p class="item-title">
-                <a href="/2018/05/01/给MongoDB新增一个readWriteAnyDatabase的角色账户/" class="title">给MongoDB新增一个readWriteAnyDatabase的角色账户</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2018-05-01T09:18:01.000Z" itemprop="datePublished">2018-05-01</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/JAVA/">JAVA</a>
-              </p>
-              <p class="item-title">
-                <a href="/2018/04/17/使用System部署SpringBoot应用/" class="title">使用Systemd部署管理SpringBoot应用</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2018-04-17T05:28:12.000Z" itemprop="datePublished">2018-04-17</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/JAVA/">JAVA</a>
-              </p>
-              <p class="item-title">
-                <a href="/2018/01/21/Log4j2日志->Kafka->Logstash->Elasticsearch并邮件报警/" class="title">Log4j2日志-&gt;Kafka-&gt;LogStash-&gt;ElasticSearch并邮件报警</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2018-01-21T11:08:28.000Z" itemprop="datePublished">2018-01-21</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/Git/">Git</a>
-              </p>
-              <p class="item-title">
-                <a href="/2018/01/12/Git的一些操作记录/" class="title">Git的一些操作记录</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2018-01-12T01:30:28.000Z" itemprop="datePublished">2018-01-12</time>
-              </p>
-            </div>
-          </li>
-          
-      </ul>
-    </div>
-  </div>
-  
-
-    
-  </div>
-</aside>
-
-  
-  <main class="main" role="main">
-  
-  <div class="content article-list">
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/21/Linux设置Swap交换分区/">Linux设置Swap交换分区</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>有时，服务器上面程序跑多了，受限于内存不够，会出现程序被kill掉或者起不来的情况。</p>
-<p>这个时候我们可以设置下Swap（交换分区）。Swap（交换分区），类似于 Windows 的虚拟内存，就是当内存不足的时候，把一部分硬盘空间虚拟成内存使用,从而解决内存容量不足的情况。</p>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/08/21/Linux设置Swap交换分区/" class="article-date">
-	  <time datetime="2018-08-21T05:12:51.000Z" itemprop="datePublished">8月 21</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Linux/">Linux</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/08/21/Linux设置Swap交换分区/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/01/给MongoDB新增一个readWriteAnyDatabase的角色账户/">给MongoDB新增一个readWriteAnyDatabase的角色账户</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>安装好MongoDB时，通常开了一个最高管理权限的root账户来方便我们管理数据库，实际开发中并一般不使用这个账户，我们可以单独添加一个账户来连接数据库。</p>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/05/01/给MongoDB新增一个readWriteAnyDatabase的角色账户/" class="article-date">
-	  <time datetime="2018-05-01T09:18:01.000Z" itemprop="datePublished">5月 1</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/MongoDB/">MongoDB</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/MongoDB/">MongoDB</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/05/01/给MongoDB新增一个readWriteAnyDatabase的角色账户/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/17/使用System部署SpringBoot应用/">使用Systemd部署管理SpringBoot应用</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>如果不使用<code>Docker</code>和<code>Kubernets</code>部署管理<code>SpringBoot</code>应用，可以选择<code>Systemd</code>。</p>
-<p>因为SpringBoot自带Tomcat之类的Web应用服务器，可以直接<code>java -jar xxx.jar</code>的方式启动起来。</p>
-<p>如果我们直接使用<code>nohup java -jar xxx.jar &amp;</code> 之类的虽然也可以实现后台运行，但是是有可能因为某些原因挂掉的，所以我们需要找到一种工具让应用可以重启或者开机启动。</p>
-<p>我们可以使用Python的<code>Supervisor</code>,也有盆友说可以使用Node的<code>pm2</code>,但是我一般都是选择<code>Systemd</code>，现在Linux系统都是自带这个的。</p>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/04/17/使用System部署SpringBoot应用/" class="article-date">
-	  <time datetime="2018-04-17T05:28:12.000Z" itemprop="datePublished">4月 17</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/JAVA/">JAVA</a>, <a class="article-tag-link" href="/tags/SpringBoot/">SpringBoot</a>, <a class="article-tag-link" href="/tags/Systemd/">Systemd</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/04/17/使用System部署SpringBoot应用/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/21/Log4j2日志->Kafka->Logstash->Elasticsearch并邮件报警/">Log4j2日志-&gt;Kafka-&gt;LogStash-&gt;ElasticSearch并邮件报警</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>SpringBoot项目中需要把日志记录到<a href="https://www.elastic.co/cn/products/elasticsearch">：ElasticSearch</a> 并使用 <a href="https://www.elastic.co/cn/products/kibana">：Kibana</a> 搜索、展示、查看日志。</p>
-<h4 id="修改SpringBoot中的配置"><a href="#修改SpringBoot中的配置" class="headerlink" title="修改SpringBoot中的配置"></a>修改SpringBoot中的配置</h4><p>因为SpringBoot默认使用的日志框架是：<a href="http://logback.qos.ch/">：Logback</a>，但是<a href="https://logging.apache.org/log4j/2.x/">：Log4j2</a> 性能可能更高就打算替换掉。</p>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/01/21/Log4j2日志->Kafka->Logstash->Elasticsearch并邮件报警/" class="article-date">
-	  <time datetime="2018-01-21T11:08:28.000Z" itemprop="datePublished">1月 21</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/ElasticSearch/">ElasticSearch</a>, <a class="article-tag-link" href="/tags/JAVA/">JAVA</a>, <a class="article-tag-link" href="/tags/Kafka/">Kafka</a>, <a class="article-tag-link" href="/tags/LogStash/">LogStash</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/01/21/Log4j2日志->Kafka->Logstash->Elasticsearch并邮件报警/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/12/Git的一些操作记录/">Git的一些操作记录</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <h4 id="Git撤销某个commit"><a href="#Git撤销某个commit" class="headerlink" title="Git撤销某个commit"></a>Git撤销某个commit</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git reset –mixed：此为默认方式，不带任何参数的git reset，即时这种方式，它回退到某个版本，只保留源码,同时清空了暂存区(回退commit和index信息)</div><div class="line">git reset –soft：回退到某个版本，只回退了commit的信息，git不会清除你的暂存区。如果还要提交，直接commit即可</div><div class="line">git reset –hard：彻底回退到某个版本，直接覆盖工作区，暂存区，本地的源码所有的内容也会变为上一个版本的内容</div><div class="line"></div><div class="line">Git撤销命令后面的可选参数：</div><div class="line">HEAD 最近一个提交</div><div class="line">HEAD^ 上一次</div><div class="line">&lt;commit_id&gt;  每次commit的SHA1值. 可以用git log 看到,也可以在页面上commit标签页里找到</div></pre></td></tr></table></figure>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/01/12/Git的一些操作记录/" class="article-date">
-	  <time datetime="2018-01-12T01:30:28.000Z" itemprop="datePublished">1月 12</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Git/">Git</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Git/">Git</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/01/12/Git的一些操作记录/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/02/Ubuntu安装Elastic Stack/">Ubuntu安装Elastic Stack</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <h4 id="1-首先安装python-software-properties"><a href="#1-首先安装python-software-properties" class="headerlink" title="1.首先安装python-software-properties"></a>1.首先安装python-software-properties</h4><p>该程序将安装add-apt-repository的应用程序，更加方便的添加和使用PPA软件库。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install -y python-software-properties software-properties-common apt-transport-https</div></pre></td></tr></table></figure>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/01/02/Ubuntu安装Elastic Stack/" class="article-date">
-	  <time datetime="2018-01-02T08:18:08.000Z" itemprop="datePublished">1月 2</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Elastic-Stack/">Elastic Stack</a>, <a class="article-tag-link" href="/tags/Linux/">Linux</a>, <a class="article-tag-link" href="/tags/Ubuntu/">Ubuntu</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/01/02/Ubuntu安装Elastic Stack/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/18/Ubuntu设置固定的ip/">Ubuntu设置固定的ip</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>修改配置文件：/etc/network/interfaces</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">vim /etc/network/interfaces</div><div class="line"></div><div class="line">#增加修改如下：</div><div class="line"></div><div class="line">#The primary network interface</div><div class="line">auto ens160</div><div class="line">iface ens160 inet static</div><div class="line">address 10.1.220.15</div><div class="line">netmask 255.255.0.0</div><div class="line">gateway 10.1.1.1</div><div class="line">dns-nameservers 8.8.8.8 8.8.4.4</div><div class="line"></div><div class="line">service networking restart</div></pre></td></tr></table></figure>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2017/08/18/Ubuntu设置固定的ip/" class="article-date">
-	  <time datetime="2017-08-18T05:28:18.000Z" itemprop="datePublished">8月 18</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Linux/">Linux</a>, <a class="article-tag-link" href="/tags/Ubuntu/">Ubuntu</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/08/18/Ubuntu设置固定的ip/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/12/部署管理Swoole服务/">部署管理Swoole服务</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <h3 id="使用systemd管理Swoole服务"><a href="#使用systemd管理Swoole服务" class="headerlink" title="使用systemd管理Swoole服务"></a>使用systemd管理Swoole服务</h3><p>Systemd 是 Linux 系统工具，用来启动守护进程。</p>
-<p>Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面。包括：systemctl，systemd-analyze，hostnamectl，localectl，timedatectl，loginctl</p>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2017/07/12/部署管理Swoole服务/" class="article-date">
-	  <time datetime="2017-07-12T03:20:38.000Z" itemprop="datePublished">7月 12</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/PHP/">PHP</a>, <a class="article-tag-link" href="/tags/Supervisor/">Supervisor</a>, <a class="article-tag-link" href="/tags/Swoole/">Swoole</a>, <a class="article-tag-link" href="/tags/Systemd/">Systemd</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/07/12/部署管理Swoole服务/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/26/Python获取音频时长和分割音频/">Python获取音频时长和分割音频</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p><code>ffmpeg</code>是视频和音频处理的利器，各种转格式，提取视频中的图片，合并或者分隔音频，录制屏幕，加字幕啊…都是可以的。</p>
-<p>因为有需求需要获取音频的长度然后来分割。</p>
-<p>虽然<code>ffmpeg -i xxx file</code>也可以获取到音频的长度,但是可能需要正则去匹配，然后发现他们家族的<code>ffprobe</code>就可以直接返回json格式的音频信息。<code>ffprobe</code>是一个多媒体流分析工具。</p>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2017/06/26/Python获取音频时长和分割音频/" class="article-date">
-	  <time datetime="2017-06-26T12:12:07.000Z" itemprop="datePublished">6月 26</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Python/">Python</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Python/">Python</a>, <a class="article-tag-link" href="/tags/ffmpeg/">ffmpeg</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/06/26/Python获取音频时长和分割音频/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/25/Redis通过模式匹配模糊删除key/">Redis通过模式匹配模糊删除key</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>Redis命令del不支持模式匹配，但是keys支持，如果需要通过模式匹配来删除一批，可以执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/redis/bin/redis-cli -h xx -p xx -a xx KEYS “test_*” | xargs /usr/local/redis/bin/redis-cli -h xx-p xx -a xx DEL</div></pre></td></tr></table></figure>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2017/03/25/Redis通过模式匹配模糊删除key/" class="article-date">
-	  <time datetime="2017-03-25T07:33:29.000Z" itemprop="datePublished">3月 25</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>►<a class="article-category-link" href="/categories/Linux/Redis/">Redis</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Redis/">Redis</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/03/25/Redis通过模式匹配模糊删除key/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/18/在Centos上面源码安装TensorFlow/">在Centos上面源码安装TensorFlow</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>最先一开始用pip安装，但是总是在运行的时有源码安装效果更好的提示，所以索性源码安装，整个编译过程还真的是蛮久的。</p>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2017/03/18/在Centos上面源码安装TensorFlow/" class="article-date">
-	  <time datetime="2017-03-18T03:28:19.000Z" itemprop="datePublished">3月 18</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/AI/">AI</a>, <a class="article-tag-link" href="/tags/Centos/">Centos</a>, <a class="article-tag-link" href="/tags/TensorFlow/">TensorFlow</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/03/18/在Centos上面源码安装TensorFlow/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/08/Linux禁止某些用户和组SSH登录/">Linux禁止某些用户和组SSH登录</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>Linux系统可以通过sshd的配置项，禁止某些用户SSH登录，方法如下：</p>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2017/02/08/Linux禁止某些用户和组SSH登录/" class="article-date">
-	  <time datetime="2017-02-08T04:10:02.000Z" itemprop="datePublished">2月 8</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Linux/">Linux</a>, <a class="article-tag-link" href="/tags/SSH/">SSH</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/02/08/Linux禁止某些用户和组SSH登录/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/08/Linux禁止root账户远程SSH登录/">Linux禁止root账户远程SSH登录</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>为增强服务器的安全,我们通常会禁止root账户远程SSH登录。</p>
-<p>首先增加一个普通权限的用户：</p>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2017/02/08/Linux禁止root账户远程SSH登录/" class="article-date">
-	  <time datetime="2017-02-08T03:25:42.000Z" itemprop="datePublished">2月 8</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Linux/">Linux</a>, <a class="article-tag-link" href="/tags/SSH/">SSH</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/02/08/Linux禁止root账户远程SSH登录/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/20/通过nginx代理nodejs支持websocket/">通过nginx代理nodejs支持websocket</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>NGINX自从1.3版本就开始支持WebSocket了，并且可以为WebSocket应用程序做反向代理和负载均衡。</p>
-<p>WebSocket 和HTTP协议不同，但是WebSocket中的握手和HTTP中的握手兼容，它使用HTTP中的Upgrade协议头将连接从HTTP升级到WebSocket。这使得WebSocket程序可以更容易的使用现已存在的基础设施。例如，WebSocket可以使用标准的HTTP端口 80 和 443，因此，现存的防火墙规则也同样适用。<br>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2017/01/20/通过nginx代理nodejs支持websocket/" class="article-date">
-	  <time datetime="2017-01-20T04:05:42.000Z" itemprop="datePublished">1月 20</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Nginx/">Nginx</a>►<a class="article-category-link" href="/categories/Nginx/NodeJS/">NodeJS</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Nginx/">Nginx</a>, <a class="article-tag-link" href="/tags/NodeJS/">NodeJS</a>, <a class="article-tag-link" href="/tags/Websocket/">Websocket</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/01/20/通过nginx代理nodejs支持websocket/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/25/网页加载优化-PHP压缩网页进Redis-Openresty端直接输出/">网页加载优化-PHP压缩网页进Redis,Openresty端直接输出</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>其实商城项目的网页端，观察京东，淘宝他们有很多活动页面或者商品详情页，推广力度很多，流量也就比较多，通常一个页面很大很大，整个网页内容也很多，单纯考虑从webserver到走进php,java连接数据库等等读取数据拼装，再渲染视图输出到浏览器，整个过程下来，并发不大的情况还好，一大起来的就会性能大大的降低。</p>
-<p>对于中小型项目，解决的方案肯定没有淘宝京东的方案多。<br>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2016/12/25/网页加载优化-PHP压缩网页进Redis-Openresty端直接输出/" class="article-date">
-	  <time datetime="2016-12-25T14:07:30.000Z" itemprop="datePublished">12月 25</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Openresty/">Openresty</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Openresty/">Openresty</a>, <a class="article-tag-link" href="/tags/PHP/">PHP</a>, <a class="article-tag-link" href="/tags/Redis/">Redis</a>, <a class="article-tag-link" href="/tags/zlib/">zlib</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/12/25/网页加载优化-PHP压缩网页进Redis-Openresty端直接输出/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/24/内部微信授权code解决多个域名的脚本/">内部微信授权code解决多个域名的脚本</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <h5 id="内部调用微信授权脚本－解决一个域名想授权多个域名获取微信授权code"><a href="#内部调用微信授权脚本－解决一个域名想授权多个域名获取微信授权code" class="headerlink" title="内部调用微信授权脚本－解决一个域名想授权多个域名获取微信授权code"></a>内部调用微信授权脚本－解决一个域名想授权多个域名获取微信授权code</h5>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2016/12/24/内部微信授权code解决多个域名的脚本/" class="article-date">
-	  <time datetime="2016-12-24T15:42:04.000Z" itemprop="datePublished">12月 24</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/PHP/">PHP</a>, <a class="article-tag-link" href="/tags/微信公众号/">微信公众号</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/12/24/内部微信授权code解决多个域名的脚本/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/24/Linux学习之权限管理/">Linux学习之权限管理</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <h3 id="ACL权限"><a href="#ACL权限" class="headerlink" title="ACL权限"></a>ACL权限</h3><h5 id="1：ACL权限简介和开启"><a href="#1：ACL权限简介和开启" class="headerlink" title="1：ACL权限简介和开启"></a>1：ACL权限简介和开启</h5><pre><code>A：不再考虑身份。用户或用户组直接拿过来给它改权限
-
-B：查看分区ACL权限是否开启
-  dumpe2fs -h /dev/sda3  #dump2fs命令是查询指定分区详细文件系统信息的命令
-  选项：-h 仅显示超级块中信息，而不显示磁盘块组的详细信息
-
-  (步骤1：df -h  #查看当前系统分区使用情况，容量，已用，可用，挂载点，找到用户所在分区。)
-  (步骤2：dumpe2fs -h /dev/sda3)
-C：临时开启分区ACL权限
-  mount -o remount,acl /  #重新挂载根分区，并载入acl权限
-D：永久开启分区ACL权限
-  步骤1：vi /etc/fstab  #加入acl
-   UUID=c2cq6f57-b15c-43ea-bca0-f239083d8bd2 / ext4 defaults,acl 1 1
- #defaults后面加了一个acl
-  步骤2：mount -o remount / #重新挂载文件系统或重启动系统，使修改生效 
-</code></pre>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2016/12/24/Linux学习之权限管理/" class="article-date">
-	  <time datetime="2016-12-24T15:03:47.000Z" itemprop="datePublished">12月 24</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Linux/">Linux</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/12/24/Linux学习之权限管理/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/24/Linux学习笔记之Vim/">Linux学习笔记之Vim</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <h3 id="一、Vim常用操作"><a href="#一、Vim常用操作" class="headerlink" title="一、Vim常用操作"></a>一、Vim常用操作</h3><p>Vim是一个功能强大的全屏幕文本编辑器。是linux/unix上最常用的文本编辑器。它的作用是建立、编辑、显示文本文件。</p>
-<p>Vim没有菜单，只有命令！<br>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2016/12/24/Linux学习笔记之Vim/" class="article-date">
-	  <time datetime="2016-12-24T14:52:07.000Z" itemprop="datePublished">12月 24</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Linux/">Linux</a>, <a class="article-tag-link" href="/tags/Vim/">Vim</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/12/24/Linux学习笔记之Vim/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/24/Openresty中获取和设置cookie/">Openresty中获取和设置cookie</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <h3 id="1：获取cookie"><a href="#1：获取cookie" class="headerlink" title="1：获取cookie"></a>1：获取cookie</h3><p>local cookie_xx_value = ngx.var.cookie_xx<br>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2016/12/24/Openresty中获取和设置cookie/" class="article-date">
-	  <time datetime="2016-12-24T14:27:52.000Z" itemprop="datePublished">12月 24</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Openresty/">Openresty</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Cookie/">Cookie</a>, <a class="article-tag-link" href="/tags/Openresty/">Openresty</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/12/24/Openresty中获取和设置cookie/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/24/Linux学习之用户管理/">Linux学习之用户管理</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <h3 id="用户配置文件"><a href="#用户配置文件" class="headerlink" title="用户配置文件"></a>用户配置文件</h3><h5 id="用户管理简介"><a href="#用户管理简介" class="headerlink" title="用户管理简介"></a>用户管理简介</h5><p> .越是对服务器安全性要求高的服务器，越需要建立合理的用户权限等级制度和服务器操作规范</p>
-<p> .在linux中主要是通过用户配置文件来查看和修改用户信息</p>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2016/12/24/Linux学习之用户管理/" class="article-date">
-	  <time datetime="2016-12-24T12:14:09.000Z" itemprop="datePublished">12月 24</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Linux/">Linux</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/12/24/Linux学习之用户管理/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/24/Linux学习笔记之常用命令之目录处理命令/">Linux学习笔记之常用命令之目录处理命令</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p><strong>————————常用命令—————</strong></p>
-<pre><code>1文件处理命令
- 1.1命令格式与目录处理命令
- 1.2目录处理命令
- 1.3文件处理命令
- 1.4链接命令
-2权限管理命令
-3文件搜索命令
-4帮助命令
-5用户管理命令
-6压缩解压命令
-7网络命令
-8关机重启命令
-</code></pre>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2016/12/24/Linux学习笔记之常用命令之目录处理命令/" class="article-date">
-	  <time datetime="2016-12-24T10:35:29.000Z" itemprop="datePublished">12月 24</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Linux/">Linux</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/12/24/Linux学习笔记之常用命令之目录处理命令/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/24/Composer与-autoload自动加载冲突问题/">Composer与__autoload自动加载冲突问题</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p> 最近改一些旧的项目遇到的一个有意思的问题。<br>一个项目从入口文件进来，定义了自动加载函数__autoload()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function __autoload($className)&#123;</div><div class="line">	$class = $className . &apos;.class.php&apos;;</div><div class="line">	require_once(CLASS_DIR.$class);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2016/12/24/Composer与-autoload自动加载冲突问题/" class="article-date">
-	  <time datetime="2016-12-24T08:53:08.000Z" itemprop="datePublished">12月 24</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Composer/">Composer</a>, <a class="article-tag-link" href="/tags/PHP/">PHP</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/12/24/Composer与-autoload自动加载冲突问题/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/24/PHP遍历某个目录下面的文件并使用多进程记录到数据库的几种方法比较/">PHP遍历某个目录下面的文件并使用多进程记录到数据库的几种方法比较</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>最近工作需要写一个脚本去跑某个目录下面的文件然后记录到数据库，比较了下三种遍历目录的方法.</p>
-<p>打印了测试目录weixin下面有多少文件,文件一共3千多，层级深度还是比较深的。<br><img src="/static/upload/55262d40-30af-4485-95a3-ec46dc31b012.png" alt=""><br>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2016/12/24/PHP遍历某个目录下面的文件并使用多进程记录到数据库的几种方法比较/" class="article-date">
-	  <time datetime="2016-12-24T08:00:30.000Z" itemprop="datePublished">12月 24</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/PHP/">PHP</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/12/24/PHP遍历某个目录下面的文件并使用多进程记录到数据库的几种方法比较/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/24/Github的SSH和HTTPS记住账号密码方法/">Github的SSH和HTTPS记住账号密码方法</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>其实关于这两种认证方式也是适用于Gitlab等相关git.<br>很多时候，我们在打算克隆一个仓库到本地的时候，有两种方式可以选择，即：SSH和HTTPS.<br>克隆还好，但是需要推送的时候，也许会遇到权限，需要账号密码啊。</p>
-<p><strong>通过HTTPS方式克隆的代码到本地</strong><br>如果遇到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">error: The requested URL returned error: 403 Forbidden while accessing</div></pre></td></tr></table></figure></p>
-<p>这是权限问题，可以修改.git/config文件追加用户名和密码，也可以直接敲下面命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote set-url origin https://youruser:password@github.com/user/repo.git</div></pre></td></tr></table></figure></p>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2016/12/24/Github的SSH和HTTPS记住账号密码方法/" class="article-date">
-	  <time datetime="2016-12-24T07:58:08.000Z" itemprop="datePublished">12月 24</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Git/">Git</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Git/">Git</a>, <a class="article-tag-link" href="/tags/GitHub/">GitHub</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/12/24/Github的SSH和HTTPS记住账号密码方法/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/24/JS如何判断一个页面是否已经打开/">JS如何判断一个页面是否已经打开?</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>一种是刷新之后又会重新打开页面：<br>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2016/12/24/JS如何判断一个页面是否已经打开/" class="article-date">
-	  <time datetime="2016-12-24T07:18:28.000Z" itemprop="datePublished">12月 24</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Javascript/">Javascript</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/12/24/JS如何判断一个页面是否已经打开/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/24/mongodb3.x版本的auth认证方式为2.x版本的认证方式/">修改mongodb3.x版本的auth认证方式为2.x版本的认证方式</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>最近在用openresty的做一些任务，其中在使用mongo的Lua库的时候，因为mongodb开启了auth，需要账号密码才能连接。</p>
-<p>mongodb 2.xx的认证方式，使用的是md5加密,认证耗时更短，如果使用3.xx认证处耗时很严重在lua中。<br>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2016/12/24/mongodb3.x版本的auth认证方式为2.x版本的认证方式/" class="article-date">
-	  <time datetime="2016-12-24T05:02:30.000Z" itemprop="datePublished">12月 24</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/MongoDB/">MongoDB</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/MongoDB/">MongoDB</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/12/24/mongodb3.x版本的auth认证方式为2.x版本的认证方式/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/24/Openresty中使用lua的mongodb库，使用连接池节省连接认证时间/">Openresty中使用lua的mongodb库，使用连接池节省连接认证时间</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>因为服务器的mongodb开启了auth认证的，所以每次连接都要验证密码，测试了下GitHub上面的几个lua的mongodb库，无论是官方的<a href="https://github.com/mongodb-labs/mongorover" title="mongorover">mongorover</a>，还是纯的lua库：<a href="https://github.com/LuaDist2/lua-resty-mongol3" title="lua-resty-mongol3">lua-resty-mongol3</a>，一个简单的insert操作都比php耗费的时间更长，如果业务用lua来做的优势就没有那么明显了，单纯的不认证的insert操作lua的优势很是明显的，所以要么取消认证，要么就是可以结合openresty的连接池。而且发现使用连接池后，纯的lua mongodb库竟然比mongorover更快。<br>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2016/12/24/Openresty中使用lua的mongodb库，使用连接池节省连接认证时间/" class="article-date">
-	  <time datetime="2016-12-24T01:36:37.000Z" itemprop="datePublished">12月 24</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Openresty/">Openresty</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Lua/">Lua</a>, <a class="article-tag-link" href="/tags/MongoDB/">MongoDB</a>, <a class="article-tag-link" href="/tags/Openresty/">Openresty</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/12/24/Openresty中使用lua的mongodb库，使用连接池节省连接认证时间/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-  </div>
-
-   
-</main>
-
-  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-	
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/Renqiangme" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
-    <div class="copyright">
-    	
-        &copy; 2018 Renqiang
-        
-        <div class="publishby">
-        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+      <div class="calendar-container" id="calendar">
+  <div class="calendar">
+    <h3>
+      {{posts.length}} contributions in the last year
+    </h3>
+    <div class="calendar-graph-container">
+      <div class="calendar-graph">
+        <svg width="676" height="104" @mouseout="mouseoverDate=null">
+          <g transform="translate(16, 20)">
+            <g v-for="week in calendar" :transform="week.transform">
+              <rect v-for="day in week.days"
+                    :x="day.x"
+                    :y="day.y"
+                    :fill="day.fill"
+                    @click="selectedDate=day.date"
+                    @mouseover="mouseoverDate=day.date"
+                    :class="{active:selectedDate===day.date}"
+                    data-count="{{day.posts.length}}"
+                    data-date="{{day.date}}"
+                    class="day" width="10" height="10"
+              ></rect>
+            </g>
+
+            <text v-for="month in monthLabels"
+                  :x="month.x"
+                  y="-5"
+                  class="month">{{month.text}}
+            </text>
+
+
+            <text text-anchor="start" class="wday" dx="-14" dy="8"
+                  style="display: none;">S
+            </text>
+            <text text-anchor="start" class="wday" dx="-14" dy="20">Mon</text>
+            <text text-anchor="start" class="wday" dx="-14" dy="32"
+                  style="display: none;">T
+            </text>
+            <text text-anchor="start" class="wday" dx="-14" dy="44">Wed</text>
+            <text text-anchor="start" class="wday" dx="-14" dy="57"
+                  style="display: none;">T
+            </text>
+            <text text-anchor="start" class="wday" dx="-14" dy="69">Fri</text>
+            <text text-anchor="start" class="wday" dx="-14" dy="81"
+                  style="display: none;">S
+            </text>
+          </g>
+        </svg>
+        <div class="svg-tip svg-tip-one-line"
+             v-bind:style="{ top: svgtip.top, left: svgtip.left, display: svgtip.display}">
+          <strong>{{svgtip.text}}</strong> on
+          {{moment(mouseoverDate).format('MMM DD, YYYY')}}
         </div>
+      </div>
+      <div class="calendar-footer clearfix">
+      <span>
+        <a href="#">Learn how we count contributions.</a>
+      </span>
+        <div class="calendar-legend">
+          <span>Less</span>
+          <ul class="legend">
+            <li style="background-color: #eee"></li>
+            <li style="background-color: #d6e685"></li>
+            <li style="background-color: #8cc665"></li>
+            <li style="background-color: #44a340"></li>
+            <li style="background-color: #1e6823"></li>
+          </ul>
+          <span>More</span>
+        </div>
+      </div>
     </div>
-</footer>
-  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+  </div>
+
+  <h3>Contribution activity</h3>
+  <div class="contribution-list">
+    <ul>
+      <li v-for="post in posts | filterBy selectedDate in 'date'">
+        <a href="{{post.url}}">{{post.title}}
+        </a>
+        <span>{{post.date}}</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
 <script>
-window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+  var posts = [{"date":"2018-04-17","title":"使用Systemd部署管理SpringBoot应用","url":"https://renqiangme.github.io/2018/04/17/使用System部署SpringBoot应用/"},{"date":"2018-05-01","title":"给MongoDB新增一个readWriteAnyDatabase的角色账户","url":"https://renqiangme.github.io/2018/05/01/给MongoDB新增一个readWriteAnyDatabase的角色账户/"},{"date":"2018-08-21","title":"Linux设置Swap交换分区","url":"https://renqiangme.github.io/2018/08/21/Linux设置Swap交换分区/"}];
+  var today = moment().format('YYYY-MM-DD');
+  var oneYearAgo = moment(today).subtract(1, 'years');
+  posts = posts.filter(function(post) {
+    return new Date(post.date) > oneYearAgo;
+  });
+  var monthLabels = [];
+  var monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var calendar = getCalendar(posts);
+
+  var dateRange = {
+    start: moment(oneYearAgo).format('MMM D, YYYY'),
+    end: moment().format('MMM D, YYYY')
+  }
+
+  var app = new Vue({
+    el: '#calendar',
+    data: {
+      posts: posts,
+      selectedDate: null,
+      calendar: calendar,
+      dateRange: dateRange,
+      mouseoverDate: null,
+      moment: moment,
+      monthLabels: monthLabels
+    },
+    created: function() {
+      this.selectedDate = 'none';
+    },
+    methods: {},
+    computed: {
+      svgtip: function() {
+        var date = this.mouseoverDate;
+        var display = date ? 'block' : 'none';
+        if (date) {
+          var coordinator = getIndexByDate(date);
+          var x = coordinator[0];
+          var y = coordinator[1];
+          var len = this.calendar[x].days[y].posts.length;
+          var text = len ? len + ' contributions' : 'No contributions';
+          var left = coordinator[0] * 12 - 37 + 'px';
+          coordinator[1] = coordinator[0] ? coordinator[1] : coordinator[1] + oneYearAgo.day();
+          var top = coordinator[1] * 12 + 12 - 32 + 'px';
+        }
+        return {
+          text: text,
+          left: left,
+          top: top,
+          display: display
+        }
+      }
+    }
+  });
+
+  function getCalendar(posts) {
+    // raw calendar
+    var maxCount = 0;
+    var tmr = new Date();
+    tmr.setDate(tmr.getDate() + 1);
+    var tmrStr = tmr.toISOString().slice(0, 10);
+    var date = new Date();
+    date.setYear(date.getFullYear() - 1); // start date is a year ago;
+    var calendar = [];
+    while (date.toISOString().slice(0, 10) !== tmrStr) {
+      var day = date.getDay();
+      if (day === 0 || calendar.length === 0) {
+        var x = calendar.length * 13;
+        calendar.push({
+          transform: 'translate(' + x + ',0)',
+          days: []
+        })
+      }
+
+      calendar[calendar.length - 1].days.push({
+        x: 14 - calendar.length,
+        y: day * 12,
+        date: date.toISOString().slice(0, 10),
+        posts: []
+      });
+
+      if (day === 0 && date.getDate() < 8) {
+        monthLabels.push({
+          x: 14 - calendar.length + x,
+          text: monthName[date.getMonth() - 1]
+        })
+      }
+
+      date.setDate(date.getDate() + 1);
+    }
+
+    // handle post info
+    posts.forEach(function(post) {
+      var x = getIndexByDate(post.date)[0];
+      var y = getIndexByDate(post.date)[1];
+
+      calendar[x].days[y].posts.push({
+        title: post.title,
+        url: post.url
+      });
+
+      var len = calendar[x].days[y].posts.length;
+      maxCount = Math.max(len, maxCount);
+    })
+
+    // handle fill color
+    calendar.forEach(function(week) {
+      week.days.forEach(function(day) {
+        day.fill = getColorByLength(day.posts.length, maxCount);
+      })
+    })
+
+    return calendar;
+  }
+
+  function getIndexByDate(date) {
+    date = moment(date);
+    var firstColumnLen = 7 - oneYearAgo.day();
+    var days = date.diff(oneYearAgo, 'days');
+
+    var x = days > firstColumnLen - 1 ? Math.ceil((days - firstColumnLen + 1) / 7) : 0;
+    var y = days > firstColumnLen - 1 ? date.day() : date.day() - oneYearAgo.day();
+    return [x, y];
+  }
+
+  function getColorByLength(len, max) {
+    var colors = ['#eee', '#d6e685', '#8cc665', '#44a340', '#1e6823'];
+    var colorsLen = colors.length - 1;
+    var color = len ? colors[0] : colors[1];
+    var interval = max / colorsLen;
+    if (max < colorsLen) {
+      color = colors[len];
+    } else {
+      color = colors[Math.ceil(len / interval)];
+    }
+    return color;
+  }
+
 </script>
-<script src="/js/plugin.min.js"></script>
-<script src="/js/application.js"></script>
 
-    <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
+
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://renqiangme.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2016 - 2019 Renqiang</li>
+      <li><a href="https://renqiangme.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/Renqiangme">Github</a></li>
+      
+      <li><a href="https://www.weibo.com/1636008183">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Powered by <a href="https://hexo.io">Hexo</a>,Theme <a href="https://github.com/Renqiangme/hexo-theme-replica">Replica</a>
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+<script>
+  (function() {
+    var cx = '004741875389417659760:137mpv70l0i';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
 </script>
-<script src="/js/insight.js"></script>
 
 
 
-
-
-   
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-
-
-
-
+<script src="/js/main.js"></script>
 
 </body>
 </html>
