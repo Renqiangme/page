@@ -155,25 +155,20 @@
 </div>
 
 
-    
-<div class="container disqus-container">
-  <div id="disqus_thread"></div>
-</div>
-
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div class='container' id="gitalk-container"></div>
 <script>
-  var disqus_config = function() {
-    this.page.url = "https://renqiangme.github.io/2017/02/08/Linux禁止某些用户和组SSH登录/";
-    this.page.identifier = 1486527002;
-  };
-
-  (function() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://renqiangme.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
+    var gitalk = new Gitalk({
+        clientID: 'ab01b9cfbb4697dad426',
+        clientSecret: '744ecb79e78122f2b02064835c371378236a4ce5',
+        repo: 'renqiangme.github.io',
+        owner: 'renqiangme',
+        admin: ['renqiangme'],
+        distractionFreeMode: true,
+    })
+    gitalk.render('gitalk-container')
 </script>
-
 
 
 

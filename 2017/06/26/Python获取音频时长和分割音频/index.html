@@ -142,31 +142,35 @@
 <a id="more"></a>
 <p>大概命令如下:</p>
 <pre><code>ffprobe -v quiet -print_format json -show_format -show_streams 1.wav
-</code></pre><p>python中可以这样子调用：</p>
-<pre><code>import subprocess as sp
-
-try:
-    command = [&apos;ffprobe&apos;, &apos;-v&apos;, &apos;quiet&apos;, &apos;-print_format&apos;, &apos;json&apos;, &apos;-show_format&apos;,&apos;-show_streams&apos;, item[&quot;file_path&quot;]]
-    wav_info = sp.check_output(command, stderr=sp.STDOUT)
-    print(wav_info)
-except sp.CalledProcessError as e:
-    print(&apos;get audio info by ffprobe error %s&apos; % e.output)
-</code></pre><p>分割音频就需要用到<code>ffmpeg</code>了，大概命令如下：</p>
+</code></pre>
+<p>python中可以这样子调用：</p>
+<pre><code>    import subprocess as sp
+	
+    try:
+    	command = ['ffprobe', '-v', 'quiet', '-print_format', 'json', '-show_format','-show_streams', item[&quot;file_path&quot;]]
+    	wav_info = sp.check_output(command, stderr=sp.STDOUT)
+    	print(wav_info)
+    except sp.CalledProcessError as e:
+    	print('get audio info by ffprobe error %s' % e.output)
+</code></pre>
+<p>分割音频就需要用到<code>ffmpeg</code>了，大概命令如下：</p>
 <pre><code>ffmpeg -i 1.wav -ss 00:00:03 -t 00:00:12 -acodec copy tmp.wav
 源音频：source_mp3
 开始位置：-ss
 结束位置：-t
 原始编码：-acodec
-</code></pre><p>需要注意的是：input的音频格式必须和output的音频格式一致，不然要报格式错误！</p>
+</code></pre>
+<p>需要注意的是：input的音频格式必须和output的音频格式一致，不然要报格式错误！</p>
 <p>python中可以这样子调用：</p>
-<pre><code>try:
-    cut_command = [&apos;ffmpeg&apos;, &apos;-y&apos;, &apos;-i&apos;, origin_wav, &apos;-ss&apos;, start_time, &apos;-t&apos;,end_time, &apos;-acodec&apos;, &apos;copy&apos;, cut_wav]
-    wav_cut_result = sp.check_call(cut_command)
-    if wav_cut_result == 0:
-        #todo success
-except sp.CalledProcessError as e:
-    print(&apos;cut audio info error %s&apos; % e.output)
-</code></pre><p>音频格式转换:</p>
+<pre><code>    try:
+    	cut_command = ['ffmpeg', '-y', '-i', origin_wav, '-ss', start_time, '-t',end_time, '-acodec', 'copy', cut_wav]
+    	wav_cut_result = sp.check_call(cut_command)
+    	if wav_cut_result == 0:
+    		#todo success
+    except sp.CalledProcessError as e:
+    	print('cut audio info error %s' % e.output)
+</code></pre>
+<p>音频格式转换:</p>
 <pre><code>单声道&amp;采样率16000
 ffmpeg -f s16le -ar 16000 -ac 1 -i xx.pcm xx.wav
 
@@ -175,31 +179,27 @@ s16le：无压缩
 -ar：采样率
 -ac：声道
 -i：输入文件
-</code></pre><p>更多命令相关参数：<code>ffmpeg --help</code></p>
+</code></pre>
+<p>更多命令相关参数：<code>ffmpeg --help</code></p>
 
   </article>
 </div>
 
 
-    
-<div class="container disqus-container">
-  <div id="disqus_thread"></div>
-</div>
-
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div class='container' id="gitalk-container"></div>
 <script>
-  var disqus_config = function() {
-    this.page.url = "https://renqiangme.github.io/2017/06/26/Python获取音频时长和分割音频/";
-    this.page.identifier = 1498479127;
-  };
-
-  (function() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://renqiangme.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
+    var gitalk = new Gitalk({
+        clientID: 'ab01b9cfbb4697dad426',
+        clientSecret: '744ecb79e78122f2b02064835c371378236a4ce5',
+        repo: 'renqiangme.github.io',
+        owner: 'renqiangme',
+        admin: ['renqiangme'],
+        distractionFreeMode: true,
+    })
+    gitalk.render('gitalk-container')
 </script>
-
 
 
 

@@ -136,12 +136,14 @@
 
   <article class="post-content">
     <h1>Linux学习之权限管理</h1>
-    <h3 id="ACL权限"><a href="#ACL权限" class="headerlink" title="ACL权限"></a>ACL权限</h3><h5 id="1：ACL权限简介和开启"><a href="#1：ACL权限简介和开启" class="headerlink" title="1：ACL权限简介和开启"></a>1：ACL权限简介和开启</h5><pre><code>A：不再考虑身份。用户或用户组直接拿过来给它改权限
-
+    <h3 id="acl权限"><a class="markdownIt-Anchor" href="#acl权限"></a> ACL权限</h3>
+<h5 id="1acl权限简介和开启"><a class="markdownIt-Anchor" href="#1acl权限简介和开启"></a> 1：ACL权限简介和开启</h5>
+<pre><code>A：不再考虑身份。用户或用户组直接拿过来给它改权限
+ 
 B：查看分区ACL权限是否开启
   dumpe2fs -h /dev/sda3  #dump2fs命令是查询指定分区详细文件系统信息的命令
   选项：-h 仅显示超级块中信息，而不显示磁盘块组的详细信息
-
+ 
   (步骤1：df -h  #查看当前系统分区使用情况，容量，已用，可用，挂载点，找到用户所在分区。)
   (步骤2：dumpe2fs -h /dev/sda3)
 C：临时开启分区ACL权限
@@ -151,28 +153,40 @@ D：永久开启分区ACL权限
    UUID=c2cq6f57-b15c-43ea-bca0-f239083d8bd2 / ext4 defaults,acl 1 1
  #defaults后面加了一个acl
   步骤2：mount -o remount / #重新挂载文件系统或重启动系统，使修改生效 
-</code></pre><a id="more"></a> 
-<h5 id="2：查看与设定ACL权限"><a href="#2：查看与设定ACL权限" class="headerlink" title="2：查看与设定ACL权限"></a>2：查看与设定ACL权限</h5><pre><code>  A：查看ACL命令 getfacl 文件名 #查看ACL权限
-
-  B:设定ACL权限 setfacl 选项 文件名
-  选项：-m   设定ACL权限                  
-给用户设置ACL权限       setfacl -m u:qingwa:rx /project/
-       给用户组设定ACL权限     setfacl -m g:xxgroup:rwx project/
-
-        -x   删除指定的ACL权限 setfacl -x g:xxgroup /project/ #删除xxgroup在project下面的ACL权限
-        -b   删除所有的ACL权限 setfacl -b /project/ #会删除在project下面所有用户用户组的ACL权限
-        -d   设定默认的ACL权限
-        -k   删除默认ACL权限
-        -R   递归设定ACL权限
-</code></pre><h5 id="3-最大有效权限与删除ACL权限"><a href="#3-最大有效权限与删除ACL权限" class="headerlink" title="3:最大有效权限与删除ACL权限"></a>3:最大有效权限与删除ACL权限</h5><p>最大有效权限mask<br>mask是用来指定最大有效权限的。如果我给用户赋予了ACL权限，是需要和mask的权限“相与”才能得到用户的真正权限。(相与—相当于逻辑的与 一个为假就都为假)</p>
-<h5 id="4：默认ACL权限和递归ACL权限"><a href="#4：默认ACL权限和递归ACL权限" class="headerlink" title="4：默认ACL权限和递归ACL权限"></a>4：默认ACL权限和递归ACL权限</h5><p>递归是父目录在设定ACL权限时，所有的子文件和子目录也会拥有相同的ACL权限。<br>setfacl -m u:用户名:权限 -R 文件名</p>
-<p>默认ACL权限<br>默认ACL权限的作用是如果给父目录设定了ACL权限，那么父目录中所有新建的子文件都会继承父目录的ACL权限<br>。<br>setfacl -m d:u用户名：权限 文件名</p>
-<h3 id="文件特殊权限"><a href="#文件特殊权限" class="headerlink" title="文件特殊权限"></a>文件特殊权限</h3><h5 id="1-SetUID"><a href="#1-SetUID" class="headerlink" title="1:  SetUID"></a>1:  SetUID</h5><p><strong>SetUID的功能</strong></p>
+</code></pre>
+<a id="more"></a> 
+<h5 id="2查看与设定acl权限"><a class="markdownIt-Anchor" href="#2查看与设定acl权限"></a> 2：查看与设定ACL权限</h5>
+<pre><code>   A：查看ACL命令 getfacl 文件名 #查看ACL权限
+   
+   B:设定ACL权限 setfacl 选项 文件名
+   选项：-m   设定ACL权限                  
+ 给用户设置ACL权限       setfacl -m u:qingwa:rx /project/
+        给用户组设定ACL权限     setfacl -m g:xxgroup:rwx project/
+ 
+         -x   删除指定的ACL权限 setfacl -x g:xxgroup /project/ #删除xxgroup在project下面的ACL权限
+         -b   删除所有的ACL权限 setfacl -b /project/ #会删除在project下面所有用户用户组的ACL权限
+         -d   设定默认的ACL权限
+         -k   删除默认ACL权限
+         -R   递归设定ACL权限
+</code></pre>
+<h5 id="3最大有效权限与删除acl权限"><a class="markdownIt-Anchor" href="#3最大有效权限与删除acl权限"></a> 3:最大有效权限与删除ACL权限</h5>
+<p>最大有效权限mask<br>
+mask是用来指定最大有效权限的。如果我给用户赋予了ACL权限，是需要和mask的权限“相与”才能得到用户的真正权限。(相与—相当于逻辑的与 一个为假就都为假)</p>
+<h5 id="4默认acl权限和递归acl权限"><a class="markdownIt-Anchor" href="#4默认acl权限和递归acl权限"></a> 4：默认ACL权限和递归ACL权限</h5>
+<p>递归是父目录在设定ACL权限时，所有的子文件和子目录也会拥有相同的ACL权限。<br>
+setfacl -m u:用户名:权限 -R 文件名</p>
+<p>默认ACL权限<br>
+默认ACL权限的作用是如果给父目录设定了ACL权限，那么父目录中所有新建的子文件都会继承父目录的ACL权限<br>
+。<br>
+setfacl -m d:u用户名：权限 文件名</p>
+<h3 id="文件特殊权限"><a class="markdownIt-Anchor" href="#文件特殊权限"></a> 文件特殊权限</h3>
+<h5 id="1-setuid"><a class="markdownIt-Anchor" href="#1-setuid"></a> 1:  SetUID</h5>
+<p><strong>SetUID的功能</strong></p>
 <pre><code>.只有可以执行的二进制程序才能设定SUID权限
 .命令执行者要对该程序拥有x（执行）权限
 .命令执行者在执行该程序时获得该程序文件宿主的身份（在执行程序的过程中灵魂附体为文件的属主）
 .SetUID权限只在该程序执行过程中有效，也就是说身份改变只在程序执行过程中有效。
-
+ 
 ---设置SUID---
 4代表SUID
 -    chmod 4755 文件名
@@ -184,22 +198,29 @@ D：永久开启分区ACL权限
 .关键目录应该严格控制写权限，比如“/”、“/usr”等。
 .用户的密码设置要严格遵守密码三原则。
 .对系统中默认应该是具有SetUID权限的文件作一列表，定时检查有没有这之外的文件被设置了SetUID权限。
-</code></pre><h5 id="2-SetGID"><a href="#2-SetGID" class="headerlink" title="2:  SetGID"></a>2:  SetGID</h5><pre><code>SetGID针对文件的作用
+</code></pre>
+<h5 id="2-setgid"><a class="markdownIt-Anchor" href="#2-setgid"></a> 2:  SetGID</h5>
+<pre><code>SetGID针对文件的作用
 .只有可执行的二进制程序才能设置SGID权限
 .命令执行者要对该程序拥有x(执行)权限
 .命令执行在执行程序的时候，组身份升级为该程序文件的属组
 .SetGID权限同样只在该程序执行过程中有效，也就是说组身份改变只在程序执行过程中有效
-
+ 
 SetGID针对目录的作用
 .普通用户必须对此目录拥有r和x权限，才能进入此目录
 .普通用户在此目录中的有效组会变成此目录的属组
 .若普通用户对此目录拥有w权限时，新建的文件的默认属组是这个目录的属组
-
+ 
 --设定SetGID--
 2代表SGID
 -chmod 2755 文件名
 -chmod g+s 文件名
-</code></pre><h5 id="3-Sticky-BIT"><a href="#3-Sticky-BIT" class="headerlink" title="3:  Sticky BIT"></a>3:  Sticky BIT</h5><p><strong>SBIT粘着位作用</strong><br>    .粘着位目前只对目录有效<br>    .普通用户对该目录拥有w和x权限，即普通用户可以在此目录拥有写入权限<br>    .如果没有粘着位，因为普通用户拥有w权限，所以可以删除此目录下所有文件，包括其他用户建立的文件。一旦赋予了粘着位，除了root可以删除所有文件，普通用户就算拥有w权限，也只能删除自己建立的文件，但是不能删除其他用户建立的文件。</p>
+</code></pre>
+<h5 id="3-sticky-bit"><a class="markdownIt-Anchor" href="#3-sticky-bit"></a> 3:  Sticky BIT</h5>
+<p><strong>SBIT粘着位作用</strong><br>
+.粘着位目前只对目录有效<br>
+.普通用户对该目录拥有w和x权限，即普通用户可以在此目录拥有写入权限<br>
+.如果没有粘着位，因为普通用户拥有w权限，所以可以删除此目录下所有文件，包括其他用户建立的文件。一旦赋予了粘着位，除了root可以删除所有文件，普通用户就算拥有w权限，也只能删除自己建立的文件，但是不能删除其他用户建立的文件。</p>
 <pre><code>设置与取消粘着位
 1代表SBIT
 设置粘着位
@@ -208,41 +229,44 @@ SetGID针对目录的作用
 取消粘着位
 .chmod 777 目录名
 .chmod o-t 目录名
-</code></pre><h3 id="文件系统属性chattr权限"><a href="#文件系统属性chattr权限" class="headerlink" title="文件系统属性chattr权限"></a>文件系统属性chattr权限</h3><p>chattr[+-=][选项]文件或目录名</p>
+</code></pre>
+<h3 id="文件系统属性chattr权限"><a class="markdownIt-Anchor" href="#文件系统属性chattr权限"></a> 文件系统属性chattr权限</h3>
+<p>chattr[±=][选项]文件或目录名</p>
 <pre><code>+：增加权限
 -：删除权限
 =：等于某权限
-
+ 
 选项：
     i:如果对文件设置i属性，那么不允许对文件进行删除，改名，也不能添加和修改数据；如果对目录设置i属性，那么只能修改目录下文件的数据，但不允许建立和删除文件。
     a:如果对文件设置a属性，那么只能在文件中增加数据，但是不能删除也不能修改数据；如果对目录设置a属性，那么只允许在目录中建立和修改文件，但是不允许删除。
-</code></pre><p>2、查看文件系统属性：lsattr 选项 文件名</p>
+</code></pre>
+<p>2、查看文件系统属性：lsattr 选项 文件名</p>
 <p>选项：-a 显示所有文件和目录   -d若目标是目录，仅列出目录本身的属性，而不是子文件的。</p>
-<h3 id="系统命令sudo权限"><a href="#系统命令sudo权限" class="headerlink" title="系统命令sudo权限"></a>系统命令sudo权限</h3><p>1：<br>-root把本来只能超级用户执行的命令赋予普通用户执行<br>-sudo的操作对象是系统命令<br>2：sudo使用<br>visudo #需要超级管理员执行这个命令  实际修改的是/etc/sudoers文件 </p>
+<h3 id="系统命令sudo权限"><a class="markdownIt-Anchor" href="#系统命令sudo权限"></a> 系统命令sudo权限</h3>
+<p>1：<br>
+-root把本来只能超级用户执行的命令赋予普通用户执行<br>
+-sudo的操作对象是系统命令<br>
+2：sudo使用<br>
+visudo #需要超级管理员执行这个命令  实际修改的是/etc/sudoers文件</p>
 
   </article>
 </div>
 
 
-    
-<div class="container disqus-container">
-  <div id="disqus_thread"></div>
-</div>
-
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div class='container' id="gitalk-container"></div>
 <script>
-  var disqus_config = function() {
-    this.page.url = "https://renqiangme.github.io/2016/12/24/Linux学习之权限管理/";
-    this.page.identifier = 1482591827;
-  };
-
-  (function() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://renqiangme.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
+    var gitalk = new Gitalk({
+        clientID: 'ab01b9cfbb4697dad426',
+        clientSecret: '744ecb79e78122f2b02064835c371378236a4ce5',
+        repo: 'renqiangme.github.io',
+        owner: 'renqiangme',
+        admin: ['renqiangme'],
+        distractionFreeMode: true,
+    })
+    gitalk.render('gitalk-container')
 </script>
-
 
 
 

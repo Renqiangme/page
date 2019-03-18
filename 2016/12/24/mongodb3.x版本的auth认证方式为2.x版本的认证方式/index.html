@@ -137,33 +137,39 @@
   <article class="post-content">
     <h1>修改mongodb3.x版本的auth认证方式为2.x版本的认证方式</h1>
     <p>最近在用openresty的做一些任务，其中在使用mongo的Lua库的时候，因为mongodb开启了auth，需要账号密码才能连接。</p>
-<p>mongodb 2.xx的认证方式，使用的是md5加密,认证耗时更短，如果使用3.xx认证处耗时很严重在lua中。<br><a id="more"></a><br>怎么改呢？</p>
-<p>mongo改验证方式：<br>1、停mongodb,<br>2、以不验证模式启动<br>3、删除原有用户名密码<br>4、<br>use admin;<br>db.system.version.insert({“_id”:”authSchema”,”currentVersion”:3})<br>5、新增用户名密码！<br>6、停mongodb<br>7、以验证方式启动mongdb</p>
+<p>mongodb 2.xx的认证方式，使用的是md5加密,认证耗时更短，如果使用3.xx认证处耗时很严重在lua中。</p>
+<a id="more"></a>
+<p>怎么改呢？</p>
+<p>mongo改验证方式：<br>
+1、停mongodb,<br>
+2、以不验证模式启动<br>
+3、删除原有用户名密码<br>
+4、<br>
+use admin;<br>
+db.system.version.insert({“_id”:”authSchema”,”currentVersion”:3})<br>
+5、新增用户名密码！<br>
+6、停mongodb<br>
+7、以验证方式启动mongdb</p>
 <p>如果insert不行就update</p>
 
   </article>
 </div>
 
 
-    
-<div class="container disqus-container">
-  <div id="disqus_thread"></div>
-</div>
-
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div class='container' id="gitalk-container"></div>
 <script>
-  var disqus_config = function() {
-    this.page.url = "https://renqiangme.github.io/2016/12/24/mongodb3.x版本的auth认证方式为2.x版本的认证方式/";
-    this.page.identifier = 1482555750;
-  };
-
-  (function() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://renqiangme.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
+    var gitalk = new Gitalk({
+        clientID: 'ab01b9cfbb4697dad426',
+        clientSecret: '744ecb79e78122f2b02064835c371378236a4ce5',
+        repo: 'renqiangme.github.io',
+        owner: 'renqiangme',
+        admin: ['renqiangme'],
+        distractionFreeMode: true,
+    })
+    gitalk.render('gitalk-container')
 </script>
-
 
 
 

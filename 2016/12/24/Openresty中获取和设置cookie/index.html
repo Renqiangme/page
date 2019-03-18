@@ -136,8 +136,11 @@
 
   <article class="post-content">
     <h1>OpenResty中获取和设置cookie</h1>
-    <h3 id="1：获取cookie"><a href="#1：获取cookie" class="headerlink" title="1：获取cookie"></a>1：获取cookie</h3><p>local cookie_xx_value = ngx.var.cookie_xx<br><a id="more"></a></p>
-<h3 id="2：设置cookie"><a href="#2：设置cookie" class="headerlink" title="2：设置cookie"></a>2：设置cookie</h3><p>因为cookie的过期时间格是林尼治时间需要注意转下。</p>
+    <h3 id="1获取cookie"><a class="markdownIt-Anchor" href="#1获取cookie"></a> 1：获取cookie</h3>
+<p>local cookie_xx_value = ngx.var.cookie_xx</p>
+<a id="more"></a>
+<h3 id="2设置cookie"><a class="markdownIt-Anchor" href="#2设置cookie"></a> 2：设置cookie</h3>
+<p>因为cookie的过期时间格是林尼治时间需要注意转下。</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> expires = <span class="number">3600</span> * <span class="number">24</span>  <span class="comment">-- cookie expires = 1 day</span></div><div class="line">ngx.header[<span class="string">"Set-Cookie"</span>] = <span class="string">"hello=world; Path=/; Expires="</span> .. ngx.cookie_time(ngx.time() + expires)</div></pre></td></tr></table></figure>
 <p>如果想同时设置多个cookie，可以传一个table</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> expires = <span class="number">3600</span> * <span class="number">24</span>  <span class="comment">-- cookie expires = 1 day</span></div><div class="line"><span class="keyword">local</span> cookie_table = &#123;</div><div class="line"><span class="string">"hello=world; Path=/;Domain=/; Expires="</span> .. ngx.cookie_time(ngx.time() + expires),</div><div class="line"><span class="string">"hello2=world2; Path=/;Domain=/; Expires="</span> .. ngx.cookie_time(ngx.time() + expires),</div><div class="line"><span class="string">"hello3=world3; Path=/;Domain=/; Expires="</span> .. ngx.cookie_time(ngx.time() + expires)</div><div class="line">&#125;</div><div class="line">ngx.header[<span class="string">"Set-Cookie"</span>] = cookie_table</div></pre></td></tr></table></figure>
@@ -148,25 +151,20 @@
 </div>
 
 
-    
-<div class="container disqus-container">
-  <div id="disqus_thread"></div>
-</div>
-
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div class='container' id="gitalk-container"></div>
 <script>
-  var disqus_config = function() {
-    this.page.url = "https://renqiangme.github.io/2016/12/24/OpenResty中获取和设置cookie/";
-    this.page.identifier = 1482589672;
-  };
-
-  (function() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://renqiangme.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
+    var gitalk = new Gitalk({
+        clientID: 'ab01b9cfbb4697dad426',
+        clientSecret: '744ecb79e78122f2b02064835c371378236a4ce5',
+        repo: 'renqiangme.github.io',
+        owner: 'renqiangme',
+        admin: ['renqiangme'],
+        distractionFreeMode: true,
+    })
+    gitalk.render('gitalk-container')
 </script>
-
 
 
 
