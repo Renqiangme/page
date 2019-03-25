@@ -81,61 +81,34 @@
 </nav>
 
 <div class="main-container">
-  <header class="header-wrapper desktop-only">
-  <div class="container header-site-detail">
-    <ul class="header-toolbar">
-      <li class="clearfix">
-        <a href="/archives" class="header-toolbar-left"><i
-                  class="fa fa-file-text"></i> Posts </a>
-        <a href="/archives"
-           class="header-toolbar-right"> 27 </a>
-      </li>
-      <li>
-        <a href="/tags" class="header-toolbar-left"><i
-                  class="fa fa-tags"></i> Tags </a>
-        <a href="/tags"
-           class="header-toolbar-right"> 32 </a>
-      </li>
-      <li>
-        <a href="/categories" class="header-toolbar-left"><i
-                  class="fa fa-folder-open"></i> Categories </a>
-        <a href="/categories"
-           class="header-toolbar-right"> 11 </a>
-      </li>
-    </ul>
-    <h2 class="header-title">
-      <i class="fa fa-book text-muted"></i>
-      <a href="/">Renqiang</a>
-      
-      
-    </h2>
-  </div>
-
-  <div class="container">
-    <div class="header-tab-wrapper clearfix">
-      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
-      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
-      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
-      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
-      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
-    </div>
-  </div>
-</header>
+  <div style="margin-bottom: 10px"></div>
 
 
 <div class="post-container container">
-  <h3>
-    <i class="fa fa-user-o"></i>
-    Renqiang
-
-    <span class="post-date float-right" title="{{moment(1516532908000).format('MMM DD, YYYY, h:mm:ss A')}}">
-      <i class="fa fa-pencil-square-o"></i>
-      {{moment(1516532908000).fromNow()}}
-    </span>
-  </h3>
-
+  <div class="post-head">
+     <h1 class="post-head-title">Log4j2日志-&gt;Kafka-&gt;LogStash-&gt;ElasticSearch并邮件报警</h1>
+     <p class="post-head-info">
+         <span class="post-head-date" title="{{moment(1516532908000).format('MMM DD, YYYY, h:mm:ss A')}}">
+              <i class="fa fa-calendar"></i>&nbsp;{{moment(1516532908000).format('MMM DD, YYYY, h:mm')}}
+         </span>
+         <span class="post-head-categories">
+             &nbsp;&nbsp;<i class="fa fa-folder-open"></i>&nbsp;<a href="/categories/JAVA/">JAVA</a>
+         </span>
+         <span class="post-head-tags">
+             &nbsp;&nbsp;<i class="fa fa-tag"></i>&nbsp;
+             
+             <a href="/tags/JAVA/">JAVA</a>
+             
+             <a href="/tags/Kafka/">Kafka</a>
+             
+             <a href="/tags/LogStash/">LogStash</a>
+             
+             <a href="/tags/ElasticSearch/">ElasticSearch</a>
+             
+         </span>
+     </p>
+  </div>
   <article class="post-content">
-    <h1>Log4j2日志-&gt;Kafka-&gt;LogStash-&gt;ElasticSearch并邮件报警</h1>
     <p>SpringBoot项目中需要把日志记录到<a href="https://www.elastic.co/cn/products/elasticsearch" target="_blank" rel="external">：ElasticSearch</a> 并使用 <a href="https://www.elastic.co/cn/products/kibana" target="_blank" rel="external">：Kibana</a> 搜索、展示、查看日志。</p>
 <h4 id="修改SpringBoot中的配置"><a href="#修改SpringBoot中的配置" class="headerlink" title="修改SpringBoot中的配置"></a>修改SpringBoot中的配置</h4><p>因为SpringBoot默认使用的日志框架是：<a href="http://logback.qos.ch/" target="_blank" rel="external">：Logback</a>，但是<a href="https://logging.apache.org/log4j/2.x/" target="_blank" rel="external">：Log4j2</a> 性能可能更高就打算替换掉。</p>
 <a id="more"></a>

@@ -81,61 +81,32 @@
 </nav>
 
 <div class="main-container">
-  <header class="header-wrapper desktop-only">
-  <div class="container header-site-detail">
-    <ul class="header-toolbar">
-      <li class="clearfix">
-        <a href="/archives" class="header-toolbar-left"><i
-                  class="fa fa-file-text"></i> Posts </a>
-        <a href="/archives"
-           class="header-toolbar-right"> 27 </a>
-      </li>
-      <li>
-        <a href="/tags" class="header-toolbar-left"><i
-                  class="fa fa-tags"></i> Tags </a>
-        <a href="/tags"
-           class="header-toolbar-right"> 32 </a>
-      </li>
-      <li>
-        <a href="/categories" class="header-toolbar-left"><i
-                  class="fa fa-folder-open"></i> Categories </a>
-        <a href="/categories"
-           class="header-toolbar-right"> 11 </a>
-      </li>
-    </ul>
-    <h2 class="header-title">
-      <i class="fa fa-book text-muted"></i>
-      <a href="/">Renqiang</a>
-      
-      
-    </h2>
-  </div>
-
-  <div class="container">
-    <div class="header-tab-wrapper clearfix">
-      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
-      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
-      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
-      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
-      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
-    </div>
-  </div>
-</header>
+  <div style="margin-bottom: 10px"></div>
 
 
 <div class="post-container container">
-  <h3>
-    <i class="fa fa-user-o"></i>
-    Renqiang
-
-    <span class="post-date float-right" title="{{moment(1523942892000).format('MMM DD, YYYY, h:mm:ss A')}}">
-      <i class="fa fa-pencil-square-o"></i>
-      {{moment(1523942892000).fromNow()}}
-    </span>
-  </h3>
-
+  <div class="post-head">
+     <h1 class="post-head-title">使用Systemd部署管理SpringBoot应用</h1>
+     <p class="post-head-info">
+         <span class="post-head-date" title="{{moment(1523942892000).format('MMM DD, YYYY, h:mm:ss A')}}">
+              <i class="fa fa-calendar"></i>&nbsp;{{moment(1523942892000).format('MMM DD, YYYY, h:mm')}}
+         </span>
+         <span class="post-head-categories">
+             &nbsp;&nbsp;<i class="fa fa-folder-open"></i>&nbsp;<a href="/categories/JAVA/">JAVA</a>
+         </span>
+         <span class="post-head-tags">
+             &nbsp;&nbsp;<i class="fa fa-tag"></i>&nbsp;
+             
+             <a href="/tags/Systemd/">Systemd</a>
+             
+             <a href="/tags/JAVA/">JAVA</a>
+             
+             <a href="/tags/SpringBoot/">SpringBoot</a>
+             
+         </span>
+     </p>
+  </div>
   <article class="post-content">
-    <h1>使用Systemd部署管理SpringBoot应用</h1>
     <p>如果不使用<code>Docker</code>和<code>Kubernets</code>部署管理<code>SpringBoot</code>应用，可以选择<code>Systemd</code>。</p>
 <p>因为SpringBoot自带Tomcat之类的Web应用服务器，可以直接<code>java -jar xxx.jar</code>的方式启动起来。</p>
 <p>如果我们直接使用<code>nohup java -jar xxx.jar &amp;</code> 之类的虽然也可以实现后台运行，但是是有可能因为某些原因挂掉的，所以我们需要找到一种工具让应用可以重启或者开机启动。</p>

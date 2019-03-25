@@ -149,13 +149,13 @@
     <li class="">
       <a href="/">Overview</a></li>
     <li class="">
-      <a href="/archives">Posts <span class="counter">27</span></a>
+      <a href="/archives">Posts <span class="counter">25</span></a>
     </li>
     <li class="selected">
       <a href="/categories">Categories <span
-                class="counter">11</span></a></li>
+                class="counter">9</span></a></li>
     <li class="">
-      <a href="/tags">Tags <span class="counter">32</span></a></li>
+      <a href="/tags">Tags <span class="counter">29</span></a></li>
   </ul>
 </nav>
 
@@ -163,23 +163,73 @@
       <ul class="archive-list">
         
         <li class="archive-list-item">
-          <h2><a href="/2016/12/24/OpenResty中使用lua的mongodb库，使用连接池节省连接认证时间/">Openresty中使用lua的mongodb库，使用连接池节省连接认证时间</a></h2>
+          <h2><a href="/2016/12/25/网页加载优化-PHP压缩网页进Redis-OpenResty端直接输出/">网页加载优化-PHP压缩网页进Redis,OpenResty端直接输出</a></h2>
           <p>
-             因为服务器的mongodb开启了auth认证的，所以每次连接都要验证密码，测试了下GitHub上面的几个lua的mongodb库，无论是官方的 mongorover ，还是纯的lua库： lua-resty-mongol3 ，一个简单的insert操作都比php耗费的时间更长，如果业务用lua来做...
+             其实商城项目的网页端，观察京东，淘宝他们有很多活动页面或者商品详情页，推广力度很多，流量也就比较多，通常一个页面很大很大，整个网页内容也很多，单纯考虑从webserver到走进php,java连接数据库等等读取数据拼装，再渲染视图输出到浏览器，整个过程下来，并发不大的情况还好，一大起来的就会性能大...
           </p>
           <ul class="tag-list clearfix">
             
-            <li class="tag-list-item"><a href="/tags/MongoDB/">MongoDB</a></li>
+            <li class="tag-list-item"><a href="/tags/PHP/">PHP</a></li>
             
-            <li class="tag-list-item"><a href="/tags/Openresty/">Openresty</a></li>
+            <li class="tag-list-item"><a href="/tags/OpenResty/">OpenResty</a></li>
             
-            <li class="tag-list-item"><a href="/tags/Lua/">Lua</a></li>
+            <li class="tag-list-item"><a href="/tags/Redis/">Redis</a></li>
             
           </ul>
           <div class="post-info">
             <span>
               
-              <a class="category-link" href="/categories/Openresty/"><i class="fa fa-folder-open"></i> Openresty</a>
+              <a class="category-link" href="/categories/OpenResty/"><i class="fa fa-folder-open"></i> OpenResty</a>
+              
+            </span>
+            <span><i class="fa fa-tag"></i> 3 </span>
+            <span>Published {{moment(1482674850000).fromNow()}}</span>
+          </div>
+        </li>
+        
+        <li class="archive-list-item">
+          <h2><a href="/2016/12/24/OpenResty中获取和设置cookie/">OpenResty中获取和设置cookie</a></h2>
+          <p>
+               1：获取cookie  local cookie_xx_value = ngx.var.cookie_xx    
+   2：设置cookie  因为cookie的过期时间格是林尼治时间需要注意转下。 
+      1  2       local  expires =  3600  *  2...
+          </p>
+          <ul class="tag-list clearfix">
+            
+            <li class="tag-list-item"><a href="/tags/OpenResty/">OpenResty</a></li>
+            
+            <li class="tag-list-item"><a href="/tags/Cookie/">Cookie</a></li>
+            
+          </ul>
+          <div class="post-info">
+            <span>
+              
+              <a class="category-link" href="/categories/OpenResty/"><i class="fa fa-folder-open"></i> OpenResty</a>
+              
+            </span>
+            <span><i class="fa fa-tag"></i> 2 </span>
+            <span>Published {{moment(1482589672000).fromNow()}}</span>
+          </div>
+        </li>
+        
+        <li class="archive-list-item">
+          <h2><a href="/2016/12/24/OpenResty中使用Lua的MongoDB库，使用连接池节省连接认证时间/">OpenResty中使用Lua的MongoDB库，使用连接池节省连接认证时间</a></h2>
+          <p>
+             因为服务器的mongodb开启了auth认证的，所以每次连接都要验证密码，测试了下GitHub上面的几个lua的mongodb库，无论是官方的 mongorover ，还是纯的lua库： lua-resty-mongol3 ，一个简单的insert操作都比php耗费的时间更长，如果业务用lua来做...
+          </p>
+          <ul class="tag-list clearfix">
+            
+            <li class="tag-list-item"><a href="/tags/OpenResty/">OpenResty</a></li>
+            
+            <li class="tag-list-item"><a href="/tags/Lua/">Lua</a></li>
+            
+            <li class="tag-list-item"><a href="/tags/MongoDB/">MongoDB</a></li>
+            
+          </ul>
+          <div class="post-info">
+            <span>
+              
+              <a class="category-link" href="/categories/OpenResty/"><i class="fa fa-folder-open"></i> OpenResty</a>
               
             </span>
             <span><i class="fa fa-tag"></i> 3 </span>
@@ -196,48 +246,6 @@
 
 <div class="footer-wrapper container">
   <footer class="footer clearfix">
-    <div class="clearfix">
-    <a href="https://renqiangme.github.io" class="footer-logo">
-      <i class="fa fa-github"></i>
-    </a>
-    <ul class="footer-social-link">
-      <li>© 2016 - 2019 Renqiang</li>
-      <li><a href="https://renqiangme.github.io">Home</a></li>
-      
-      <li><a href="https://github.com/Renqiangme">Github</a></li>
-      
-      <li><a href="https://www.weibo.com/1636008183">Weibo</a></li>
-      
-    </ul>
-    <div class="footer-theme-info">
-      Powered by <a href="https://hexo.io">Hexo</a>,Theme <a href="https://github.com/Renqiangme/hexo-theme-replica">Replica</a>
-    </div>
-    </div>
-    
-  </footer>
-</div>
-
-
-<script>
-  (function() {
-    var cx = '004741875389417659760:137mpv70l0i';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-      '//cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-
-
-
-<script src="/js/main.js"></script>
-
-</body>
-</html>
-clearfix">
     <div class="clearfix">
     <a href="https://renqiangme.github.io" class="footer-logo">
       <i class="fa fa-github"></i>

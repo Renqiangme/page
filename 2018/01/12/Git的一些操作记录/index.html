@@ -81,61 +81,28 @@
 </nav>
 
 <div class="main-container">
-  <header class="header-wrapper desktop-only">
-  <div class="container header-site-detail">
-    <ul class="header-toolbar">
-      <li class="clearfix">
-        <a href="/archives" class="header-toolbar-left"><i
-                  class="fa fa-file-text"></i> Posts </a>
-        <a href="/archives"
-           class="header-toolbar-right"> 27 </a>
-      </li>
-      <li>
-        <a href="/tags" class="header-toolbar-left"><i
-                  class="fa fa-tags"></i> Tags </a>
-        <a href="/tags"
-           class="header-toolbar-right"> 32 </a>
-      </li>
-      <li>
-        <a href="/categories" class="header-toolbar-left"><i
-                  class="fa fa-folder-open"></i> Categories </a>
-        <a href="/categories"
-           class="header-toolbar-right"> 11 </a>
-      </li>
-    </ul>
-    <h2 class="header-title">
-      <i class="fa fa-book text-muted"></i>
-      <a href="/">Renqiang</a>
-      
-      
-    </h2>
-  </div>
-
-  <div class="container">
-    <div class="header-tab-wrapper clearfix">
-      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
-      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
-      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
-      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
-      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
-    </div>
-  </div>
-</header>
+  <div style="margin-bottom: 10px"></div>
 
 
 <div class="post-container container">
-  <h3>
-    <i class="fa fa-user-o"></i>
-    Renqiang
-
-    <span class="post-date float-right" title="{{moment(1515720628000).format('MMM DD, YYYY, h:mm:ss A')}}">
-      <i class="fa fa-pencil-square-o"></i>
-      {{moment(1515720628000).fromNow()}}
-    </span>
-  </h3>
-
+  <div class="post-head">
+     <h1 class="post-head-title">Git的一些操作记录</h1>
+     <p class="post-head-info">
+         <span class="post-head-date" title="{{moment(1515720628000).format('MMM DD, YYYY, h:mm:ss A')}}">
+              <i class="fa fa-calendar"></i>&nbsp;{{moment(1515720628000).format('MMM DD, YYYY, h:mm')}}
+         </span>
+         <span class="post-head-categories">
+             &nbsp;&nbsp;<i class="fa fa-folder-open"></i>&nbsp;<a href="/categories/Git/">Git</a>
+         </span>
+         <span class="post-head-tags">
+             &nbsp;&nbsp;<i class="fa fa-tag"></i>&nbsp;
+             
+             <a href="/tags/Git/">Git</a>
+             
+         </span>
+     </p>
+  </div>
   <article class="post-content">
-    <h1>Git的一些操作记录</h1>
     <h4 id="Git撤销某个commit"><a href="#Git撤销某个commit" class="headerlink" title="Git撤销某个commit"></a>Git撤销某个commit</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git reset –mixed：此为默认方式，不带任何参数的git reset，即时这种方式，它回退到某个版本，只保留源码,同时清空了暂存区(回退commit和index信息)</div><div class="line">git reset –soft：回退到某个版本，只回退了commit的信息，git不会清除你的暂存区。如果还要提交，直接commit即可</div><div class="line">git reset –hard：彻底回退到某个版本，直接覆盖工作区，暂存区，本地的源码所有的内容也会变为上一个版本的内容</div><div class="line"></div><div class="line">Git撤销命令后面的可选参数：</div><div class="line">HEAD 最近一个提交</div><div class="line">HEAD^ 上一次</div><div class="line">&lt;commit_id&gt;  每次commit的SHA1值. 可以用git log 看到,也可以在页面上commit标签页里找到</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>如果本地的源码彻底回退到某个版本，并希望远程Git仓库的记录也回滚的话。</p>

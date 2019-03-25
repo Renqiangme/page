@@ -8,7 +8,7 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>
-    修改mongodb3.x版本的auth认证方式为2.x版本的认证方式 | Renqiang
+    修改MongoDB3.x版本的auth认证方式为2.x版本的认证方式 | Renqiang
   </title>
   <meta name="description" content="积土而为山，积水而为海。">
   
@@ -81,64 +81,32 @@
 </nav>
 
 <div class="main-container">
-  <header class="header-wrapper desktop-only">
-  <div class="container header-site-detail">
-    <ul class="header-toolbar">
-      <li class="clearfix">
-        <a href="/archives" class="header-toolbar-left"><i
-                  class="fa fa-file-text"></i> Posts </a>
-        <a href="/archives"
-           class="header-toolbar-right"> 27 </a>
-      </li>
-      <li>
-        <a href="/tags" class="header-toolbar-left"><i
-                  class="fa fa-tags"></i> Tags </a>
-        <a href="/tags"
-           class="header-toolbar-right"> 32 </a>
-      </li>
-      <li>
-        <a href="/categories" class="header-toolbar-left"><i
-                  class="fa fa-folder-open"></i> Categories </a>
-        <a href="/categories"
-           class="header-toolbar-right"> 11 </a>
-      </li>
-    </ul>
-    <h2 class="header-title">
-      <i class="fa fa-book text-muted"></i>
-      <a href="/">Renqiang</a>
-      
-      
-    </h2>
-  </div>
-
-  <div class="container">
-    <div class="header-tab-wrapper clearfix">
-      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
-      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
-      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
-      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
-      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
-    </div>
-  </div>
-</header>
+  <div style="margin-bottom: 10px"></div>
 
 
 <div class="post-container container">
-  <h3>
-    <i class="fa fa-user-o"></i>
-    Renqiang
-
-    <span class="post-date float-right" title="{{moment(1482555750000).format('MMM DD, YYYY, h:mm:ss A')}}">
-      <i class="fa fa-pencil-square-o"></i>
-      {{moment(1482555750000).fromNow()}}
-    </span>
-  </h3>
-
+  <div class="post-head">
+     <h1 class="post-head-title">修改MongoDB3.x版本的auth认证方式为2.x版本的认证方式</h1>
+     <p class="post-head-info">
+         <span class="post-head-date" title="{{moment(1482555750000).format('MMM DD, YYYY, h:mm:ss A')}}">
+              <i class="fa fa-calendar"></i>&nbsp;{{moment(1482555750000).format('MMM DD, YYYY, h:mm')}}
+         </span>
+         <span class="post-head-categories">
+             &nbsp;&nbsp;<i class="fa fa-folder-open"></i>&nbsp;<a href="/categories/MongoDB/">MongoDB</a>
+         </span>
+         <span class="post-head-tags">
+             &nbsp;&nbsp;<i class="fa fa-tag"></i>&nbsp;
+             
+             <a href="/tags/MongoDB/">MongoDB</a>
+             
+         </span>
+     </p>
+  </div>
   <article class="post-content">
-    <h1>修改mongodb3.x版本的auth认证方式为2.x版本的认证方式</h1>
-    <p>最近在用openresty的做一些任务，其中在使用mongo的Lua库的时候，因为mongodb开启了auth，需要账号密码才能连接。</p>
-<p>mongodb 2.xx的认证方式，使用的是md5加密,认证耗时更短，如果使用3.xx认证处耗时很严重在lua中。<br><a id="more"></a><br>怎么改呢？</p>
-<p>mongo改验证方式：<br>1、停mongodb,<br>2、以不验证模式启动<br>3、删除原有用户名密码<br>4、<br>use admin;<br>db.system.version.insert({“_id”:”authSchema”,”currentVersion”:3})<br>5、新增用户名密码！<br>6、停mongodb<br>7、以验证方式启动mongdb</p>
+    <p>最近在用OpenResty的做一些任务，其中在使用MongoDB的Lua库的时候，因为MongoDB开启了auth，需要账号密码才能连接。</p>
+<p>MongoDB 2.xx的认证方式，使用的是md5加密,认证耗时更短，如果使用3.xx认证处耗时很严重在Lua中。<br><a id="more"></a><br>怎么改呢？</p>
+<p>MongoDB改验证方式：<br>1、停止mongodb,<br>2、以不验证模式启动<br>3、删除原有用户名密码<br>4、<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">use admin;</div><div class="line">db.system.version.insert(&#123;“_id”:”authSchema”,”currentVersion”:3&#125;)</div></pre></td></tr></table></figure></p>
+<p>5、新增用户名密码！<br>6、停止mongodb<br>7、以验证方式启动MongoDB</p>
 <p>如果insert不行就update</p>
 
   </article>

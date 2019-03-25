@@ -81,61 +81,30 @@
 </nav>
 
 <div class="main-container">
-  <header class="header-wrapper desktop-only">
-  <div class="container header-site-detail">
-    <ul class="header-toolbar">
-      <li class="clearfix">
-        <a href="/archives" class="header-toolbar-left"><i
-                  class="fa fa-file-text"></i> Posts </a>
-        <a href="/archives"
-           class="header-toolbar-right"> 27 </a>
-      </li>
-      <li>
-        <a href="/tags" class="header-toolbar-left"><i
-                  class="fa fa-tags"></i> Tags </a>
-        <a href="/tags"
-           class="header-toolbar-right"> 32 </a>
-      </li>
-      <li>
-        <a href="/categories" class="header-toolbar-left"><i
-                  class="fa fa-folder-open"></i> Categories </a>
-        <a href="/categories"
-           class="header-toolbar-right"> 11 </a>
-      </li>
-    </ul>
-    <h2 class="header-title">
-      <i class="fa fa-book text-muted"></i>
-      <a href="/">Renqiang</a>
-      
-      
-    </h2>
-  </div>
-
-  <div class="container">
-    <div class="header-tab-wrapper clearfix">
-      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
-      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
-      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
-      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
-      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
-    </div>
-  </div>
-</header>
+  <div style="margin-bottom: 10px"></div>
 
 
 <div class="post-container container">
-  <h3>
-    <i class="fa fa-user-o"></i>
-    Renqiang
-
-    <span class="post-date float-right" title="{{moment(1503034098000).format('MMM DD, YYYY, h:mm:ss A')}}">
-      <i class="fa fa-pencil-square-o"></i>
-      {{moment(1503034098000).fromNow()}}
-    </span>
-  </h3>
-
+  <div class="post-head">
+     <h1 class="post-head-title">Ubuntu设置固定的ip</h1>
+     <p class="post-head-info">
+         <span class="post-head-date" title="{{moment(1503034098000).format('MMM DD, YYYY, h:mm:ss A')}}">
+              <i class="fa fa-calendar"></i>&nbsp;{{moment(1503034098000).format('MMM DD, YYYY, h:mm')}}
+         </span>
+         <span class="post-head-categories">
+             &nbsp;&nbsp;<i class="fa fa-folder-open"></i>&nbsp;<a href="/categories/Linux/">Linux</a>
+         </span>
+         <span class="post-head-tags">
+             &nbsp;&nbsp;<i class="fa fa-tag"></i>&nbsp;
+             
+             <a href="/tags/Linux/">Linux</a>
+             
+             <a href="/tags/Ubuntu/">Ubuntu</a>
+             
+         </span>
+     </p>
+  </div>
   <article class="post-content">
-    <h1>Ubuntu设置固定的ip</h1>
     <p>修改配置文件：/etc/network/interfaces</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">vim /etc/network/interfaces</div><div class="line"></div><div class="line">#增加修改如下：</div><div class="line"></div><div class="line">#The primary network interface</div><div class="line">auto ens160</div><div class="line">iface ens160 inet static</div><div class="line">address 10.1.220.15</div><div class="line">netmask 255.255.0.0</div><div class="line">gateway 10.1.1.1</div><div class="line">dns-nameservers 8.8.8.8 8.8.4.4</div><div class="line"></div><div class="line">service networking restart</div></pre></td></tr></table></figure>
 <a id="more"></a>

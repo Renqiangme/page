@@ -81,61 +81,32 @@
 </nav>
 
 <div class="main-container">
-  <header class="header-wrapper desktop-only">
-  <div class="container header-site-detail">
-    <ul class="header-toolbar">
-      <li class="clearfix">
-        <a href="/archives" class="header-toolbar-left"><i
-                  class="fa fa-file-text"></i> Posts </a>
-        <a href="/archives"
-           class="header-toolbar-right"> 27 </a>
-      </li>
-      <li>
-        <a href="/tags" class="header-toolbar-left"><i
-                  class="fa fa-tags"></i> Tags </a>
-        <a href="/tags"
-           class="header-toolbar-right"> 32 </a>
-      </li>
-      <li>
-        <a href="/categories" class="header-toolbar-left"><i
-                  class="fa fa-folder-open"></i> Categories </a>
-        <a href="/categories"
-           class="header-toolbar-right"> 11 </a>
-      </li>
-    </ul>
-    <h2 class="header-title">
-      <i class="fa fa-book text-muted"></i>
-      <a href="/">Renqiang</a>
-      
-      
-    </h2>
-  </div>
-
-  <div class="container">
-    <div class="header-tab-wrapper clearfix">
-      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
-      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
-      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
-      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
-      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
-    </div>
-  </div>
-</header>
+  <div style="margin-bottom: 10px"></div>
 
 
 <div class="post-container container">
-  <h3>
-    <i class="fa fa-user-o"></i>
-    Renqiang
-
-    <span class="post-date float-right" title="{{moment(1482674850000).format('MMM DD, YYYY, h:mm:ss A')}}">
-      <i class="fa fa-pencil-square-o"></i>
-      {{moment(1482674850000).fromNow()}}
-    </span>
-  </h3>
-
+  <div class="post-head">
+     <h1 class="post-head-title">网页加载优化-PHP压缩网页进Redis,OpenResty端直接输出</h1>
+     <p class="post-head-info">
+         <span class="post-head-date" title="{{moment(1482674850000).format('MMM DD, YYYY, h:mm:ss A')}}">
+              <i class="fa fa-calendar"></i>&nbsp;{{moment(1482674850000).format('MMM DD, YYYY, h:mm')}}
+         </span>
+         <span class="post-head-categories">
+             &nbsp;&nbsp;<i class="fa fa-folder-open"></i>&nbsp;<a href="/categories/OpenResty/">OpenResty</a>
+         </span>
+         <span class="post-head-tags">
+             &nbsp;&nbsp;<i class="fa fa-tag"></i>&nbsp;
+             
+             <a href="/tags/PHP/">PHP</a>
+             
+             <a href="/tags/OpenResty/">OpenResty</a>
+             
+             <a href="/tags/Redis/">Redis</a>
+             
+         </span>
+     </p>
+  </div>
   <article class="post-content">
-    <h1>网页加载优化-PHP压缩网页进Redis,OpenResty端直接输出</h1>
     <p>其实商城项目的网页端，观察京东，淘宝他们有很多活动页面或者商品详情页，推广力度很多，流量也就比较多，通常一个页面很大很大，整个网页内容也很多，单纯考虑从webserver到走进php,java连接数据库等等读取数据拼装，再渲染视图输出到浏览器，整个过程下来，并发不大的情况还好，一大起来的就会性能大大的降低。</p>
 <p>对于中小型项目，解决的方案肯定没有淘宝京东的方案多。<br><a id="more"></a><br>于是就要想解决优化的方案，像商品详情页有商品相关的静态数据，同时掺杂着一些评论，购买数量等等的动态数据，其实可以把整个网页动静分离，动态数据走接口，静态数据直接gzip压缩存进缓存，通过Openresty在nginx层面通过lua直接读取就输出,然后浏览器自动解压gzip。由于页面数据是压缩了的可以节省网络IO,大大提升页面的加载速度。但是像一些活动页面，动态数据可能没有那么多,改动商品相关的价格库存…等等改动那么频繁，其实可以直接扔进CDN,动态数据也走接口。</p>
 <p>下面来看下PHP的几个GZIP压缩相关的函数，都是基于ZLIB库。</p>
