@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    安装kubernetes-dashboard | Renqiang
+  </title>
+  <meta name="description" content="积土而为山，积水而为海。">
+  
+  <meta name="keywords" content="
+  Kubernetes,k8s,kubernetes-dashboard
+  ">
+  
+  <meta name="author" content="Renqiang">
+
+  <meta http-equiv="Cache-Control" content="no-transform"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href="/images/logo.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-136432390-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><img src="/images/logo.png" title="Home" alt="Home" /></a>
+
+      <ul class="navbar-nav float-left">
+        <li class="desktop-only"><a href="/">Home</a></li>
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li><a href="/about">About</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <div class="navbar-search float-right desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <div style="margin-bottom: 10px"></div>
+
+
+<div class="post-container container">
+  <div class="post-head">
+     <h1 class="post-head-title">安装kubernetes-dashboard</h1>
+     <p class="post-head-info">
+         <span class="post-head-date" title="{{moment(1556079323000).format('MMM DD, YYYY, h:mm:ss A')}}">
+              <i class="fa fa-calendar"></i>&nbsp;{{moment(1556079323000).format('MMM DD, YYYY, h:mm')}}
+         </span>
+         <span class="post-head-categories">
+             &nbsp;&nbsp;<i class="fa fa-folder-open"></i>&nbsp;<a href="/categories/Linux/">Linux</a>
+         </span>
+         <span class="post-head-tags">
+             &nbsp;&nbsp;<i class="fa fa-tag"></i>&nbsp;
+             
+             <a href="/tags/Kubernetes/">Kubernetes</a>
+             
+             <a href="/tags/k8s/">k8s</a>
+             
+             <a href="/tags/kubernetes-dashboard/">kubernetes-dashboard</a>
+             
+         </span>
+     </p>
+  </div>
+  <article class="post-content">
+    <h2 id="kubernetes-Dashboard"><a href="#kubernetes-Dashboard" class="headerlink" title="kubernetes Dashboard"></a>kubernetes Dashboard</h2><p>作为Kubernetes的Web用户界面，用户可以通过Dashboard在Kubernetes集群中部署容器化的应用，对应用进行问题处理和管理，并对集群本身进行管理。通过Dashboard，用户可以查看集群中应用的运行情况，同时也能够基于Dashboard创建或修改部署、任务、服务等Kubernetes的资源。通过部署向导，用户能够对部署进行扩缩容，进行滚动更新、重启Pod和部署新应用。当然，通过Dashboard也能够查看Kubernetes资源的状态。</p>
+<p>Kubernetes Dashboard <a href="https://github.com/kubernetes/dashboard" target="_blank" rel="external">Github地址</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml</div></pre></td></tr></table></figure>
+<p>安装部署成功之后执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kubectl proxy</div></pre></td></tr></table></figure>
+<p>打开<a href="http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login" target="_blank" rel="external">：http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login</a><br>就可以通过UI来管理了。</p>
+<h3 id="kubernetes-Dashboard访问权限问题"><a href="#kubernetes-Dashboard访问权限问题" class="headerlink" title="kubernetes Dashboard访问权限问题"></a>kubernetes Dashboard访问权限问题</h3><p>现在新版的kubernetes Dashboard似乎都没有了跳过这个button.</p>
+<p><img src="https://note.youdao.com/yws/public/resource/d48e73f7c3726b842a8ccc4f0166348f/xmlnote/544F88A12CE744E0B1CD5B5807446A46/4154" alt="image"></p>
+<p>点击跳过进入dashboard 使用的是默认的 kubernetes-dashboard 角色，比如Azure的AKS就是直接没有登录界面，直接进入主页。可能有很多黄色警告：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">configmaps is forbidden: User &quot;system:serviceaccount:kube-system:kubernetes-dashboard&quot; cannot list configmaps in the namespace &quot;default&quot;</div><div class="line"></div><div class="line">persistentvolumeclaims is forbidden: User &quot;system:serviceaccount:kube-system:kubernetes-dashboard&quot; cannot list persistentvolumeclaims in the namespace &quot;default&quot;</div><div class="line"></div><div class="line">secrets is forbidden: User &quot;system:serviceaccount:kube-system:kubernetes-dashboard&quot; cannot list secrets in the namespace &quot;default&quot;</div><div class="line"></div><div class="line">services is forbidden: User &quot;system:serviceaccount:kube-system:kubernetes-dashboard&quot; cannot list services in the namespace &quot;default&quot;</div><div class="line">....</div></pre></td></tr></table></figure></p>
+<p>说明 kubernetes-dashboard权限不足。</p>
+<h4 id="法一：创建一个管理员权限的用户，生成Token访问dashboard"><a href="#法一：创建一个管理员权限的用户，生成Token访问dashboard" class="headerlink" title="法一：创建一个管理员权限的用户，生成Token访问dashboard"></a>法一：创建一个管理员权限的用户，生成Token访问dashboard</h4><p>参考自：<a href="https://github.com/kubernetes/dashboard/wiki/Creating-sample-user" target="_blank" rel="external">Creating-sample-user</a></p>
+<h5 id="创建一个管理员Service-Account文件"><a href="#创建一个管理员Service-Account文件" class="headerlink" title="创建一个管理员Service Account文件"></a>创建一个管理员Service Account文件</h5><p>在本地创建一个dashboard-adminuser.yaml，内容是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">apiVersion: v1</div><div class="line">kind: ServiceAccount</div><div class="line">metadata:</div><div class="line">  name: admin-user</div><div class="line">  namespace: kube-system</div><div class="line">---</div><div class="line">apiVersion: rbac.authorization.k8s.io/v1</div><div class="line">kind: ClusterRoleBinding</div><div class="line">metadata:</div><div class="line">  name: admin-user</div><div class="line">roleRef:</div><div class="line">  apiGroup: rbac.authorization.k8s.io</div><div class="line">  kind: ClusterRole</div><div class="line">  name: cluster-admin</div><div class="line">subjects:</div><div class="line">- kind: ServiceAccount</div><div class="line">  name: admin-user</div><div class="line">  namespace: kube-system</div></pre></td></tr></table></figure>
+<p>然后执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kubectl apply -f dashboard-adminuser.yaml</div></pre></td></tr></table></figure>
+<h5 id="生成Bearer-Token"><a href="#生成Bearer-Token" class="headerlink" title="生成Bearer Token"></a>生成Bearer Token</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk &apos;&#123;print $1&#125;&apos;)</div></pre></td></tr></table></figure>
+<p>然后复制粘贴token,就能进入kubernetes Dashboard的管理界面了。</p>
+<h5 id="查看所有的ServiceAccount"><a href="#查看所有的ServiceAccount" class="headerlink" title="查看所有的ServiceAccount"></a>查看所有的ServiceAccount</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kubectl get serviceaccount --all-namespaces</div></pre></td></tr></table></figure>
+<h4 id="法二：也可以把kubernetes-dashboard-用户的权限绑定成-admin-的权限"><a href="#法二：也可以把kubernetes-dashboard-用户的权限绑定成-admin-的权限" class="headerlink" title="法二：也可以把kubernetes-dashboard 用户的权限绑定成 admin 的权限"></a>法二：也可以把kubernetes-dashboard 用户的权限绑定成 admin 的权限</h4><p>直接执行下面命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kubectl create clusterrolebinding kubernetes-dashboard -n kube-system --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard</div></pre></td></tr></table></figure></p>
+<p>或者创建一个文件然后再create：</p>
+<p><code>vi kube-dashboard-access.yaml</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">apiVersion: rbac.authorization.k8s.io/v1</div><div class="line">kind: ClusterRoleBinding</div><div class="line">metadata:</div><div class="line">  name: kubernetes-dashboard</div><div class="line">  labels:</div><div class="line">    k8s-app: kubernetes-dashboard</div><div class="line">roleRef:</div><div class="line">  apiGroup: rbac.authorization.k8s.io</div><div class="line">  kind: ClusterRole</div><div class="line">  name: cluster-admin</div><div class="line">subjects:</div><div class="line">- kind: ServiceAccount</div><div class="line">  name: kubernetes-dashboard</div><div class="line">  namespace: kube-system</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kubectl create -f kube-dashboard-access.yaml</div></pre></td></tr></table></figure>
+  </article>
+</div>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<div class='container' id="gitalk-container"></div>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'ab01b9cfbb4697dad426',
+        clientSecret: '744ecb79e78122f2b02064835c371378236a4ce5',
+        repo: 'Renqiangme.github.io',
+        owner: 'Renqiangme',
+        admin: ['Renqiangme'],
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://renqiangme.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2016 - 2019 Renqiang</li>
+      <li><a href="https://renqiangme.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/Renqiangme">Github</a></li>
+      
+      <li><a href="https://www.weibo.com/1636008183">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Powered by <a href="https://hexo.io">Hexo</a>,Theme <a href="https://github.com/Renqiangme/hexo-theme-replica">Replica</a>
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+<script>
+  (function() {
+    var cx = '004741875389417659760:137mpv70l0i';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
