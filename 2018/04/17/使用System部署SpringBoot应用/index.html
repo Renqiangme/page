@@ -128,6 +128,8 @@
 <p><code>systemctl restart xx.service</code></p>
 <p>看xx service日志,按住shift+g可以跳转到最后一行:</p>
 <p><code>journalctl -u xx.service</code></p>
+<p>动态像<code>tail -f xxfile</code>一样查看对应service的日志：</p>
+<p><code>journalctl -f xx.service</code></p>
 
   </article>
 </div>
